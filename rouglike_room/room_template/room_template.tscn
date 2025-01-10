@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://jb3cu6e613sl"]
+
+[ext_resource type="Script" path="res://rouglike_room/room_template/room_template.gd" id="1_galfv"]
+[ext_resource type="Script" path="res://rouglike_room/room_template/random_color.gd" id="2_g3ug2"]
+[ext_resource type="PackedScene" uid="uid://cmoxh6ri16wig" path="res://rouglike_room/room_template/arow.tscn" id="2_sob0l"]
+
+[node name="RoomTemplate" type="Node3D" node_paths=PackedStringArray("exit")]
+script = ExtResource("1_galfv")
+exit = NodePath("exit")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.5)
+use_collision = true
+script = ExtResource("2_g3ug2")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+size = Vector3(10, 1, 10)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.5, 0)
+size = Vector3(10, 1, 10)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 3.5, 5)
+size = Vector3(10, 1, 10)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 3.5, -5)
+size = Vector3(10, 1, 10)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 5, 3.5, -2.18557e-07)
+size = Vector3(10, 1, 10)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -5, 3.5, 2.18557e-07)
+size = Vector3(10, 1, 10)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+operation = 2
+size = Vector3(3, 3, 11)
+
+[node name="exit" parent="." instance=ExtResource("2_sob0l")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 0, 0, -11)

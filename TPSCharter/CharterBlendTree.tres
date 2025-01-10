@@ -1,0 +1,339 @@
+[gd_resource type="AnimationNodeBlendTree" load_steps=40 format=3 uid="uid://x0t4mg3d0sam"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_352in"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_8l85g"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4fadk"]
+animation = &"jump 1 legs"
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_63wsn"]
+input_0/name = "floor"
+input_0/auto_advance = false
+input_0/break_loop_at_end = false
+input_0/reset = true
+input_1/name = "air"
+input_1/auto_advance = false
+input_1/break_loop_at_end = false
+input_1/reset = true
+input_2/name = "shot_floor"
+input_2/auto_advance = false
+input_2/break_loop_at_end = false
+input_2/reset = true
+input_3/name = "shot_air"
+input_3/auto_advance = false
+input_3/break_loop_at_end = false
+input_3/reset = true
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7qtmh"]
+animation = &"shot arms"
+use_custom_timeline = true
+timeline_length = 1.0
+stretch_time_scale = true
+start_offset = 1.0
+loop_mode = 0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pbpf5"]
+animation = &"shot arms down"
+use_custom_timeline = true
+timeline_length = 1.0
+stretch_time_scale = true
+start_offset = 1.0
+loop_mode = 0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xf0hs"]
+animation = &"shot arms up"
+use_custom_timeline = true
+timeline_length = 1.0
+stretch_time_scale = true
+start_offset = 1.0
+loop_mode = 0
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_0uakk"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_7qtmh")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_pbpf5")
+blend_point_1/pos = -1.0
+blend_point_2/node = SubResource("AnimationNodeAnimation_xf0hs")
+blend_point_2/pos = 1.0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tumwb"]
+animation = &"shot arms down"
+use_custom_timeline = true
+timeline_length = 1.0
+stretch_time_scale = true
+start_offset = 1.0
+loop_mode = 0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gk1dk"]
+animation = &"shot arms"
+use_custom_timeline = true
+timeline_length = 1.0
+stretch_time_scale = true
+start_offset = 1.0
+loop_mode = 0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dhmxm"]
+animation = &"shot arms up"
+use_custom_timeline = true
+timeline_length = 1.0
+stretch_time_scale = true
+start_offset = 1.0
+loop_mode = 0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8dj5t"]
+animation = &"shot arms front up"
+use_custom_timeline = true
+timeline_length = 1.0
+stretch_time_scale = true
+start_offset = 1.0
+loop_mode = 0
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_d3pqm"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_tumwb")
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_gk1dk")
+blend_point_1/pos = 0.0
+blend_point_2/node = SubResource("AnimationNodeAnimation_dhmxm")
+blend_point_2/pos = 1.0
+blend_point_3/node = SubResource("AnimationNodeAnimation_8dj5t")
+blend_point_3/pos = 0.5
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gebvf"]
+animation = &"jump 1"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3x0hb"]
+animation = &"idle"
+use_custom_timeline = true
+timeline_length = 5.0
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tb4xh"]
+animation = &"walk"
+use_custom_timeline = true
+timeline_length = 0.75
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hk66s"]
+animation = &"run"
+use_custom_timeline = true
+timeline_length = 1.0
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_seey6"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_3x0hb")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_tb4xh")
+blend_point_1/pos = 0.5
+blend_point_2/node = SubResource("AnimationNodeAnimation_hk66s")
+blend_point_2/pos = 1.0
+min_space = 0.0
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_5olaw"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ly8xd"]
+animation = &"shot arms"
+use_custom_timeline = true
+timeline_length = 0.2
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_chap4"]
+animation = &"shot arms down"
+use_custom_timeline = true
+timeline_length = 0.2
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ej0qi"]
+animation = &"shot arms up"
+use_custom_timeline = true
+timeline_length = 0.2
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 0
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_5b8em"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_ly8xd")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_chap4")
+blend_point_1/pos = -1.0
+blend_point_2/node = SubResource("AnimationNodeAnimation_ej0qi")
+blend_point_2/pos = 1.0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n7ksy"]
+animation = &"shot arms down"
+use_custom_timeline = true
+timeline_length = 0.2
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rfsa4"]
+animation = &"shot arms"
+use_custom_timeline = true
+timeline_length = 0.2
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_02ei2"]
+animation = &"shot arms up"
+use_custom_timeline = true
+timeline_length = 0.2
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wpa8d"]
+animation = &"shot arms front up"
+use_custom_timeline = true
+timeline_length = 0.2
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 0
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_yfv3j"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_n7ksy")
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_rfsa4")
+blend_point_1/pos = 0.0
+blend_point_2/node = SubResource("AnimationNodeAnimation_02ei2")
+blend_point_2/pos = 1.0
+blend_point_3/node = SubResource("AnimationNodeAnimation_wpa8d")
+blend_point_3/pos = 0.5
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_3hr48"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x2mt2"]
+animation = &"idle legs"
+use_custom_timeline = true
+timeline_length = 8.0
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_86kw8"]
+animation = &"walk legs"
+play_mode = 1
+use_custom_timeline = true
+timeline_length = 1.0
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bxyf6"]
+animation = &"walk legs"
+use_custom_timeline = true
+timeline_length = 1.0
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5cg67"]
+animation = &"walk left"
+use_custom_timeline = true
+timeline_length = 0.25
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gpp5g"]
+animation = &"walk right"
+use_custom_timeline = true
+timeline_length = 0.25
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lsjgn"]
+animation = &"walk foward left"
+play_mode = 1
+use_custom_timeline = true
+timeline_length = 0.5
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_46glf"]
+animation = &"walk foward right"
+play_mode = 1
+use_custom_timeline = true
+timeline_length = 0.5
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_s6a0e"]
+animation = &"walk foward left"
+use_custom_timeline = true
+timeline_length = 0.5
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pc5sj"]
+animation = &"walk foward right"
+use_custom_timeline = true
+timeline_length = 0.5
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_5ieh3"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_x2mt2")
+blend_point_0/pos = Vector2(0, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_86kw8")
+blend_point_1/pos = Vector2(0, 1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_bxyf6")
+blend_point_2/pos = Vector2(0, -1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_5cg67")
+blend_point_3/pos = Vector2(-1, 0)
+blend_point_4/node = SubResource("AnimationNodeAnimation_gpp5g")
+blend_point_4/pos = Vector2(1, 0)
+blend_point_5/node = SubResource("AnimationNodeAnimation_lsjgn")
+blend_point_5/pos = Vector2(0.5, 0.5)
+blend_point_6/node = SubResource("AnimationNodeAnimation_46glf")
+blend_point_6/pos = Vector2(-0.5, 0.5)
+blend_point_7/node = SubResource("AnimationNodeAnimation_s6a0e")
+blend_point_7/pos = Vector2(-0.5, -0.5)
+blend_point_8/node = SubResource("AnimationNodeAnimation_pc5sj")
+blend_point_8/pos = Vector2(0.5, -0.5)
+
+[resource]
+graph_offset = Vector2(-1632.72, 240.276)
+nodes/Add2/node = SubResource("AnimationNodeAdd2_8l85g")
+nodes/Add2/position = Vector2(-480, 620)
+"nodes/Add2 2/node" = SubResource("AnimationNodeAdd2_352in")
+"nodes/Add2 2/position" = Vector2(-907.084, 199.952)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_4fadk")
+nodes/Animation/position = Vector2(-640, 800)
+nodes/GameEstate/node = SubResource("AnimationNodeTransition_63wsn")
+nodes/GameEstate/position = Vector2(-80, 140)
+nodes/aim_direction_air/node = SubResource("AnimationNodeBlendSpace1D_0uakk")
+nodes/aim_direction_air/position = Vector2(-1220, 660)
+nodes/aim_direction_floor/node = SubResource("AnimationNodeBlendSpace1D_d3pqm")
+nodes/aim_direction_floor/position = Vector2(-1760, 0)
+nodes/air/node = SubResource("AnimationNodeAnimation_gebvf")
+nodes/air/position = Vector2(-700, -320)
+nodes/floor_walk_speed/node = SubResource("AnimationNodeBlendSpace1D_seey6")
+nodes/floor_walk_speed/position = Vector2(-580, -420)
+nodes/shot_air/node = SubResource("AnimationNodeOneShot_5olaw")
+nodes/shot_air/position = Vector2(-880, 660)
+nodes/shot_direction_air/node = SubResource("AnimationNodeBlendSpace1D_5b8em")
+nodes/shot_direction_air/position = Vector2(-1160, 820)
+nodes/shot_direction_floor/node = SubResource("AnimationNodeBlendSpace1D_yfv3j")
+nodes/shot_direction_floor/position = Vector2(-1960, 100)
+nodes/shot_floor/node = SubResource("AnimationNodeOneShot_3hr48")
+nodes/shot_floor/position = Vector2(-1440, 100)
+nodes/shot_mode_walk_direction/node = SubResource("AnimationNodeBlendSpace2D_5ieh3")
+nodes/shot_mode_walk_direction/position = Vector2(-1227.74, 322.19)
+node_connections = [&"Add2", 0, &"shot_air", &"Add2", 1, &"Animation", &"Add2 2", 0, &"shot_floor", &"Add2 2", 1, &"shot_mode_walk_direction", &"GameEstate", 0, &"floor_walk_speed", &"GameEstate", 1, &"air", &"GameEstate", 2, &"Add2 2", &"GameEstate", 3, &"Add2", &"output", 0, &"GameEstate", &"shot_air", 0, &"aim_direction_air", &"shot_air", 1, &"shot_direction_air", &"shot_floor", 0, &"aim_direction_floor", &"shot_floor", 1, &"shot_direction_floor"]

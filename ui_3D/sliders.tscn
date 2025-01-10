@@ -1,0 +1,50 @@
+[gd_scene load_steps=2 format=3 uid="uid://cx5ihnypioi2y"]
+
+[ext_resource type="Script" path="res://ui_3D/sliders.gd" id="1_vpjsu"]
+
+[node name="Sliders" type="HBoxContainer"]
+offset_right = 640.0
+offset_bottom = 480.0
+alignment = 1
+script = ExtResource("1_vpjsu")
+
+[node name="VSlider" type="VSlider" parent="."]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="VSlider2" type="VSlider" parent="."]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="VSlider3" type="VSlider" parent="."]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="VSlider4" type="VSlider" parent="."]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="A" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "A"
+
+[node name="B" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "B"
+
+[node name="C" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "C"
+
+[node name="D" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "D"
+
+[connection signal="pressed" from="A" to="." method="_on_a_pressed"]
+[connection signal="pressed" from="B" to="." method="_on_b_pressed"]
+[connection signal="pressed" from="C" to="." method="_on_c_pressed"]
+[connection signal="pressed" from="D" to="." method="_on_d_pressed"]

@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://docmh8xc6875g"]
+
+[ext_resource type="Texture2D" uid="uid://bvlalljg7fef4" path="res://TPSCharter/charter_model/test.png" id="1_3yttg"]
+
+[resource]
+albedo_color = Color(1, 0.862745, 0.423529, 1)
+albedo_texture = ExtResource("1_3yttg")
+uv1_scale = Vector3(10, 10, 10)
+uv1_triplanar = true
+texture_filter = 0

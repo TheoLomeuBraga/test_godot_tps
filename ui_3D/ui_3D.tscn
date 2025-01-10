@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://bwat4fpb8ku4f"]
+
+[ext_resource type="Script" path="res://ui_3D/ui_3d.gd" id="1_ej6vi"]
+[ext_resource type="PackedScene" uid="uid://cx5ihnypioi2y" path="res://ui_3D/sliders.tscn" id="2_onq87"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_1yvdk"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ex5y"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_1yvdk")
+texture_filter = 0
+
+[sub_resource type="QuadMesh" id="QuadMesh_uhixu"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_4ex5y")
+size = Vector2(1.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2qmtq"]
+size = Vector3(1.5, 1, 0.01)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uajs4"]
+shading_mode = 0
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_wy8wc"]
+material = SubResource("StandardMaterial3D_uajs4")
+radius = 0.05
+height = 0.1
+
+[node name="Ui3d" type="MeshInstance3D"]
+mesh = SubResource("QuadMesh_uhixu")
+script = ExtResource("1_ej6vi")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_2qmtq")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(640, 480)
+render_target_update_mode = 4
+
+[node name="Sliders" parent="SubViewport" instance=ExtResource("2_onq87")]
+
+[node name="cursor" type="Label" parent="SubViewport"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "<"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+top_level = true
+visible = false
+mesh = SubResource("SphereMesh_wy8wc")

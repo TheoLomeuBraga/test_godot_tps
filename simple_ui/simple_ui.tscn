@@ -1,0 +1,74 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtuna6oswbi33"]
+
+[ext_resource type="Texture2D" uid="uid://dev3pfqroro46" path="res://icon.svg" id="1_ef2bg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g6i8e"]
+bg_color = Color(0.109025, 0.000102398, 0.328578, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 0, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="Theme" id="Theme_xjoql"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_g6i8e")
+
+[node name="SimpleUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -512.0
+offset_bottom = -168.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_xjoql")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 480.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_ef2bg")
+expand_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "this is a [color=red]TEST[/color] area"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "TEST"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 25
+text = "1 - TEST
+2 - TEST
+3 - TEST EVEN MORE"

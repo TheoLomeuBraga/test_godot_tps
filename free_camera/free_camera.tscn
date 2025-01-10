@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuyw1xx64mafo"]
+
+[ext_resource type="Script" path="res://free_camera/free_camera.gd" id="1_hpy06"]
+
+[node name="FreeCamera" type="Camera3D"]
+top_level = true
+fov = 90.0
+near = 0.001
+script = ExtResource("1_hpy06")

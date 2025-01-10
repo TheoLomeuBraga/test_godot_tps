@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqo1uiqh815dg"]
+
+[ext_resource type="Script" path="res://rouglike_room/room_template/room_template.gd" id="1_1qsct"]
+[ext_resource type="Material" uid="uid://dcyopaf5rgww2" path="res://rouglike_room/room_template/rooms/first_last/gold.tres" id="2_8gjkc"]
+[ext_resource type="PackedScene" uid="uid://cmoxh6ri16wig" path="res://rouglike_room/room_template/arow.tscn" id="3_efffp"]
+[ext_resource type="PackedScene" uid="uid://doostbotg7oqn" path="res://TPSCharter/TPSCharter.tscn" id="4_mk8hr"]
+
+[node name="StartRoom" type="Node3D" node_paths=PackedStringArray("exit")]
+script = ExtResource("1_1qsct")
+exit = NodePath("Arow")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.5)
+material_override = ExtResource("2_8gjkc")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -10)
+size = Vector3(10, 1, 10)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.5, -10)
+size = Vector3(10, 1, 10)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 3.5, -5)
+size = Vector3(10, 1, 10)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 3.5, -15)
+size = Vector3(10, 1, 10)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 5, 3.5, -10)
+size = Vector3(10, 1, 10)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -5, 3.5, -10)
+size = Vector3(10, 1, 10)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
+size = Vector3(5, 4, 10)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -1)
+operation = 2
+size = Vector3(3, 3, 13)
+
+[node name="Arow" parent="." instance=ExtResource("3_efffp")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="TpsCharter" parent="." instance=ExtResource("4_mk8hr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -17)
+debug = true
