@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cd5dpoxa6sm4v"]
+[gd_scene load_steps=13 format=3 uid="uid://cd5dpoxa6sm4v"]
 
 [ext_resource type="Script" path="res://rouglike_room/base_room.gd" id="1_ivp6s"]
 [ext_resource type="PackedScene" uid="uid://jb3cu6e613sl" path="res://rouglike_room/room_template/room_template.tscn" id="2_dwt8j"]
@@ -7,8 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://cjpvpiy4d2pax" path="res://rouglike_room/room_template/rooms/long_room3.tscn" id="5_pnmbx"]
 [ext_resource type="PackedScene" uid="uid://cxp5827l3pk6f" path="res://rouglike_room/room_template/rooms/long_room_secret_door.tscn" id="6_0842c"]
 [ext_resource type="PackedScene" uid="uid://p0ur4evwp6vi" path="res://rouglike_room/room_template/rooms/secret_rooms/secret_room.tscn" id="7_enqcb"]
+[ext_resource type="PackedScene" uid="uid://duickr6trts6o" path="res://rouglike_room/room_template/rooms/long_room_up.tscn" id="7_u7v5u"]
 [ext_resource type="PackedScene" uid="uid://cqo1uiqh815dg" path="res://rouglike_room/room_template/rooms/first_last/start.tscn" id="8_057ri"]
 [ext_resource type="PackedScene" uid="uid://be8tpw0xvnsxb" path="res://rouglike_room/room_template/rooms/first_last/exit.tscn" id="9_b5qw8"]
+[ext_resource type="PackedScene" uid="uid://crkip7yud6o8m" path="res://rouglike_room/room_template/rooms/room_joint.tscn" id="11_cd0t0"]
 
 [sub_resource type="Environment" id="Environment_00qb2"]
 ambient_light_source = 2
@@ -17,11 +19,12 @@ ambient_light_energy = 0.5
 
 [node name="BaseRoom" type="Node3D"]
 script = ExtResource("1_ivp6s")
-rooms_templates = Array[PackedScene]([ExtResource("2_dwt8j"), ExtResource("3_6jpsl"), ExtResource("4_w3ua6"), ExtResource("5_pnmbx"), ExtResource("6_0842c")])
+rooms_templates = Array[PackedScene]([ExtResource("2_dwt8j"), ExtResource("3_6jpsl"), ExtResource("4_w3ua6"), ExtResource("5_pnmbx"), ExtResource("6_0842c"), ExtResource("7_u7v5u")])
 secret_rooms_templates = Array[PackedScene]([ExtResource("7_enqcb")])
 first_room = ExtResource("8_057ri")
 last_room = ExtResource("9_b5qw8")
-room_count = 10
+room_count = 50
+room_joint = ExtResource("11_cd0t0")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_00qb2")

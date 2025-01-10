@@ -12,6 +12,13 @@ extends Node3D
 var room_current_count : int = 0
 var last_room_created : Room
 
+@export var room_joint : PackedScene
+func create_room_joint(node : Node3D) -> void:
+	var joint : Node3D = room_joint.instantiate()
+	add_child(joint)
+	joint.global_position = node.global_position
+	joint.global_rotation = node.global_rotation
+
 func spawn_secret_room() -> void:
 	
 	var r : Room = secret_rooms_templates[rng.randi_range(0,secret_rooms_templates.size() - 1)].instantiate()
@@ -20,6 +27,7 @@ func spawn_secret_room() -> void:
 	if last_room_created != null:
 		r.global_position = last_room_created.secret_exit.global_position
 		r.global_rotation = last_room_created.secret_exit.global_rotation
+		create_room_joint(last_room_created.secret_exit)
 	
 	room_current_count += 1
 
@@ -36,6 +44,7 @@ func spawn_room() -> bool:
 		
 		r.global_position = last_room_created.exit.global_position
 		r.global_rotation = last_room_created.exit.global_rotation
+		create_room_joint(last_room_created.exit)
 	
 	last_room_created = r
 	room_current_count += 1

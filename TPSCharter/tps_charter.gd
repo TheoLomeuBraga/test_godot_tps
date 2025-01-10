@@ -34,7 +34,8 @@ func move_based_on_input() -> Vector3:
 	var move_z : Vector3 = $base_camera_y.basis.z * Input.get_axis("back","front")
 	
 	var ret : Vector3 = (move_x + move_z)
-		
+	ret = ret.normalized()
+	
 	if $FloorCheker.is_colliding():
 		ret.slide($FloorCheker.get_collision_normal(0))
 		
