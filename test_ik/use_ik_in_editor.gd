@@ -1,8 +1,6 @@
 @tool
 extends SkeletonIK3D
 
-
-
 func _ready() -> void:
 	start()
 
@@ -19,4 +17,4 @@ func _ready() -> void:
 			influence = true
 
 func _physics_process(delta: float) -> void:
-	magnet = pole_target.global_position
+	magnet = pole_target.global_position - global_position

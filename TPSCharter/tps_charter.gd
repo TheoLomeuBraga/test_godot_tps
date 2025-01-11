@@ -239,6 +239,7 @@ func on_shot_mode_air_process(delta: float) -> void:
 
 
 func set_aim_direction():
+	$DisplayModel/Object/Skeleton3D/ArmsBaseIK.rotation.x = $base_camera_y/base_camera_x.rotation.x
 	if $base_camera_y/base_camera_x.rotation_degrees.x < 0:
 		shot_direction = $base_camera_y/base_camera_x.rotation_degrees.x / 60
 	elif $base_camera_y/base_camera_x.rotation_degrees.x > 0:
