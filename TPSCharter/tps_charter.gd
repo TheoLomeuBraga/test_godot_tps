@@ -106,6 +106,8 @@ func make_shot_sound() -> void:
 
 func on_floor_process(delta: float) -> void:
 	
+	$DisplayModel/Object/Skeleton3D/RightArmIK.disable = true
+	
 	$DisplayModel/AnimationTree.set("parameters/GameEstate/transition_request","floor")
 	
 	velocity = move_based_on_input()
@@ -142,6 +144,8 @@ func on_floor_process(delta: float) -> void:
 
 func on_air_process(delta: float) -> void:
 	
+	$DisplayModel/Object/Skeleton3D/RightArmIK.disable = true
+	
 	$DisplayModel/AnimationTree.set("parameters/GameEstate/transition_request","air")
 	
 	velocity = move_based_on_input()
@@ -177,6 +181,8 @@ var shot_direction : float:
 
 func on_shot_mode_process(delta: float) -> void:
 	
+	$DisplayModel/Object/Skeleton3D/RightArmIK.disable = false
+	
 	$DisplayModel/AnimationTree.set("parameters/GameEstate/transition_request","shot_floor")
 	
 	velocity = move_based_on_input()
@@ -210,6 +216,8 @@ func on_shot_mode_process(delta: float) -> void:
 		$DisplayModel/AnimationTree.set("parameters/shot_floor/request",AnimationNodeOneShot.OneShotRequest.ONE_SHOT_REQUEST_FIRE)
 
 func on_shot_mode_air_process(delta: float) -> void:
+	
+	$DisplayModel/Object/Skeleton3D/RightArmIK.disable = false
 	
 	$DisplayModel/AnimationTree.set("parameters/GameEstate/transition_request","shot_air")
 	
