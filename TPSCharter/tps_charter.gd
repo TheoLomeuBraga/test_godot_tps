@@ -242,16 +242,17 @@ func set_aim_direction():
 	
 	$DisplayModel/Object/Skeleton3D/PlayerAimSkeletonModifier.aim_rotation = $base_camera_y/base_camera_x.rotation_degrees.x 
 	
-	'''
-	if $base_camera_y/base_camera_x.rotation_degrees.x < 0:
-		shot_direction = $base_camera_y/base_camera_x.rotation_degrees.x / 60
-	elif $base_camera_y/base_camera_x.rotation_degrees.x > 0:
-		shot_direction = $base_camera_y/base_camera_x.rotation_degrees.x / 80
-	else:
-		shot_direction = 0
-	shot_direction = -shot_direction
-	'''
-	
+
+var is_in_aim_mode : bool:
+	get():
+		return is_in_aim_mode
+	set(value):
+		is_in_aim_mode = value
+		if value:
+			$DisplayModel/Object/Skeleton3D/PlayerAimSkeletonModifier.influence = true
+		else:
+			$DisplayModel/Object/Skeleton3D/PlayerAimSkeletonModifier.influence = false
+
 @export var debug : bool = true
 func _physics_process(delta: float) -> void:
 	
@@ -262,12 +263,16 @@ func _physics_process(delta: float) -> void:
 	if estate == PlayerGameEstates.START:
 		on_start_process(delta)
 	elif estate == PlayerGameEstates.ON_FLOOR:
+		is_in_aim_mode = false
 		on_floor_process(delta)
 	elif estate == PlayerGameEstates.ON_AIR:
+		is_in_aim_mode = false
 		on_air_process(delta)
 	elif estate == PlayerGameEstates.ON_SHOT_MODE:
+		is_in_aim_mode = true
 		on_shot_mode_process(delta)
 	elif estate == PlayerGameEstates.ON_SHOT_MODE_AIR:
+		is_in_aim_mode = true
 		on_shot_mode_air_process(delta)
 	
 	if debug:
