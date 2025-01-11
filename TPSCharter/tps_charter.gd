@@ -101,8 +101,6 @@ func make_shot_sound() -> void:
 
 func on_floor_process(delta: float) -> void:
 	
-	
-	
 	$DisplayModel/AnimationTree.set("parameters/GameEstate/transition_request","floor")
 	
 	velocity = move_based_on_input()
@@ -173,8 +171,6 @@ var shot_direction : float:
 
 
 func on_shot_mode_process(delta: float) -> void:
-	
-	
 	
 	$DisplayModel/AnimationTree.set("parameters/GameEstate/transition_request","shot_floor")
 	
