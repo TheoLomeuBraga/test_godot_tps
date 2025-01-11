@@ -309,7 +309,7 @@ blend_point_8/node = SubResource("AnimationNodeAnimation_pc5sj")
 blend_point_8/pos = Vector2(0.5, -0.5)
 
 [resource]
-graph_offset = Vector2(-1189.74, 105.024)
+graph_offset = Vector2(-1229.24, 32.5172)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_8l85g")
 nodes/Add2/position = Vector2(-480, 620)
 "nodes/Add2 2/node" = SubResource("AnimationNodeAdd2_352in")

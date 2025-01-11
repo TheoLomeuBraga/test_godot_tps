@@ -13,9 +13,15 @@ func apply_material(node):
 	for c in node.get_children():
 		apply_material(c)
 
+
 func _ready() -> void:
 	apply_material($DisplayModel/Object)
 	$DisplayModel/AnimationTree.set("parameters/shot_mode_walk_direction/blend_position",Vector2.ZERO)
+	
+	
+	
+	
+
 
 enum PlayerGameEstates{ 
 	NO_ACTION = 0,
@@ -49,7 +55,6 @@ func rotate_based_on_input(delta: float) -> void:
 	var move_z : Vector3 = $base_camera_y.basis.z * Input.get_axis("back","front")
 	
 	$LookDirection.global_position = global_position
-	
 	
 	if $LookDirection.global_position != global_position - (move_x + move_z):
 		$LookDirection.look_at(global_position - (move_x + move_z).normalized())
