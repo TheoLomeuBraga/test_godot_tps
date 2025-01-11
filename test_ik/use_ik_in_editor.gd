@@ -17,4 +17,4 @@ func _ready() -> void:
 			influence = true
 
 func _physics_process(delta: float) -> void:
-	magnet = pole_target.global_position - global_position
+	magnet = get_parent().to_local(pole_target.global_position)

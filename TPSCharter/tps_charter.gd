@@ -106,8 +106,6 @@ func make_shot_sound() -> void:
 
 func on_floor_process(delta: float) -> void:
 	
-	$DisplayModel/Object/Skeleton3D/RightArmIK.disable = true
-	
 	$DisplayModel/AnimationTree.set("parameters/GameEstate/transition_request","floor")
 	
 	velocity = move_based_on_input()
@@ -144,8 +142,6 @@ func on_floor_process(delta: float) -> void:
 
 func on_air_process(delta: float) -> void:
 	
-	$DisplayModel/Object/Skeleton3D/RightArmIK.disable = true
-	
 	$DisplayModel/AnimationTree.set("parameters/GameEstate/transition_request","air")
 	
 	velocity = move_based_on_input()
@@ -181,8 +177,6 @@ var shot_direction : float:
 
 func on_shot_mode_process(delta: float) -> void:
 	
-	$DisplayModel/Object/Skeleton3D/RightArmIK.disable = false
-	
 	$DisplayModel/AnimationTree.set("parameters/GameEstate/transition_request","shot_floor")
 	
 	velocity = move_based_on_input()
@@ -217,8 +211,6 @@ func on_shot_mode_process(delta: float) -> void:
 
 func on_shot_mode_air_process(delta: float) -> void:
 	
-	$DisplayModel/Object/Skeleton3D/RightArmIK.disable = false
-	
 	$DisplayModel/AnimationTree.set("parameters/GameEstate/transition_request","shot_air")
 	
 	velocity = move_based_on_input()
@@ -247,7 +239,10 @@ func on_shot_mode_air_process(delta: float) -> void:
 
 
 func set_aim_direction():
-	$DisplayModel/Object/Skeleton3D/ArmsBaseIK.rotation.x = $base_camera_y/base_camera_x.rotation.x
+	
+	$DisplayModel/Object/Skeleton3D/PlayerAimSkeletonModifier.aim_rotation = $base_camera_y/base_camera_x.rotation_degrees.x 
+	
+	'''
 	if $base_camera_y/base_camera_x.rotation_degrees.x < 0:
 		shot_direction = $base_camera_y/base_camera_x.rotation_degrees.x / 60
 	elif $base_camera_y/base_camera_x.rotation_degrees.x > 0:
@@ -255,7 +250,8 @@ func set_aim_direction():
 	else:
 		shot_direction = 0
 	shot_direction = -shot_direction
-
+	'''
+	
 @export var debug : bool = true
 func _physics_process(delta: float) -> void:
 	
