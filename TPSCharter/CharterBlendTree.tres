@@ -309,11 +309,11 @@ blend_point_8/node = SubResource("AnimationNodeAnimation_pc5sj")
 blend_point_8/pos = Vector2(0.5, -0.5)
 
 [resource]
-graph_offset = Vector2(-1632.72, 240.276)
+graph_offset = Vector2(-1583.94, 78.4227)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_8l85g")
 nodes/Add2/position = Vector2(-480, 620)
 "nodes/Add2 2/node" = SubResource("AnimationNodeAdd2_352in")
-"nodes/Add2 2/position" = Vector2(-907.084, 199.952)
+"nodes/Add2 2/position" = Vector2(-920, 160)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_4fadk")
 nodes/Animation/position = Vector2(-640, 800)
 nodes/GameEstate/node = SubResource("AnimationNodeTransition_63wsn")
@@ -335,5 +335,5 @@ nodes/shot_direction_floor/position = Vector2(-1960, 100)
 nodes/shot_floor/node = SubResource("AnimationNodeOneShot_3hr48")
 nodes/shot_floor/position = Vector2(-1440, 100)
 nodes/shot_mode_walk_direction/node = SubResource("AnimationNodeBlendSpace2D_5ieh3")
-nodes/shot_mode_walk_direction/position = Vector2(-1227.74, 322.19)
-node_connections = [&"Add2", 0, &"shot_air", &"Add2", 1, &"Animation", &"Add2 2", 0, &"shot_floor", &"Add2 2", 1, &"shot_mode_walk_direction", &"GameEstate", 0, &"floor_walk_speed", &"GameEstate", 1, &"air", &"GameEstate", 2, &"Add2 2", &"GameEstate", 3, &"Add2", &"output", 0, &"GameEstate", &"shot_air", 0, &"aim_direction_air", &"shot_air", 1, &"shot_direction_air", &"shot_floor", 0, &"aim_direction_floor", &"shot_floor", 1, &"shot_direction_floor"]
+nodes/shot_mode_walk_direction/position = Vector2(-1240, 340)
+node_connections = [&"Add2", 0, &"shot_air", &"Add2", 1, &"Animation", &"Add2 2", 0, &"shot_floor", &"GameEstate", 0, &"floor_walk_speed", &"GameEstate", 1, &"air", &"GameEstate", 2, &"shot_mode_walk_direction", &"GameEstate", 3, &"Add2", &"output", 0, &"GameEstate", &"shot_air", 0, &"aim_direction_air", &"shot_air", 1, &"shot_direction_air", &"shot_floor", 0, &"aim_direction_floor", &"shot_floor", 1, &"shot_direction_floor"]
