@@ -58,9 +58,8 @@ func rotate_based_on_input(delta: float) -> void:
 	
 	if $LookDirection.global_position != global_position - (move_x + move_z):
 		$LookDirection.look_at(global_position - (move_x + move_z).normalized())
-		$DisplayModel.basis = $DisplayModel.basis.slerp($LookDirection.basis,rotation_speed * delta)
-	
-	
+	$DisplayModel.basis = $DisplayModel.basis.slerp($LookDirection.basis,rotation_speed * delta)
+
 
 @export var speed : float = 12
 
@@ -125,15 +124,14 @@ func on_floor_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump"):
 		make_jump_sound()
 		current_jump_estate = 0
-		if abs(Input.get_axis("right","left")) + abs(Input.get_axis("back","front")) > 0:
-			$DisplayModel.rotation = $base_camera_y.rotation
 		estate = PlayerGameEstates.ON_AIR
 	
 	if Input.is_action_pressed("hide_mouse") or Input.is_action_pressed("shot"):
-		make_shot_sound()
 		force_on_aim_mode = 1
 		estate = PlayerGameEstates.ON_SHOT_MODE
 	
+	if Input.is_action_pressed("shot"):
+		make_shot_sound()
 	
 
 
@@ -148,8 +146,6 @@ func on_air_process(delta: float) -> void:
 	current_jump_estate += delta
 	velocity.y = jump_aceleration_curve.sample(current_jump_estate) * jump_power
 	move_and_slide()
-	
-	
 	
 	if is_on_ceiling() and current_jump_estate < 0.5:
 		current_jump_estate = 0.5
@@ -186,6 +182,7 @@ func on_shot_mode_process(delta: float) -> void:
 	move_and_slide()
 	
 	$DisplayModel.rotation = $base_camera_y.rotation
+	$LookDirection.rotation = $base_camera_y.rotation
 	
 	if not is_on_floor():
 		current_jump_estate = 0.5
@@ -219,6 +216,7 @@ func on_shot_mode_air_process(delta: float) -> void:
 	move_and_slide()
 	
 	$DisplayModel.rotation = $base_camera_y.rotation
+	$LookDirection.rotation = $base_camera_y.rotation
 	
 	if is_on_ceiling() and current_jump_estate < 0.5:
 		current_jump_estate = 0.5
