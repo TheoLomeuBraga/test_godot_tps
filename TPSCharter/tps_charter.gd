@@ -273,6 +273,9 @@ func _physics_process(delta: float) -> void:
 		is_in_aim_mode = true
 		on_shot_mode_air_process(delta)
 	
+	if Input.is_action_just_pressed("exit"):
+		get_tree().quit()
+	
 	if debug:
 		if estate == PlayerGameEstates.START:
 			print("START")

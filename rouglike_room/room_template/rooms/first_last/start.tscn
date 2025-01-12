@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqo1uiqh815dg"]
+[gd_scene load_steps=6 format=3 uid="uid://cqo1uiqh815dg"]
 
 [ext_resource type="Script" path="res://rouglike_room/room_template/room_template.gd" id="1_1qsct"]
 [ext_resource type="Material" uid="uid://dcyopaf5rgww2" path="res://rouglike_room/room_template/rooms/first_last/gold.tres" id="2_8gjkc"]
 [ext_resource type="PackedScene" uid="uid://cmoxh6ri16wig" path="res://rouglike_room/room_template/arow.tscn" id="3_efffp"]
 [ext_resource type="PackedScene" uid="uid://doostbotg7oqn" path="res://TPSCharter/TPSCharter.tscn" id="4_mk8hr"]
+[ext_resource type="PackedScene" uid="uid://bv33cg87ycahb" path="res://info_board/InfoBoard.tscn" id="5_qv5rb"]
 
 [node name="StartRoom" type="Node3D" node_paths=PackedStringArray("exit")]
 script = ExtResource("1_1qsct")
@@ -53,3 +54,6 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 
 [node name="TpsCharter" parent="." instance=ExtResource("4_mk8hr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -17)
 debug = false
+
+[node name="InfoBoard" parent="." instance=ExtResource("5_qv5rb")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.76513, 0, -15.8913)
