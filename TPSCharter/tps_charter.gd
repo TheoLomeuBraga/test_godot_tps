@@ -34,7 +34,7 @@ enum PlayerGameEstates{
 	
 var estate : PlayerGameEstates = PlayerGameEstates.START
 
-func move_based_on_input() -> Vector3:
+func move_based_on_input(runing:bool = false) -> Vector3:
 	
 	var move_x : Vector3 = $base_camera_y.basis.x *  Input.get_axis("right","left")
 	var move_z : Vector3 = $base_camera_y.basis.z * Input.get_axis("back","front")
@@ -43,9 +43,12 @@ func move_based_on_input() -> Vector3:
 	ret = ret.normalized()
 	
 	if $FloorCheker.is_colliding():
-		ret.slide($FloorCheker.get_collision_normal(0))
-		
+		ret = ret.slide($FloorCheker.get_collision_normal(0))
+	
 	ret *= speed
+	if runing:
+		ret *= 2
+	
 	return ret
 
 @export var rotation_speed : float = 12
@@ -53,12 +56,17 @@ func rotate_based_on_input(delta: float) -> void:
 	
 	var move_x : Vector3 = $base_camera_y.basis.x *  Input.get_axis("right","left")
 	var move_z : Vector3 = $base_camera_y.basis.z * Input.get_axis("back","front")
+	var move_dir : Vector3 = (move_x + move_z).normalized()
 	
 	$LookDirection.global_position = global_position
 	
-	if $LookDirection.global_position != global_position - (move_x + move_z):
-		$LookDirection.look_at(global_position - (move_x + move_z).normalized())
-	$DisplayModel.basis = $DisplayModel.basis.slerp($LookDirection.basis,rotation_speed * delta)
+	if $LookDirection.global_position != global_position - move_dir:
+		$LookDirection.look_at(global_position - move_dir)
+	
+	$DisplayModel.basis = $DisplayModel.basis.orthonormalized()
+	$DisplayModel.basis = $DisplayModel.basis.slerp($LookDirection.basis.orthonormalized(),rotation_speed * delta)
+	
+	
 
 
 @export var speed : float = 12
@@ -107,11 +115,14 @@ func on_floor_process(delta: float) -> void:
 	
 	$DisplayModel/AnimationTree.set("parameters/GameEstate/transition_request","floor")
 	
-	velocity = move_based_on_input()
+	velocity = move_based_on_input(Input.is_action_pressed("run"))
 	
 	velocity.y = jump_aceleration_curve.sample(1)
 	
-	$DisplayModel/AnimationTree.set("parameters/floor_walk_speed/blend_position",abs(Input.get_axis("right","left")) + abs(Input.get_axis("back","front")))
+	if Input.is_action_pressed("run"):
+		$DisplayModel/AnimationTree.set("parameters/floor_walk_speed/blend_position", (abs(Input.get_axis("right","left")) + abs(Input.get_axis("back","front"))))
+	else:
+		$DisplayModel/AnimationTree.set("parameters/floor_walk_speed/blend_position", (abs(Input.get_axis("right","left")) + abs(Input.get_axis("back","front")) / 2))
 	
 	move_and_slide()
 	

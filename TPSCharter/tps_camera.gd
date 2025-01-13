@@ -27,6 +27,6 @@ func _input(event: InputEvent) -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 
-@export var camera_speed : float = 20
+@export var camera_speed : float = 100
 func _physics_process(delta: float) -> void:
 	global_position = global_position.move_toward(charter.global_position,camera_speed * delta)
