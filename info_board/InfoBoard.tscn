@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bv33cg87ycahb"]
+[gd_scene load_steps=10 format=3 uid="uid://bv33cg87ycahb"]
 
 [ext_resource type="Script" path="res://info_board/info_board.gd" id="1_bhwf4"]
+[ext_resource type="Shader" path="res://info_board/InfoBoard.gdshader" id="2_l5rd2"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_406up"]
 height = 4.0
@@ -25,8 +26,15 @@ material = SubResource("StandardMaterial3D_v441e")
 [sub_resource type="BoxShape3D" id="BoxShape3D_braxi"]
 size = Vector3(3, 3, 0.5)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q22yp"]
+shader = ExtResource("2_l5rd2")
+shader_parameter/blur_amount = 2.0
+shader_parameter/mix_amount = 0.4
+shader_parameter/color_over = null
+
 [node name="InfoBoard" type="Area3D"]
 script = ExtResource("1_bhwf4")
+dialogs = Array[String](["hello", "this is a test signe", "bye"])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
@@ -52,10 +60,46 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="colision"]
 shape = SubResource("BoxShape3D_braxi")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_top = 421.0
-offset_right = 1160.0
-offset_bottom = 654.0
+[node name="TextDisplay" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="CenterContainer2" type="CenterContainer" parent="TextDisplay"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.62963
+anchor_right = 0.999132
+anchor_bottom = 1.0
+offset_right = 1.0
+offset_bottom = 10.0002
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="TextDisplay/CenterContainer2"]
+material = SubResource("ShaderMaterial_q22yp")
+custom_minimum_size = Vector2(750, 250)
+layout_mode = 2
+color = Color(0, 0, 0, 0.454902)
+
+[node name="CenterContainer" type="CenterContainer" parent="TextDisplay"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.62963
+anchor_right = 0.999132
+anchor_bottom = 1.0
+offset_right = 1.0
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextDisplay/CenterContainer"]
+custom_minimum_size = Vector2(700, 200)
+layout_mode = 2
+theme_override_font_sizes/bold_italics_font_size = 25
+theme_override_font_sizes/italics_font_size = 25
+theme_override_font_sizes/mono_font_size = 25
+theme_override_font_sizes/normal_font_size = 25
+theme_override_font_sizes/bold_font_size = 25
+text = "[TEXT]"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

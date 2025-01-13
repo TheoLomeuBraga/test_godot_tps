@@ -13,7 +13,7 @@ func _ready() -> void:
 @export var mouse_sensitivity : float = 6
 func _input(event: InputEvent) -> void:
 	if charter.estate != charter.PlayerGameEstates.NO_ACTION:
-		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		if event is InputEventMouseMotion:
 			
 			$base_camera_x.rotation_degrees.x += event.relative.y * mouse_sensitivity / 10

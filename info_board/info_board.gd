@@ -2,6 +2,7 @@ extends Area3D
 
 class_name InfoBoard
 
+var current_dialog : int = 0
 @export var dialogs : Array[String]
 
 @onready var screen_base_scale : Vector3 = $screen.scale
@@ -32,12 +33,24 @@ func _process(delta: float) -> void:
 		
 	elif estate == GameEstate.PLAYER_NEXT:
 		$screen.scale = $screen.scale.slerp(target_rot,delta * 2)
-		if Input.is_action_just_pressed("interact"):
+		if charter.is_on_floor() and Input.is_action_just_pressed("interact"):
 			estate = GameEstate.DIALOG
 			charter.estate = charter.PlayerGameEstates.NO_ACTION
 		
 	elif estate == GameEstate.DIALOG:
 		$screen.scale = $screen.scale.slerp(target_rot,delta * 2)
+		$TextDisplay/CenterContainer/RichTextLabel.text = dialogs[current_dialog]
+		
+		if Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("shot"):
+			
+			current_dialog += 1
+			if current_dialog >= dialogs.size():
+				
+				current_dialog = 0
+				estate = GameEstate.NO_ACTION
+				charter.estate = charter.PlayerGameEstates.START
+	
+	$TextDisplay.visible = estate == GameEstate.DIALOG
 	
 
 var color : Color:

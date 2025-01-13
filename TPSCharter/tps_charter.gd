@@ -258,7 +258,10 @@ func _physics_process(delta: float) -> void:
 	
 	set_aim_direction()
 	
-	if estate == PlayerGameEstates.START:
+	if estate == PlayerGameEstates.NO_ACTION:
+		$DisplayModel/AnimationTree.set("parameters/GameEstate/transition_request","floor")
+		$DisplayModel/AnimationTree.set("parameters/shot_mode_walk_direction/blend_position",Vector2.ZERO)
+	elif estate == PlayerGameEstates.START:
 		on_start_process(delta)
 	elif estate == PlayerGameEstates.ON_FLOOR:
 		is_in_aim_mode = false
