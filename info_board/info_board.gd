@@ -47,7 +47,7 @@ func _process(delta: float) -> void:
 			if current_dialog >= dialogs.size():
 				
 				current_dialog = 0
-				estate = GameEstate.NO_ACTION
+				estate = GameEstate.PLAYER_NEXT
 				charter.estate = charter.PlayerGameEstates.START
 	
 	$TextDisplay.visible = estate == GameEstate.DIALOG

@@ -1,5 +1,7 @@
 extends Camera3D
 
+class_name FreeCamera
+
 @export var mouse_sensitivity : float = 6
 @export var speed : float = 12
 
