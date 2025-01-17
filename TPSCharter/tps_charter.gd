@@ -302,3 +302,19 @@ func _physics_process(delta: float) -> void:
 		elif estate == PlayerGameEstates.ON_SHOT_MODE_AIR:
 			print("ON_SHOT_MODE_AIR")
 	
+
+@export var after_image_material : Material
+func _on_after_image_timer_timeout() -> void:
+	var char_timer : FadeAway = FadeAway.new()
+	char_timer.wait_time = $AfterImageTimer.wait_time * 5
+	char_timer.after_image_material = after_image_material
+	
+	var char_copy : Node3D = $DisplayModel/Object.duplicate()
+	
+	char_timer.add_child(char_copy)
+	get_parent().add_child(char_timer)
+	
+	char_copy.global_position = $DisplayModel/Object.global_position
+	char_copy.global_rotation = $DisplayModel/Object.global_rotation
+	
+	
