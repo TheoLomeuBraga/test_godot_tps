@@ -24,4 +24,3 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	after_image_material.albedo_color.a = time_left / wait_time
-	print(time_left / wait_time)
