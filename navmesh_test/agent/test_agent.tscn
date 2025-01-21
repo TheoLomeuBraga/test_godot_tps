@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://una6vmyxovl3"]
+
+[ext_resource type="Script" path="res://navmesh_test/agent/test_agent.gd" id="1_camsh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tau7y"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_uuwun"]
+material = SubResource("StandardMaterial3D_tau7y")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_87rlj"]
+
+[node name="TestAgent" type="CharacterBody3D"]
+top_level = true
+script = ExtResource("1_camsh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_uuwun")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_87rlj")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="RecalculatePathTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="RecalculatePathTimer" to="." method="recalculate_path"]

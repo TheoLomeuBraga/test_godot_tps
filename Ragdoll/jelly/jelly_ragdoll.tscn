@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://g0o4rsxva5qf"]
+
+[ext_resource type="PackedScene" uid="uid://663trwgvjq28" path="res://TPSCharter/charter_model/template_psx_charter.glb" id="1_cpnty"]
+
+[node name="JellyRagdoll" type="Node3D"]
+
+[node name="template_psx_charter" parent="." instance=ExtResource("1_cpnty")]
