@@ -15,6 +15,10 @@ run/main_scene="res://rouglike_room/base_room.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+BaseFilter="*res://filter/base_filter.tscn"
+
 [display]
 
 window/stretch/mode="viewport"

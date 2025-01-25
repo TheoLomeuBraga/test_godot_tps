@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://cip5u2tjcjlip"]
+
+[ext_resource type="Shader" path="res://filter/bee.gdshader" id="1_18lyi"]
+[ext_resource type="Shader" path="res://filter/blur.gdshader" id="2_mkm3v"]
+[ext_resource type="Shader" path="res://filter/mesh_filter.gdshader" id="3_m1a7j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mskii"]
+shader = ExtResource("1_18lyi")
+shader_parameter/size = Vector2(4, 4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_efxye"]
+shader = ExtResource("2_mkm3v")
+shader_parameter/lod = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8or1q"]
+render_priority = 0
+shader = ExtResource("3_m1a7j")
+
+[sub_resource type="QuadMesh" id="QuadMesh_3ibex"]
+material = SubResource("ShaderMaterial_8or1q")
+flip_faces = true
+size = Vector2(2, 2)
+
+[node name="BaseFilter" type="Node"]
+
+[node name="bee" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="bee"]
+material = SubResource("ShaderMaterial_mskii")
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="blur" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="blur"]
+material = SubResource("ShaderMaterial_efxye")
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0443802)
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_3ibex")

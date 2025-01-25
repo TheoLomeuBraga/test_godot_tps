@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dayqlhx0juky4"
-path="res://.godot/imported/step.wav-eadb13c93d46cd399011a45b530feef5.sample"
+path="res://.godot/imported/step.wav-44e66e9afa00d8024602084a75f6b9e7.sample"
 
 [deps]
 
-source_file="res://TPSCharter/sfx/step.wav"
-dest_files=["res://.godot/imported/step.wav-eadb13c93d46cd399011a45b530feef5.sample"]
+source_file="res://sfx/step.wav"
+dest_files=["res://.godot/imported/step.wav-44e66e9afa00d8024602084a75f6b9e7.sample"]
 
 [params]
 

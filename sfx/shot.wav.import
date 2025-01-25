@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://67koqps5m26x"
-path="res://.godot/imported/shot.wav-7767be81ba9adff588426d5809583e83.sample"
+path="res://.godot/imported/shot.wav-e77a41e1017cdfad662cd930d802e2d9.sample"
 
 [deps]
 
-source_file="res://TPSCharter/sfx/shot.wav"
-dest_files=["res://.godot/imported/shot.wav-7767be81ba9adff588426d5809583e83.sample"]
+source_file="res://sfx/shot.wav"
+dest_files=["res://.godot/imported/shot.wav-e77a41e1017cdfad662cd930d802e2d9.sample"]
 
 [params]
 
