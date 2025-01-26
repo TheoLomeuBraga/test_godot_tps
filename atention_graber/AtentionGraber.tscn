@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://d1c07nkj4pwh0"]
+
+[ext_resource type="Script" path="res://atention_graber/atention_graber.gd" id="1_c1v1k"]
+[ext_resource type="Script" path="res://free_camera/free_camera.gd" id="1_mi5fa"]
+[ext_resource type="AudioStream" uid="uid://bwyxul3jgag5o" path="res://sfx/atention.wav" id="2_j54b0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e3ugu"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0.313726, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_y0f0b"]
+material = SubResource("StandardMaterial3D_e3ugu")
+text = "Atention"
+pixel_size = 0.1
+curve_step = 10.0
+depth = 0.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_moii2"]
+size = Vector3(6.5, 1.5, 1)
+
+[node name="AtentionGraber" type="MeshInstance3D"]
+mesh = SubResource("TextMesh_y0f0b")
+script = ExtResource("1_c1v1k")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_moii2")
+
+[node name="enter" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_j54b0")
+
+[node name="exit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_j54b0")
+volume_db = -20.0
+pitch_scale = 0.39
+
+[node name="FreeCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.68767, 2.82667)
+fov = 90.0
+script = ExtResource("1_mi5fa")
