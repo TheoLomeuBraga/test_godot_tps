@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="test_godot_tps"
-run/main_scene="res://rouglike_room/base_room.tscn"
+run/main_scene="res://test_cut_scene/Test_Cut_Scene.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 

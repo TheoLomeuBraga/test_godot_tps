@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhkskqyx76cni"]
+
+[ext_resource type="Script" path="res://test_cut_scene/test_cut_scene.gd" id="1_vd0u0"]
+
+[sub_resource type="Environment" id="Environment_d08si"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.5
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_470er"]
+size = Vector2(100, 100)
+
+[node name="TestCutScene" type="Node3D"]
+script = ExtResource("1_vd0u0")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_d08si")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.577987, -0.576076, -0.577987, 0.707107, -3.09086e-08, 0.707107, -0.407347, -0.817396, 0.407347, 0, 3, 35)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_470er")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.08295, 3.96026)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 438.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center][color=red]Red[/color]
+[color=green]Green[/color]
+[color=blue]Blue[/color][/center]"
