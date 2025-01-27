@@ -1,31 +1,73 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhkskqyx76cni"]
+[gd_scene load_steps=12 format=3 uid="uid://bhkskqyx76cni"]
 
 [ext_resource type="Script" path="res://test_cut_scene/test_cut_scene.gd" id="1_vd0u0"]
+[ext_resource type="PackedScene" uid="uid://cwa837430nmfw" path="res://test_cut_scene/mr_cone.tscn" id="2_5epuq"]
+[ext_resource type="Script" path="res://test_cut_scene/cutcene_scripts/CutCeneEventRunner.gd" id="2_dsd6h"]
+[ext_resource type="Script" path="res://test_cut_scene/cutcene_scripts/CutCeneEvent.gd" id="3_8j8bv"]
+[ext_resource type="PackedScene" uid="uid://i3afqkekmhya" path="res://test_cut_scene/mr_sphere.tscn" id="3_imrrj"]
+[ext_resource type="PackedScene" uid="uid://bselpsgs1yiut" path="res://test_cut_scene/mr_cube.tscn" id="4_yr25p"]
+[ext_resource type="PackedScene" uid="uid://b12vnr2erljj7" path="res://test_cut_scene/mr_human.tscn" id="5_13uf2"]
+
+[sub_resource type="Resource" id="Resource_gd6xn"]
+script = ExtResource("3_8j8bv")
+speed = null
 
 [sub_resource type="Environment" id="Environment_d08si"]
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.5
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2pauk"]
+albedo_color = Color(0.780392, 0.682353, 0.588235, 1)
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_470er"]
+material = SubResource("StandardMaterial3D_2pauk")
 size = Vector2(100, 100)
 
 [node name="TestCutScene" type="Node3D"]
 script = ExtResource("1_vd0u0")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_d08si")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(0.577987, -0.576076, -0.577987, 0.707107, -3.09086e-08, 0.707107, -0.407347, -0.817396, 0.407347, 0, 3, 35)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("PlaneMesh_470er")
+[node name="CutCeneEventRunner" type="Node" parent="."]
+script = ExtResource("2_dsd6h")
+event = SubResource("Resource_gd6xn")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.08295, 3.96026)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="enviorment" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="enviorment"]
+environment = SubResource("Environment_d08si")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="enviorment/WorldEnvironment"]
+transform = Transform3D(0.577987, -0.576076, -0.577987, 0.707107, -3.09086e-08, 0.707107, -0.407347, -0.817396, 0.407347, 0, 3, 35)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="enviorment"]
+mesh = SubResource("PlaneMesh_470er")
+skeleton = NodePath("../..")
+
+[node name="charters" type="Node3D" parent="."]
+
+[node name="MrCone" parent="charters" instance=ExtResource("2_5epuq")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.934696, -2)
+
+[node name="MrSphere" parent="charters" instance=ExtResource("3_imrrj")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 2, 0.352605, -2)
+
+[node name="MrCube" parent="charters" instance=ExtResource("4_yr25p")]
+transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 5, 0.461243, -2)
+
+[node name="MrHuman" parent="charters" instance=ExtResource("5_13uf2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
