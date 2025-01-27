@@ -1,7 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bv33cg87ycahb"]
+[gd_scene load_steps=12 format=3 uid="uid://bv33cg87ycahb"]
 
 [ext_resource type="Script" path="res://info_board/info_board.gd" id="1_bhwf4"]
 [ext_resource type="Shader" path="res://info_board/InfoBoard.gdshader" id="2_l5rd2"]
+[ext_resource type="Script" path="res://geral_scripts/write_text.gd" id="3_qh0c8"]
+[ext_resource type="Script" path="res://geral_scripts/WaitUntilInput.gd" id="3_tgh66"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_406up"]
 height = 4.0
@@ -34,7 +36,7 @@ shader_parameter/color_over = null
 
 [node name="InfoBoard" type="Area3D"]
 script = ExtResource("1_bhwf4")
-dialogs = Array[String](["hello", "this is a test signe", "bye"])
+dialogs = Array[String](["hello", "this is a test room", "have fun"])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
@@ -91,6 +93,10 @@ anchor_bottom = 1.0
 offset_right = 1.0
 metadata/_edit_use_anchors_ = true
 
+[node name="WaitUntilInput" type="Node" parent="TextDisplay/CenterContainer"]
+script = ExtResource("3_tgh66")
+input = "shot"
+
 [node name="RichTextLabel" type="RichTextLabel" parent="TextDisplay/CenterContainer"]
 custom_minimum_size = Vector2(700, 200)
 layout_mode = 2
@@ -100,6 +106,7 @@ theme_override_font_sizes/mono_font_size = 25
 theme_override_font_sizes/normal_font_size = 25
 theme_override_font_sizes/bold_font_size = 25
 text = "[TEXT]"
+script = ExtResource("3_qh0c8")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
