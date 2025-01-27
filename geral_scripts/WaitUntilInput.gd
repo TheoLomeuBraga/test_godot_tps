@@ -1,9 +1,10 @@
 extends Node
 class_name WaitUntilInput
 
-@export var input : String
+@export var inputs : Array[String]
 
 signal pressed
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed(input):
-		pressed.emit()
+	for s in inputs:
+		if Input.is_action_just_pressed(s):
+			pressed.emit()

@@ -4,6 +4,7 @@ class_name InfoBoard
 
 var current_dialog : int = 0
 @export var dialogs : Array[String]
+var dialogs_presented : Array[bool]
 
 @onready var screen_base_scale : Vector3 = $screen.scale
 
@@ -16,6 +17,8 @@ func _on_timer_timeout() -> void:
 
 func _ready() -> void:
 	target_rot = screen_base_scale
+	dialogs_presented.resize(dialogs.size())
+	$TextDisplay/CenterContainer/RichTextLabel.text = ""
 
 enum GameEstate {
 	NO_ACTION = 0,
@@ -26,6 +29,8 @@ enum GameEstate {
 var estate : GameEstate = GameEstate.NO_ACTION
 
 var charter : TpsCharter
+
+var text_can_change : bool = true
 
 func _process(delta: float) -> void:
 	if estate == GameEstate.NO_ACTION:
@@ -39,6 +44,23 @@ func _process(delta: float) -> void:
 		
 	elif estate == GameEstate.DIALOG:
 		$screen.scale = $screen.scale.slerp(target_rot,delta * 2)
+		
+		if dialogs[current_dialog] != $TextDisplay/CenterContainer/RichTextLabel.text:
+			$TextDisplay/CenterContainer/RichTextLabel.write(dialogs[current_dialog])
+		
+		if $TextDisplay/CenterContainer/RichTextLabel.visible_ratio == 1 and (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("shot")):
+			
+			current_dialog += 1
+			if current_dialog >= dialogs.size():
+				current_dialog = 0
+				estate = GameEstate.PLAYER_NEXT
+				charter.estate = charter.PlayerGameEstates.START
+				$TextDisplay/CenterContainer/RichTextLabel.text = ""
+		
+		
+		
+		'''
+		$screen.scale = $screen.scale.slerp(target_rot,delta * 2)
 		$TextDisplay/CenterContainer/RichTextLabel.text = dialogs[current_dialog]
 		
 		if Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("shot"):
@@ -49,6 +71,8 @@ func _process(delta: float) -> void:
 				current_dialog = 0
 				estate = GameEstate.PLAYER_NEXT
 				charter.estate = charter.PlayerGameEstates.START
+		'''
+		
 	
 	$TextDisplay.visible = estate == GameEstate.DIALOG
 	

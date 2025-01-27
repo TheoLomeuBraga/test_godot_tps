@@ -93,10 +93,6 @@ anchor_bottom = 1.0
 offset_right = 1.0
 metadata/_edit_use_anchors_ = true
 
-[node name="WaitUntilInput" type="Node" parent="TextDisplay/CenterContainer"]
-script = ExtResource("3_tgh66")
-input = "shot"
-
 [node name="RichTextLabel" type="RichTextLabel" parent="TextDisplay/CenterContainer"]
 custom_minimum_size = Vector2(700, 200)
 layout_mode = 2
@@ -107,6 +103,10 @@ theme_override_font_sizes/normal_font_size = 25
 theme_override_font_sizes/bold_font_size = 25
 text = "[TEXT]"
 script = ExtResource("3_qh0c8")
+
+[node name="WaitUntilInput" type="Node" parent="TextDisplay/CenterContainer"]
+script = ExtResource("3_tgh66")
+inputs = Array[String](["interact", "shot"])
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -89,7 +89,7 @@ GHI"
 
 [node name="WaitUntilInput" type="Node" parent="."]
 script = ExtResource("2_q84pk")
-input = "shot"
+inputs = Array[String](["shot", "interact"])
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.79867, 3.96026)
