@@ -13,11 +13,14 @@ config_version=5
 config/name="test_godot_tps"
 run/main_scene="res://rouglike_room/base_room.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
+boot_splash/bg_color=Color(0.0242478, 0, 0.464485, 1)
+boot_splash/image="res://logo/blue-outline.png"
 config/icon="res://icon.svg"
 
 [autoload]
 
 BaseFilter="*res://filter/base_filter.tscn"
+TransitionManager="*res://mult_roon_cenary/transition/transition_manager.tscn"
 
 [display]
 

@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://t7vvprqvcnhf"]
+
+[ext_resource type="Script" path="res://await_test/await_test.gd" id="1_mbu3b"]
+
+[sub_resource type="Environment" id="Environment_3bai0"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eb3io"]
+resource_local_to_scene = true
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yd52b"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_eb3io")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6au32"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_g6hqb"]
+material = SubResource("StandardMaterial3D_6au32")
+
+[sub_resource type="BoxMesh" id="BoxMesh_0v034"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jlcvk"]
+albedo_color = Color(0, 0, 1, 1)
+
+[node name="AwaitTest" type="Node3D"]
+script = ExtResource("1_mbu3b")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3bai0")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.577987, -0.576076, -0.577987, 0.707107, -3.09086e-08, 0.707107, -0.407347, -0.817396, 0.407347, 0, 3, 35)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+fov = 90.0
+
+[node name="red" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_yd52b")
+
+[node name="green" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("BoxMesh_g6hqb")
+
+[node name="blue" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_0v034")
+surface_material_override/0 = SubResource("StandardMaterial3D_jlcvk")
+
+[node name="Timer1" type="Timer" parent="."]
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="Timer3" type="Timer" parent="."]
+wait_time = 3.0

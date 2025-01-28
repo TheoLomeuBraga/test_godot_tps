@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7y0rfgg6duni"]
+
+[ext_resource type="PackedScene" uid="uid://doostbotg7oqn" path="res://TPSCharter/TPSCharter.tscn" id="1_ojg6h"]
+
+[node name="MidleRoom" type="CSGCombiner3D"]
+
+[node name="TpsCharter" parent="." instance=ExtResource("1_ojg6h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

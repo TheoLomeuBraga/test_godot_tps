@@ -5,11 +5,6 @@
 [ext_resource type="Script" path="res://geral_scripts/write_text.gd" id="3_g3s5r"]
 [ext_resource type="PackedScene" uid="uid://b12vnr2erljj7" path="res://test_cut_scene/mr_human.tscn" id="5_13uf2"]
 
-[sub_resource type="Environment" id="Environment_d08si"]
-ambient_light_source = 2
-ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 0.5
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2pauk"]
 albedo_color = Color(0.780392, 0.682353, 0.588235, 1)
 
@@ -75,6 +70,11 @@ _data = {
 "act_1": SubResource("Animation_n860n")
 }
 
+[sub_resource type="Environment" id="Environment_d08si"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.5
+
 [node name="TestCutScene" type="Node3D"]
 script = ExtResource("1_vd0u0")
 text_1 = "RED
@@ -95,12 +95,6 @@ inputs = Array[String](["shot", "interact"])
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.79867, 3.96026)
 
 [node name="enviorment" type="Node3D" parent="."]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="enviorment"]
-environment = SubResource("Environment_d08si")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="enviorment/WorldEnvironment"]
-transform = Transform3D(0.577987, -0.576076, -0.577987, 0.707107, -3.09086e-08, 0.707107, -0.407347, -0.817396, 0.407347, 0, 3, 35)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="enviorment"]
 mesh = SubResource("PlaneMesh_470er")
@@ -136,3 +130,9 @@ script = ExtResource("3_g3s5r")
 libraries = {
 "": SubResource("AnimationLibrary_5co3k")
 }
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_d08si")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.577987, -0.576076, -0.577987, 0.707107, -3.09086e-08, 0.707107, -0.407347, -0.817396, 0.407347, 0, 3, 35)

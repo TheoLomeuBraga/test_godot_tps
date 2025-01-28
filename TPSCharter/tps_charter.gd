@@ -18,7 +18,7 @@ func _ready() -> void:
 	apply_material($DisplayModel/Object)
 	$DisplayModel/AnimationTree.set("parameters/shot_mode_walk_direction/blend_position",Vector2.ZERO)
 	
-	
+	TransitionManager.player = self
 	
 	
 

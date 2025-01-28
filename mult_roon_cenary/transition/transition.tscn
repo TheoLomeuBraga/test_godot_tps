@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://ny4dxj3vlnps"]
+
+[ext_resource type="Script" path="res://mult_roon_cenary/transition/transition.gd" id="1_ot3ts"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_obmik"]
+size = Vector3(2, 2, 2)
+
+[node name="Transition" type="Area3D"]
+script = ExtResource("1_ot3ts")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_obmik")
