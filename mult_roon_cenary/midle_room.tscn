@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7y0rfgg6duni"]
+[gd_scene load_steps=8 format=3 uid="uid://b7y0rfgg6duni"]
 
 [ext_resource type="PackedScene" uid="uid://doostbotg7oqn" path="res://TPSCharter/TPSCharter.tscn" id="1_ojg6h"]
+[ext_resource type="PackedScene" uid="uid://ny4dxj3vlnps" path="res://mult_roon_cenary/transition/transition.tscn" id="2_rjusg"]
 
 [sub_resource type="Environment" id="Environment_ar8o2"]
 ambient_light_source = 2
@@ -8,10 +9,13 @@ ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dd1f1"]
-albedo_color = Color(1, 0, 0, 1)
+albedo_color = Color(0, 0, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_73733"]
 albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ioao"]
+albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_75qyf"]
 shading_mode = 0
@@ -57,7 +61,7 @@ material = SubResource("StandardMaterial3D_73733")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0327148, 1.61554, 7.95407)
 operation = 2
 size = Vector3(2.52246, 3.29651, 6.90814)
-material = SubResource("StandardMaterial3D_dd1f1")
+material = SubResource("StandardMaterial3D_5ioao")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 11)
@@ -68,3 +72,13 @@ material = SubResource("StandardMaterial3D_75qyf")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -11)
 size = Vector3(3, 4, 1)
 material = SubResource("StandardMaterial3D_75qyf")
+
+[node name="Transition" parent="." instance=ExtResource("2_rjusg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00199997, 0.967285, 8.8143)
+next_sceane = "res://mult_roon_cenary/first_room.tscn"
+tag = "A"
+
+[node name="Transition2" parent="." instance=ExtResource("2_rjusg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00199997, 0.967285, -10.1857)
+next_sceane = "res://mult_roon_cenary/last_room.tscn"
+tag = "B"

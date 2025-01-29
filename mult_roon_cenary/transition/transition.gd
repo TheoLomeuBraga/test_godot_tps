@@ -1,11 +1,24 @@
 extends Area3D
 
 
-# Called when the node enters the scene tree for the first time.
+var working : bool = false
+
+@export_file("*.tscn") var next_sceane : String
+@export var tag : String
+
 func _ready() -> void:
-	pass # Replace with function body.
+	if TransitionManager.player != null and TransitionManager.next_tag == tag:
+		TransitionManager.player.global_position = global_position
+
+func _on_timer_timeout() -> void:
+	working = true
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+
+
+
+func _on_body_entered(body: Node3D) -> void:
+	print("A",working)
+	if body is TpsCharter and  working:
+		print("B")
+		TransitionManager.transitionate(next_sceane,tag)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmoxj4oanduyq"]
+[gd_scene load_steps=7 format=3 uid="uid://dmoxj4oanduyq"]
 
 [ext_resource type="PackedScene" uid="uid://doostbotg7oqn" path="res://TPSCharter/TPSCharter.tscn" id="1_cgh7k"]
+[ext_resource type="PackedScene" uid="uid://ny4dxj3vlnps" path="res://mult_roon_cenary/transition/transition.tscn" id="2_xd8cp"]
 
 [sub_resource type="Environment" id="Environment_lehx7"]
 ambient_light_source = 2
@@ -53,3 +54,8 @@ material = SubResource("StandardMaterial3D_k3d7w")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 11)
 size = Vector3(3, 4, 1)
 material = SubResource("StandardMaterial3D_aywql")
+
+[node name="Transition" parent="." instance=ExtResource("2_xd8cp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00199997, 0.967285, 8.8143)
+next_sceane = "res://mult_roon_cenary/midle_room.tscn"
+tag = "A"

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="test_godot_tps"
-run/main_scene="res://rouglike_room/base_room.tscn"
+run/main_scene="res://mult_roon_cenary/first_room.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 boot_splash/bg_color=Color(0.243137, 0.537255, 0.843137, 1)
 boot_splash/image="res://logo/blue-outline.png"

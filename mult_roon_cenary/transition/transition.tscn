@@ -3,10 +3,17 @@
 [ext_resource type="Script" path="res://mult_roon_cenary/transition/transition.gd" id="1_ot3ts"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_obmik"]
-size = Vector3(2, 2, 2)
+size = Vector3(5, 5, 2)
 
 [node name="Transition" type="Area3D"]
 script = ExtResource("1_ot3ts")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_obmik")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
