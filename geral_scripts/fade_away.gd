@@ -23,4 +23,6 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	after_image_material.albedo_color.a = time_left / wait_time
+	var color : Color = after_image_material.get_shader_parameter("albedo")
+	color.a = time_left / wait_time
+	after_image_material.set_shader_parameter("albedo",color)
