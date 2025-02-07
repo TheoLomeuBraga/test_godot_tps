@@ -13,7 +13,9 @@ material = SubResource("StandardMaterial3D_tau7y")
 
 [node name="TestAgent" type="CharacterBody3D"]
 top_level = true
+collision_layer = 2
 script = ExtResource("1_camsh")
+speed = 5.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_uuwun")
@@ -22,8 +24,12 @@ mesh = SubResource("CapsuleMesh_uuwun")
 shape = SubResource("CapsuleShape3D_87rlj")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
+radius = 2.0
+debug_enabled = true
 
 [node name="RecalculatePathTimer" type="Timer" parent="."]
 autostart = true
 
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="timeout" from="RecalculatePathTimer" to="." method="recalculate_path"]

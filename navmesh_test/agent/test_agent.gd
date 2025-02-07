@@ -24,5 +24,16 @@ func recalculate_path():
 	move_direction = (target_position - global_position).normalized()
 
 func _physics_process(delta: float) -> void:
-	velocity = move_direction * speed * delta
+	velocity = move_direction * speed
 	move_and_slide()
+	
+	#global_position += move_direction * speed * delta
+	
+	$NavigationAgent3D.set_velocity_forced(move_direction * speed * delta)
+
+
+func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
+	velocity = safe_velocity
+	move_and_slide()
+	
+	#global_position += safe_velocity

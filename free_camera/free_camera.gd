@@ -11,7 +11,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		can_look_around = Input.is_action_pressed("hide_mouse")
 		if can_look_around:
-			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			rotation_degrees.x -= event.relative.y * mouse_sensitivity / 10
 			rotation_degrees.y -= event.relative.x * mouse_sensitivity / 10
 		else:

@@ -1,0 +1,62 @@
+[gd_scene load_steps=12 format=3 uid="uid://8vwgiqhwmsdh"]
+
+[ext_resource type="Shader" path="res://visual_fx_test/sky.gdshader" id="1_412kk"]
+[ext_resource type="Script" path="res://free_camera/free_camera.gd" id="1_mcuqy"]
+
+[sub_resource type="Gradient" id="Gradient_khk5h"]
+colors = PackedColorArray(2.74345e-06, 0, 0.646837, 1, 1, 0.678431, 0.498039, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7j0yg"]
+gradient = SubResource("Gradient_khk5h")
+width = 32
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d00to"]
+shader = ExtResource("1_412kk")
+shader_parameter/gradient = SubResource("GradientTexture1D_7j0yg")
+
+[sub_resource type="Sky" id="Sky_wy7b4"]
+sky_material = SubResource("ShaderMaterial_d00to")
+
+[sub_resource type="Environment" id="Environment_8exen"]
+background_mode = 2
+sky = SubResource("Sky_wy7b4")
+ambient_light_source = 3
+glow_enabled = true
+glow_intensity = 2.0
+glow_bloom = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mqv3q"]
+albedo_color = Color(0, 0, 0, 1)
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_04l87"]
+material = SubResource("StandardMaterial3D_mqv3q")
+size = Vector2(10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ngbw7"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 0, 0.952941, 1)
+emission_energy_multiplier = 10.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_1ff0g"]
+material = SubResource("StandardMaterial3D_ngbw7")
+
+[node name="VisualFxTest" type="Node3D"]
+
+[node name="FreeCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5)
+fov = 90.0
+script = ExtResource("1_mcuqy")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8exen")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_04l87")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("SphereMesh_1ff0g")
