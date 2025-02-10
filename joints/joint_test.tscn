@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxg2v7u7lwduc"]
+
+[ext_resource type="Script" path="res://joints/slider_joint_test.gd" id="1_fe6gy"]
+[ext_resource type="Script" path="res://free_camera/free_camera.gd" id="2_r602j"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_c5q60"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vh3fh"]
+
+[sub_resource type="Environment" id="Environment_n7gii"]
+background_mode = 1
+background_color = Color(1, 1, 1, 1)
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.5
+
+[node name="JointTest" type="Node3D"]
+
+[node name="Generic6DOFJoint3D" type="Generic6DOFJoint3D" parent="."]
+node_a = NodePath("RigidBody3D")
+linear_limit_x/lower_distance = -1.0
+linear_limit_x/restitution = 0.01
+script = ExtResource("1_fe6gy")
+
+[node name="center" type="Marker3D" parent="Generic6DOFJoint3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Generic6DOFJoint3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Generic6DOFJoint3D/RigidBody3D"]
+mesh = SubResource("BoxMesh_c5q60")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Generic6DOFJoint3D/RigidBody3D"]
+shape = SubResource("BoxShape3D_vh3fh")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+fov = 90.0
+script = ExtResource("2_r602j")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_n7gii")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.5, -0.75, 0.433013, 0, 0.5, 0.866025, -0.866025, -0.433013, 0.25, 0, 0, 0)
