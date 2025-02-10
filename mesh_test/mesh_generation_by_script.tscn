@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bot8jf2djbgqn"]
+
+[ext_resource type="Script" path="res://mesh_test/mesh_generation_by_script.gd" id="1_8uig6"]
+
+[node name="MeshGenerationByScript" type="MeshInstance3D"]
+script = ExtResource("1_8uig6")

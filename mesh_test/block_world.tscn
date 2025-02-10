@@ -1,0 +1,44 @@
+[gd_scene load_steps=10 format=3 uid="uid://bg7l6623crego"]
+
+[ext_resource type="MeshLibrary" uid="uid://cwfrs2206ql7c" path="res://mesh_test/cubes.tres" id="1_4y0qc"]
+[ext_resource type="Script" path="res://mesh_test/block_world.gd" id="2_im7ks"]
+[ext_resource type="Shader" path="res://visual_fx_test/sky.gdshader" id="3_68aqp"]
+[ext_resource type="Script" path="res://free_camera/free_camera.gd" id="3_dofkp"]
+
+[sub_resource type="Gradient" id="Gradient_3m0dj"]
+colors = PackedColorArray(0, 0.427451, 1, 1, 1, 1, 0.819608, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kjaxm"]
+gradient = SubResource("Gradient_3m0dj")
+width = 32
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pha1m"]
+shader = ExtResource("3_68aqp")
+shader_parameter/gradient = SubResource("GradientTexture1D_kjaxm")
+
+[sub_resource type="Sky" id="Sky_hkgrs"]
+sky_material = SubResource("ShaderMaterial_pha1m")
+
+[sub_resource type="Environment" id="Environment_jaqhx"]
+background_mode = 2
+background_color = Color(1, 1, 1, 1)
+sky = SubResource("Sky_hkgrs")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.5
+
+[node name="BlockWorld" type="GridMap"]
+mesh_library = ExtResource("1_4y0qc")
+cell_size = Vector3(1, 1, 1)
+script = ExtResource("2_im7ks")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jaqhx")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.5, -0.75, 0.433013, 0, 0.5, 0.866025, -0.866025, -0.433013, 0.25, 0, 0, 0)
+
+[node name="FreeCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 22)
+fov = 90.0
+script = ExtResource("3_dofkp")

@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcxovw536ks1c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fen04"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_olh5e"]
+material = SubResource("StandardMaterial3D_fen04")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o02tk"]
+albedo_color = Color(0.505882, 0.286275, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2tedj"]
+material = SubResource("StandardMaterial3D_o02tk")
+
+[node name="BaseMeshes" type="Node3D"]
+
+[node name="grass" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_olh5e")
+
+[node name="stone" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+mesh = SubResource("BoxMesh_2tedj")
