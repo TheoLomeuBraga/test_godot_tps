@@ -1,11 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://djcjvm4v3vjk0"]
+[gd_scene load_steps=7 format=3 uid="uid://djcjvm4v3vjk0"]
 
 [ext_resource type="Material" uid="uid://wdqw1hre0jkr" path="res://turret/gray.tres" id="1_cqhxe"]
 [ext_resource type="Script" path="res://turret/turret.gd" id="1_khj3g"]
 [ext_resource type="Material" uid="uid://bpdocqkwpxgf8" path="res://turret/orange.tres" id="2_gnhcw"]
+[ext_resource type="PackedScene" uid="uid://blxvrdhl37fec" path="res://turret/bullet/bullet.tscn" id="2_lyh6b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xyi3f"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 1, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_frxfq"]
+material = SubResource("StandardMaterial3D_xyi3f")
+radius = 0.1
+height = 0.2
+radial_segments = 4
+rings = 1
 
 [node name="Turret" type="Node3D"]
 script = ExtResource("1_khj3g")
+bullet_scene = ExtResource("2_lyh6b")
 
 [node name="base" type="CSGCombiner3D" parent="."]
 
@@ -24,17 +38,53 @@ material = ExtResource("1_cqhxe")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58794, 0)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="gun"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.419032, -0.0752121)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.04727e-08, 0.419032, -0.0474004)
 size = Vector3(0.3, 0.5, 1)
 material = ExtResource("2_gnhcw")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="gun"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.517287, 0.633067)
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 8.55298e-09, 0.517287, -0.755679)
 radius = 0.1
 material = ExtResource("1_cqhxe")
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="gun"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.517287, 1.63485)
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -7.90257e-08, 0.517287, -1.75746)
 radius = 0.226212
 height = 0.291002
 material = ExtResource("1_cqhxe")
+
+[node name="muzle" type="Node3D" parent="gun"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.523488, -2.07965)
+
+[node name="aim" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+top_level = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="aim"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+mesh = SubResource("SphereMesh_frxfq")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="aim"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+mesh = SubResource("SphereMesh_frxfq")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="aim"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 4.37114e-08, -1, 0)
+mesh = SubResource("SphereMesh_frxfq")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="aim"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -4.37114e-08, 1, 0)
+mesh = SubResource("SphereMesh_frxfq")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="aim"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 4.37114e-08, 4.37114e-08, 1)
+mesh = SubResource("SphereMesh_frxfq")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="aim"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1)
+mesh = SubResource("SphereMesh_frxfq")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
