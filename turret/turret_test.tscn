@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbmj24plvu6bs"]
+
+[ext_resource type="PackedScene" uid="uid://djcjvm4v3vjk0" path="res://turret/turret.tscn" id="1_et8yl"]
+[ext_resource type="PackedScene" uid="uid://doostbotg7oqn" path="res://TPSCharter/TPSCharter.tscn" id="2_cxacb"]
+
+[sub_resource type="Environment" id="Environment_rq3rg"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.5
+
+[node name="TurretTest" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_rq3rg")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.577987, -0.576076, -0.577987, 0.707107, -3.09086e-08, 0.707107, -0.407347, -0.817396, 0.407347, 0, 3, 35)
+
+[node name="Turret" parent="." instance=ExtResource("1_et8yl")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, -4)
+
+[node name="TpsCharter" parent="." instance=ExtResource("2_cxacb")]
+transform = Transform3D(-1, 0, 2.62268e-07, 0, 1, 0, -2.62268e-07, 0, -1, 0, 1, 3)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+size = Vector3(10, 1, 10)

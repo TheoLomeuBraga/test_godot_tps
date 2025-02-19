@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://djcjvm4v3vjk0"]
+
+[ext_resource type="Material" uid="uid://wdqw1hre0jkr" path="res://turret/gray.tres" id="1_cqhxe"]
+[ext_resource type="Script" path="res://turret/turret.gd" id="1_khj3g"]
+[ext_resource type="Material" uid="uid://bpdocqkwpxgf8" path="res://turret/orange.tres" id="2_gnhcw"]
+
+[node name="Turret" type="Node3D"]
+script = ExtResource("1_khj3g")
+
+[node name="base" type="CSGCombiner3D" parent="."]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.120949, 0)
+height = 0.25
+material = ExtResource("1_cqhxe")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+radius = 0.1
+height = 1.5
+material = ExtResource("1_cqhxe")
+
+[node name="gun" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58794, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="gun"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.419032, -0.0752121)
+size = Vector3(0.3, 0.5, 1)
+material = ExtResource("2_gnhcw")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="gun"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.517287, 0.633067)
+radius = 0.1
+material = ExtResource("1_cqhxe")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="gun"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.517287, 1.63485)
+radius = 0.226212
+height = 0.291002
+material = ExtResource("1_cqhxe")

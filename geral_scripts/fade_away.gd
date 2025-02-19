@@ -8,6 +8,8 @@ func set_mat(node : Node):
 	if node is MeshInstance3D:
 		var n : MeshInstance3D = node
 		n.material_override = after_image_material
+		
+		n.set_layer_mask_value(2,false)
 	
 	for c in node.get_children():
 		set_mat(c)

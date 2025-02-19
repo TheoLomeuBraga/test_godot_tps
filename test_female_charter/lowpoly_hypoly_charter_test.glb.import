@@ -1,0 +1,79 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://b20nr17mpkdu2"
+path="res://.godot/imported/lowpoly_hypoly_charter_test.glb-e64ff897dfa98e1db103848f1a55ae70.scn"
+
+[deps]
+
+source_file="res://test_female_charter/lowpoly_hypoly_charter_test.glb"
+dest_files=["res://.godot/imported/lowpoly_hypoly_charter_test.glb-e64ff897dfa98e1db103848f1a55ae70.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+_subresources={
+"materials": {
+"female charter body": {
+"use_external/enabled": true,
+"use_external/path": "res://test_female_charter/meterials/female charter body.tres"
+},
+"female charter body.001": {
+"use_external/enabled": true,
+"use_external/path": "res://test_female_charter/meterials/female charter body.001.tres"
+},
+"female charter body.002": {
+"use_external/enabled": true,
+"use_external/path": "res://test_female_charter/meterials/female charter body.002.tres"
+},
+"female charter head": {
+"use_external/enabled": true,
+"use_external/path": "res://test_female_charter/meterials/female charter head.tres"
+},
+"female charter head.001": {
+"use_external/enabled": true,
+"use_external/path": "res://test_female_charter/meterials/female charter head.001.tres"
+},
+"female charter head.002": {
+"use_external/enabled": true,
+"use_external/path": "res://test_female_charter/meterials/female charter head.002.tres"
+},
+"invisivel.001": {
+"use_external/enabled": true,
+"use_external/path": "res://test_female_charter/meterials/invisivel.001.tres"
+},
+"pink_glow": {
+"use_external/enabled": true,
+"use_external/path": "res://test_female_charter/meterials/pink_glow.tres"
+},
+"pink_glow.001": {
+"use_external/enabled": true,
+"use_external/path": "res://test_female_charter/meterials/pink_glow.001.tres"
+},
+"pink_glow.002": {
+"use_external/enabled": true,
+"use_external/path": "res://test_female_charter/meterials/pink_glow.002.tres"
+}
+}
+}
+gltf/naming_version=1
+gltf/embedded_image_handling=3

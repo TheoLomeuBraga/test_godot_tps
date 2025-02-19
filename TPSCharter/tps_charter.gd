@@ -20,6 +20,10 @@ func _ready() -> void:
 	
 	TransitionManager.player = self
 	
+	$base_camera_y.rotation.y = rotation.y
+	$base_camera_y/base_camera_x.rotation.x = rotation.x
+	$DisplayModel.rotation.y = rotation.y
+	rotation = Vector3.ZERO
 	
 
 
@@ -56,15 +60,17 @@ func rotate_based_on_input(delta: float) -> void:
 	
 	var move_x : Vector3 = $base_camera_y.basis.x *  Input.get_axis("right","left")
 	var move_z : Vector3 = $base_camera_y.basis.z * Input.get_axis("back","front")
-	var move_dir : Vector3 = (move_x + move_z).normalized()
 	
-	$LookDirection.global_position = global_position
-	
-	if $LookDirection.global_position != global_position - move_dir:
-		$LookDirection.look_at(global_position - move_dir)
-	
-	$DisplayModel.basis = $DisplayModel.basis.orthonormalized()
-	$DisplayModel.basis = $DisplayModel.basis.slerp($LookDirection.basis.orthonormalized(),rotation_speed * delta)
+	if move_x.length() != 0 or move_z.length() != 0:
+		var move_dir : Vector3 = (move_x + move_z).normalized()
+		
+		$LookDirection.global_position = global_position
+		
+		if $LookDirection.global_position != global_position - move_dir:
+			$LookDirection.look_at(global_position - move_dir)
+		
+		$DisplayModel.basis = $DisplayModel.basis.orthonormalized()
+		$DisplayModel.basis = $DisplayModel.basis.slerp($LookDirection.basis.orthonormalized(),rotation_speed * delta)
 	
 	
 
