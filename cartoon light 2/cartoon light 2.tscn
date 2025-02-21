@@ -1,0 +1,60 @@
+[gd_scene load_steps=12 format=3 uid="uid://diu42tu1xixa"]
+
+[ext_resource type="Shader" path="res://cartoon light 2/sky.gdshader" id="1_k2ouq"]
+[ext_resource type="Shader" path="res://cartoon light 2/cartoon.gdshader" id="2_3vt1i"]
+
+[sub_resource type="Gradient" id="Gradient_8nsof"]
+colors = PackedColorArray(0.176242, 0.000329359, 0.434636, 1, 0, 0.610816, 0.610816, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4frrt"]
+gradient = SubResource("Gradient_8nsof")
+width = 32
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r03hh"]
+shader = ExtResource("1_k2ouq")
+shader_parameter/gradient = SubResource("GradientTexture1D_4frrt")
+
+[sub_resource type="Sky" id="Sky_urpwu"]
+sky_material = SubResource("ShaderMaterial_r03hh")
+
+[sub_resource type="Environment" id="Environment_gw1tk"]
+background_mode = 2
+sky = SubResource("Sky_urpwu")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.1
+
+[sub_resource type="Gradient" id="Gradient_eqis0"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6tikd"]
+gradient = SubResource("Gradient_eqis0")
+width = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8kb4c"]
+render_priority = 0
+shader = ExtResource("2_3vt1i")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/light_gradient = SubResource("GradientTexture1D_6tikd")
+
+[sub_resource type="SphereMesh" id="SphereMesh_ykbwu"]
+material = SubResource("ShaderMaterial_8kb4c")
+
+[node name="CartoonLight2" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gw1tk")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.577987, -0.576076, -0.577987, 0.707107, -3.09086e-08, 0.707107, -0.407347, -0.817396, 0.407347, 0, 3, 35)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_ykbwu")
