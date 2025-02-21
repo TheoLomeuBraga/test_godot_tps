@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://ck3iavac8e85t"]
+[gd_scene load_steps=4 format=3 uid="uid://ck3iavac8e85t"]
 
 [ext_resource type="Script" path="res://localization_test/localization_test.gd" id="1_didsb"]
+[ext_resource type="PackedScene" uid="uid://bpbxwf0wucclr" path="res://ajust_ui_resolution/AjustUiScale.tscn" id="2_q5ou8"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ayvd8"]
+viewport_path = NodePath("SubViewport")
 
 [node name="LocalizationTest" type="Control"]
 layout_mode = 3
@@ -11,18 +15,25 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_didsb")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="AjustUiScale" parent="." instance=ExtResource("2_q5ou8")]
+layout_mode = 1
+grow_horizontal = 1
+grow_vertical = 1
+texture = SubResource("ViewportTexture_ayvd8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AjustUiScale"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -27.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="AjustUiScale/VBoxContainer"]
 layout_mode = 2
 
-[node name="OptionButton" type="OptionButton" parent="VBoxContainer/CenterContainer"]
+[node name="OptionButton" type="OptionButton" parent="AjustUiScale/VBoxContainer/CenterContainer"]
 layout_mode = 2
 selected = 0
 item_count = 2
@@ -31,52 +42,52 @@ popup/item_0/id = 1
 popup/item_1/text = "Português"
 popup/item_1/id = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="AjustUiScale/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="AjustUiScale/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "start"
 
-[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="Label2" type="Label" parent="AjustUiScale/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "end"
 
-[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="Label3" type="Label" parent="AjustUiScale/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "love"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="AjustUiScale/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="AjustUiScale/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 text = "hate"
 
-[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer2"]
+[node name="Label2" type="Label" parent="AjustUiScale/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 text = "passion"
 
-[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer2"]
+[node name="Label3" type="Label" parent="AjustUiScale/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 text = "anger"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="AjustUiScale/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer3"]
+[node name="Label" type="Label" parent="AjustUiScale/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 text = "more"
 
-[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer3"]
+[node name="Label2" type="Label" parent="AjustUiScale/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 text = "or"
 
-[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer3"]
+[node name="Label3" type="Label" parent="AjustUiScale/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 text = "les"
 
-[connection signal="item_selected" from="VBoxContainer/CenterContainer/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="item_selected" from="AjustUiScale/VBoxContainer/CenterContainer/OptionButton" to="." method="_on_option_button_item_selected"]
