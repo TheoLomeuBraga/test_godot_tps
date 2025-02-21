@@ -24,7 +24,9 @@ TransitionManager="*res://mult_roon_cenary/transition/transition_manager.tscn"
 
 [display]
 
-window/stretch/mode="viewport"
+window/size/viewport_width=640
+window/size/viewport_height=450
+window/stretch/mode="canvas_items"
 window/stretch/aspect="ignore"
 
 [input]
