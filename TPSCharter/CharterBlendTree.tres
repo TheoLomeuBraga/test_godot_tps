@@ -34,7 +34,7 @@ start_offset = 1.0
 loop_mode = 0
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_evg2g"]
-animation = &"shot"
+animation = &"shot arms"
 use_custom_timeline = true
 timeline_length = 1.0
 stretch_time_scale = true
@@ -78,7 +78,7 @@ blend_point_2/pos = 1.0
 min_space = 0.0
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_otm7g"]
-animation = &"shot"
+animation = &"shot arms"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oedvs"]
 animation = &"shot arms"
@@ -194,7 +194,7 @@ loop_mode = 0
 animation = &"slash arms"
 
 [resource]
-graph_offset = Vector2(-1830.6, -5.67968)
+graph_offset = Vector2(-1254.22, 329.708)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_8l85g")
 nodes/Add2/position = Vector2(-480, 620)
 "nodes/Add2 2/node" = SubResource("AnimationNodeAdd2_352in")

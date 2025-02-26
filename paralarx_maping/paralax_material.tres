@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://clhj6ws0mrrqn"]
+
+[ext_resource type="Texture2D" uid="uid://bss5d7weu8jnb" path="res://paralarx_maping/test.png" id="1_musti"]
+
+[resource]
+albedo_texture = ExtResource("1_musti")
+metallic_specular = 0.0
+heightmap_enabled = true
+heightmap_scale = -16.0
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+heightmap_texture = ExtResource("1_musti")

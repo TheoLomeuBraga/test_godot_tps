@@ -51,8 +51,8 @@ vec3 light_to_gradient(vec3 light){
 
 void light() {
 	DIFFUSE_LIGHT += ALBEDO * light_to_gradient(ATTENUATION * LIGHT_COLOR * max(dot(LIGHT,NORMAL), 0.0));
-	
+
 	SPECULAR_LIGHT = DIFFUSE_LIGHT;
-	
+
 	SPECULAR_LIGHT -= ALBEDO * DIFFUSE_LIGHT;
 }

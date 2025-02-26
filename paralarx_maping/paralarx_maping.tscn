@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkwnlt2jf322p"]
+
+[ext_resource type="Material" uid="uid://clhj6ws0mrrqn" path="res://paralarx_maping/paralax_material.tres" id="1_25pks"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_k18hh"]
+material = ExtResource("1_25pks")
+
+[sub_resource type="BoxMesh" id="BoxMesh_ybil4"]
+material = ExtResource("1_25pks")
+
+[node name="ParalarxMaping" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_k18hh")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+mesh = SubResource("BoxMesh_ybil4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866025, -2.18557e-08, 0.5, -0.5, -3.78552e-08, 0.866025, 0, -1, -4.37114e-08, 2, 0, 0)
