@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://8vwgiqhwmsdh"]
 
-[ext_resource type="Shader" path="res://visual_fx_test/sky.gdshader" id="1_412kk"]
-[ext_resource type="Script" path="res://free_camera/free_camera.gd" id="1_mcuqy"]
+[ext_resource type="Shader" uid="uid://bu41fvayjajc" path="res://visual_fx_test/sky.gdshader" id="1_412kk"]
+[ext_resource type="Script" uid="uid://cn8yo2vj3i1ci" path="res://free_camera/free_camera.gd" id="1_mcuqy"]
 
 [sub_resource type="Gradient" id="Gradient_khk5h"]
 colors = PackedColorArray(2.74345e-06, 0, 0.646837, 1, 1, 0.678431, 0.498039, 1)

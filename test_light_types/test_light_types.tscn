@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://bea1oa60upm4s"]
+
+[ext_resource type="Script" uid="uid://cn8yo2vj3i1ci" path="res://free_camera/free_camera.gd" id="1_ph8v1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rlk5t"]
+shading_mode = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_886jx"]
+material = SubResource("StandardMaterial3D_rlk5t")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qgqgm"]
+shading_mode = 2
+
+[sub_resource type="SphereMesh" id="SphereMesh_acjxg"]
+material = SubResource("StandardMaterial3D_qgqgm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c8myd"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_rnbfh"]
+material = SubResource("StandardMaterial3D_c8myd")
+
+[node name="TestLightTypes" type="Node3D"]
+
+[node name="FreeCamera" type="Camera3D" parent="."]
+script = ExtResource("1_ph8v1")
+metadata/_custom_type_script = "uid://cn8yo2vj3i1ci"
+
+[node name="SpotLight3D" type="SpotLight3D" parent="FreeCamera"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -4)
+mesh = SubResource("SphereMesh_886jx")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+mesh = SubResource("SphereMesh_acjxg")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -4)
+mesh = SubResource("SphereMesh_rnbfh")

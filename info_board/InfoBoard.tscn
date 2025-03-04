@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://bv33cg87ycahb"]
 
-[ext_resource type="Script" path="res://info_board/info_board.gd" id="1_bhwf4"]
-[ext_resource type="Shader" path="res://info_board/InfoBoard.gdshader" id="2_l5rd2"]
-[ext_resource type="Script" path="res://geral_scripts/write_text.gd" id="3_qh0c8"]
-[ext_resource type="Script" path="res://geral_scripts/WaitUntilInput.gd" id="3_tgh66"]
+[ext_resource type="Script" uid="uid://bq3yac0dereiu" path="res://info_board/info_board.gd" id="1_bhwf4"]
+[ext_resource type="Shader" uid="uid://c85tpkgbv7tal" path="res://info_board/InfoBoard.gdshader" id="2_l5rd2"]
+[ext_resource type="Script" uid="uid://bekj41dbrhxmj" path="res://geral_scripts/write_text.gd" id="3_qh0c8"]
+[ext_resource type="Script" uid="uid://dvxbxblr5gt15" path="res://geral_scripts/WaitUntilInput.gd" id="3_tgh66"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_406up"]
 height = 4.0
@@ -32,7 +32,7 @@ size = Vector3(3, 3, 0.5)
 shader = ExtResource("2_l5rd2")
 shader_parameter/blur_amount = 1.286
 shader_parameter/mix_amount = 0.4
-shader_parameter/color_over = null
+shader_parameter/color_over = Color(0, 0, 0, 1)
 
 [node name="InfoBoard" type="Area3D"]
 script = ExtResource("1_bhwf4")

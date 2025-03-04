@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cxg2v7u7lwduc"]
 
-[ext_resource type="Script" path="res://joints/slider_joint_test.gd" id="1_fe6gy"]
-[ext_resource type="Script" path="res://free_camera/free_camera.gd" id="2_r602j"]
+[ext_resource type="Script" uid="uid://dlj3mkemejxmg" path="res://joints/slider_joint_test.gd" id="1_fe6gy"]
+[ext_resource type="Script" uid="uid://cn8yo2vj3i1ci" path="res://free_camera/free_camera.gd" id="2_r602j"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_c5q60"]
 

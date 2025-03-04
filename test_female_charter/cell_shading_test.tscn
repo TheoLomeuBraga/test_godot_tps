@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://oi1p7phcmeh1"]
 
-[ext_resource type="Shader" path="res://visual_fx_test/sky.gdshader" id="1_hl1rb"]
-[ext_resource type="Script" path="res://free_camera/free_camera.gd" id="2_pcod2"]
+[ext_resource type="Shader" uid="uid://bu41fvayjajc" path="res://visual_fx_test/sky.gdshader" id="1_hl1rb"]
+[ext_resource type="Script" uid="uid://cn8yo2vj3i1ci" path="res://free_camera/free_camera.gd" id="2_pcod2"]
 [ext_resource type="Material" uid="uid://of8gu6s58pm5" path="res://test_female_charter/cell_shading_test_material.tres" id="3_bj56h"]
 
 [sub_resource type="Gradient" id="Gradient_4v3ba"]

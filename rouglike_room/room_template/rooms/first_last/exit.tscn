@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://be8tpw0xvnsxb"]
 
-[ext_resource type="Script" path="res://rouglike_room/room_template/room_template.gd" id="1_aqu4y"]
+[ext_resource type="Script" uid="uid://dbo4rdbuv4tfl" path="res://rouglike_room/room_template/room_template.gd" id="1_aqu4y"]
 [ext_resource type="Material" uid="uid://dcyopaf5rgww2" path="res://rouglike_room/room_template/rooms/first_last/gold.tres" id="2_ddyfa"]
 
 [node name="ExitRoom" type="Node3D"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://patebppmglld"]
 
 [ext_resource type="PackedScene" uid="uid://una6vmyxovl3" path="res://navmesh_test/agent/test_agent.tscn" id="1_1a4js"]
-[ext_resource type="Script" path="res://free_camera/free_camera.gd" id="1_ygcew"]
+[ext_resource type="Script" uid="uid://cn8yo2vj3i1ci" path="res://free_camera/free_camera.gd" id="1_ygcew"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_wj8gj"]
 vertices = PackedVector3Array(0.999999, 5.75, -11.5, 0.999999, 5.75, 3, 1.25, 5.75, -11.5, 1.5, 6, -12, 1.25, 6, -21, 0.749999, 6, -12, 12, 6, -11.5, 12, 6, -12, -12, 6, 12, -11.5, 6, 12, -11.5, 6, -11.75, -12, 5.75, -12, 8, 1, -7, 8.25, 1, -5.25, 11, 1, -5.5, 11, 1, -11, 2.25, 1, -5.5, 6, 1, -5.25, 6.25, 1, -7, 2.25, 1, -11, -7, 1, -6.75, -5.75, 1, -7, -5.75, 1, -10.75, -10.75, 1, -10.75, -10.75, 1, 11, -7, 1, 11, -4.75, 1, -6.75, -9.53674e-07, 1, -10.75, -4.75, 1, 4.5, 0.499999, 1, 4.25, -9.53674e-07, 1, 4, -6.25, 6, 11.75, -6, 5.75, 18, -5.5, 5.75, 12.25, -5.75, 6, -6, 6.75, 6, 11.75, 7, 6, 18, 7.5, 6, 12.25, 7.25, 6, -6, 2.25, 1, 2.5, 6, 1, 2.75, 8.25, 1, 11, 11, 1, 11, 2, 1, 4.25, 6, 1, 11, -4.75, 1, 11)

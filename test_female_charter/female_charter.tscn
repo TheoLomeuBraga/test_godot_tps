@@ -1,9 +1,9 @@
 [gd_scene load_steps=19 format=4 uid="uid://b6rx48yc6h4no"]
 
-[ext_resource type="Shader" path="res://visual_fx_test/sky.gdshader" id="1_g22hq"]
-[ext_resource type="Shader" path="res://test_female_charter/toom_shader_vertex.gdshader" id="2_tsrd5"]
+[ext_resource type="Shader" uid="uid://bu41fvayjajc" path="res://visual_fx_test/sky.gdshader" id="1_g22hq"]
+[ext_resource type="Shader" uid="uid://dbtfac0xat2f7" path="res://test_female_charter/toom_shader_vertex.gdshader" id="2_tsrd5"]
 [ext_resource type="Texture2D" uid="uid://bqms0w7bw3qvy" path="res://test_female_charter/shading_gradient.tres" id="3_4a0qx"]
-[ext_resource type="Shader" path="res://test_female_charter/toom_shader.gdshader" id="4_nmesb"]
+[ext_resource type="Shader" uid="uid://b36s5pxkat2jv" path="res://test_female_charter/toom_shader.gdshader" id="4_nmesb"]
 [ext_resource type="Texture2D" uid="uid://b5afiu5achyuc" path="res://test_female_charter/lowpoly_hypoly_charter_test_head.png" id="5_n0ic7"]
 
 [sub_resource type="Gradient" id="Gradient_2yvl8"]
@@ -29,12 +29,12 @@ ambient_light_energy = 0.5
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jpnka"]
 render_priority = 0
 shader = ExtResource("2_tsrd5")
-shader_parameter/point_size = null
-shader_parameter/roughness = null
-shader_parameter/metallic_texture_channel = null
-shader_parameter/specular = null
-shader_parameter/metallic = null
 shader_parameter/shading_gradient = ExtResource("3_4a0qx")
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_82tkx"]
 _surfaces = [{
@@ -73,28 +73,28 @@ shadow_mesh = SubResource("ArrayMesh_82tkx")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y33kv"]
 render_priority = 0
 shader = ExtResource("2_tsrd5")
-shader_parameter/point_size = null
-shader_parameter/roughness = null
-shader_parameter/metallic_texture_channel = null
-shader_parameter/specular = null
-shader_parameter/metallic = null
 shader_parameter/shading_gradient = ExtResource("3_4a0qx")
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h55jd"]
 render_priority = 0
 shader = ExtResource("4_nmesb")
 shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/point_size = null
-shader_parameter/roughness = null
-shader_parameter/metallic_texture_channel = null
-shader_parameter/specular = null
-shader_parameter/metallic = null
-shader_parameter/uv1_scale = Vector3(1, 1, 0)
-shader_parameter/uv1_offset = null
-shader_parameter/uv2_scale = null
-shader_parameter/uv2_offset = null
 shader_parameter/texture_albedo = ExtResource("5_n0ic7")
 shader_parameter/shading_gradient = ExtResource("3_4a0qx")
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 0)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x0tpj"]
 resource_name = "pink_glow"

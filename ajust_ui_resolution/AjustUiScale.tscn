@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bpbxwf0wucclr"]
 
-[ext_resource type="Script" path="res://ajust_ui_resolution/ajust_ui_size.gd" id="1_61spc"]
+[ext_resource type="Script" uid="uid://ftcc4keva20r" path="res://ajust_ui_resolution/ajust_ui_size.gd" id="1_61spc"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_5dr1s"]
 viewport_path = NodePath("SubViewport")

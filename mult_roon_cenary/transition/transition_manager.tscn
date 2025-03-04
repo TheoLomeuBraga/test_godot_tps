@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dmc5e1n6n88h8"]
 
-[ext_resource type="Script" path="res://mult_roon_cenary/transition/transition_manager.gd" id="1_c3uah"]
+[ext_resource type="Script" uid="uid://c8hvye6otkta8" path="res://mult_roon_cenary/transition/transition_manager.gd" id="1_c3uah"]
 
 [node name="TransitionManager" type="Node"]
 script = ExtResource("1_c3uah")

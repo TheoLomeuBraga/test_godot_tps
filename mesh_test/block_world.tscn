@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://bg7l6623crego"]
 
 [ext_resource type="MeshLibrary" uid="uid://cwfrs2206ql7c" path="res://mesh_test/cubes.tres" id="1_4y0qc"]
-[ext_resource type="Script" path="res://mesh_test/block_world.gd" id="2_im7ks"]
-[ext_resource type="Shader" path="res://visual_fx_test/sky.gdshader" id="3_68aqp"]
-[ext_resource type="Script" path="res://free_camera/free_camera.gd" id="3_dofkp"]
+[ext_resource type="Script" uid="uid://bwgbo8c7kl7uq" path="res://mesh_test/block_world.gd" id="2_im7ks"]
+[ext_resource type="Shader" uid="uid://bu41fvayjajc" path="res://visual_fx_test/sky.gdshader" id="3_68aqp"]
+[ext_resource type="Script" uid="uid://cn8yo2vj3i1ci" path="res://free_camera/free_camera.gd" id="3_dofkp"]
 
 [sub_resource type="Gradient" id="Gradient_3m0dj"]
 colors = PackedColorArray(0, 0.427451, 1, 1, 1, 1, 0.819608, 1)

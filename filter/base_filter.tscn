@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://cip5u2tjcjlip"]
 
-[ext_resource type="Shader" path="res://filter/bee.gdshader" id="1_18lyi"]
-[ext_resource type="Shader" path="res://filter/blur.gdshader" id="2_mkm3v"]
-[ext_resource type="Shader" path="res://filter/mesh_filter.gdshader" id="3_m1a7j"]
+[ext_resource type="Shader" uid="uid://curc502ujb57a" path="res://filter/bee.gdshader" id="1_18lyi"]
+[ext_resource type="Shader" uid="uid://y7wsoqrcvdhx" path="res://filter/blur.gdshader" id="2_mkm3v"]
+[ext_resource type="Shader" uid="uid://cvcrthxerbsmh" path="res://filter/mesh_filter.gdshader" id="3_m1a7j"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mskii"]
 shader = ExtResource("1_18lyi")

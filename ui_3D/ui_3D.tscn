@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bwat4fpb8ku4f"]
 
-[ext_resource type="Script" path="res://ui_3D/ui_3d.gd" id="1_ej6vi"]
+[ext_resource type="Script" uid="uid://b1g53wyrp043w" path="res://ui_3D/ui_3d.gd" id="1_ej6vi"]
 [ext_resource type="PackedScene" uid="uid://cx5ihnypioi2y" path="res://ui_3D/sliders.tscn" id="2_onq87"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_1yvdk"]

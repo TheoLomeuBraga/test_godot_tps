@@ -1,8 +1,8 @@
 [gd_scene load_steps=64 format=4 uid="uid://bt52j1334q83e"]
 
-[ext_resource type="Script" path="res://free_camera/free_camera.gd" id="1_4ej3y"]
-[ext_resource type="Shader" path="res://visual_fx_test/sky.gdshader" id="2_y2vrv"]
-[ext_resource type="Script" path="res://Ragdoll/death/physical_bone_simulator_3d.gd" id="3_dab1b"]
+[ext_resource type="Script" uid="uid://cn8yo2vj3i1ci" path="res://free_camera/free_camera.gd" id="1_4ej3y"]
+[ext_resource type="Shader" uid="uid://bu41fvayjajc" path="res://visual_fx_test/sky.gdshader" id="2_y2vrv"]
+[ext_resource type="Script" uid="uid://3jvwf7w3io5x" path="res://Ragdoll/death/physical_bone_simulator_3d.gd" id="3_dab1b"]
 
 [sub_resource type="Gradient" id="Gradient_4v3ba"]
 

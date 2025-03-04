@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://d1c07nkj4pwh0"]
 
-[ext_resource type="Script" path="res://atention_graber/atention_graber.gd" id="1_c1v1k"]
-[ext_resource type="Script" path="res://free_camera/free_camera.gd" id="1_mi5fa"]
+[ext_resource type="Script" uid="uid://bdamlc0taxtfp" path="res://atention_graber/atention_graber.gd" id="1_c1v1k"]
+[ext_resource type="Script" uid="uid://cn8yo2vj3i1ci" path="res://free_camera/free_camera.gd" id="1_mi5fa"]
 [ext_resource type="AudioStream" uid="uid://bwyxul3jgag5o" path="res://sfx/atention.wav" id="2_j54b0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e3ugu"]

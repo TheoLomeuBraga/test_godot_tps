@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ck3iavac8e85t"]
 
-[ext_resource type="Script" path="res://localization_test/localization_test.gd" id="1_didsb"]
+[ext_resource type="Script" uid="uid://dc0ghnnafldfv" path="res://localization_test/localization_test.gd" id="1_didsb"]
 [ext_resource type="PackedScene" uid="uid://bpbxwf0wucclr" path="res://ajust_ui_resolution/AjustUiScale.tscn" id="2_q5ou8"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ayvd8"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://jb3cu6e613sl"]
 
-[ext_resource type="Script" path="res://rouglike_room/room_template/room_template.gd" id="1_galfv"]
-[ext_resource type="Script" path="res://rouglike_room/room_template/random_color.gd" id="2_g3ug2"]
+[ext_resource type="Script" uid="uid://dbo4rdbuv4tfl" path="res://rouglike_room/room_template/room_template.gd" id="1_galfv"]
+[ext_resource type="Script" uid="uid://cm7w2vpwb4qjj" path="res://rouglike_room/room_template/random_color.gd" id="2_g3ug2"]
 [ext_resource type="PackedScene" uid="uid://cmoxh6ri16wig" path="res://rouglike_room/room_template/arow.tscn" id="2_sob0l"]
 
 [node name="RoomTemplate" type="Node3D" node_paths=PackedStringArray("exit")]

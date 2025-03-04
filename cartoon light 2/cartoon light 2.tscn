@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://diu42tu1xixa"]
 
-[ext_resource type="Shader" path="res://cartoon light 2/sky.gdshader" id="1_k2ouq"]
-[ext_resource type="Shader" path="res://cartoon light 2/cartoon.gdshader" id="2_3vt1i"]
+[ext_resource type="Shader" uid="uid://dv8d733tyqk52" path="res://cartoon light 2/sky.gdshader" id="1_k2ouq"]
+[ext_resource type="Shader" uid="uid://bqc71u87fwcyk" path="res://cartoon light 2/cartoon.gdshader" id="2_3vt1i"]
 
 [sub_resource type="Gradient" id="Gradient_8nsof"]
 colors = PackedColorArray(0.176242, 0.000329359, 0.434636, 1, 0, 0.610816, 0.610816, 1)
@@ -36,7 +36,7 @@ shader = ExtResource("2_3vt1i")
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 0.0
-shader_parameter/metallic_texture_channel = null
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
 shader_parameter/specular = 0.0
 shader_parameter/metallic = 0.0
 shader_parameter/uv1_scale = Vector3(1, 1, 1)

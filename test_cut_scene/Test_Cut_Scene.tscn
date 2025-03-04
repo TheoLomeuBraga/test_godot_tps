@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://bhkskqyx76cni"]
 
-[ext_resource type="Script" path="res://test_cut_scene/test_cut_scene.gd" id="1_vd0u0"]
-[ext_resource type="Script" path="res://geral_scripts/WaitUntilInput.gd" id="2_q84pk"]
-[ext_resource type="Script" path="res://geral_scripts/write_text.gd" id="3_g3s5r"]
+[ext_resource type="Script" uid="uid://b5rggj3hwtims" path="res://test_cut_scene/test_cut_scene.gd" id="1_vd0u0"]
+[ext_resource type="Script" uid="uid://dvxbxblr5gt15" path="res://geral_scripts/WaitUntilInput.gd" id="2_q84pk"]
+[ext_resource type="Script" uid="uid://bekj41dbrhxmj" path="res://geral_scripts/write_text.gd" id="3_g3s5r"]
 [ext_resource type="PackedScene" uid="uid://b12vnr2erljj7" path="res://test_cut_scene/mr_human.tscn" id="5_13uf2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2pauk"]
@@ -66,8 +66,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5co3k"]
 _data = {
-"RESET": SubResource("Animation_53y86"),
-"act_1": SubResource("Animation_n860n")
+&"RESET": SubResource("Animation_53y86"),
+&"act_1": SubResource("Animation_n860n")
 }
 
 [sub_resource type="Environment" id="Environment_d08si"]

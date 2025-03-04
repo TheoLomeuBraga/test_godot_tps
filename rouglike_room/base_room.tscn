@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://cd5dpoxa6sm4v"]
 
-[ext_resource type="Script" path="res://rouglike_room/base_room.gd" id="1_ivp6s"]
+[ext_resource type="Script" uid="uid://3df48ceg1g6s" path="res://rouglike_room/base_room.gd" id="1_ivp6s"]
 [ext_resource type="PackedScene" uid="uid://jb3cu6e613sl" path="res://rouglike_room/room_template/room_template.tscn" id="2_dwt8j"]
 [ext_resource type="PackedScene" uid="uid://c6qq3npscggfc" path="res://rouglike_room/room_template/rooms/long_room.tscn" id="3_6jpsl"]
 [ext_resource type="PackedScene" uid="uid://cyw33luqo42uf" path="res://rouglike_room/room_template/rooms/long_room2.tscn" id="4_w3ua6"]
