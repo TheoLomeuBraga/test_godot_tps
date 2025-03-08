@@ -31,10 +31,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("hide_mouse"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		$base_camera_x/SpringArm3D.spring_length = move_toward($base_camera_x/SpringArm3D.spring_length,0.75,delta * 10)
-		$base_camera_x/SpringArm3D.position = $base_camera_x/SpringArm3D.position.move_toward($base_camera_x/base_aim.position,delta * 10)
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		$base_camera_x/SpringArm3D.spring_length = move_toward($base_camera_x/SpringArm3D.spring_length,2,delta * 10)
-		$base_camera_x/SpringArm3D.position = $base_camera_x/SpringArm3D.position.move_toward($base_camera_x/base_pos.position,delta * 10)
-		
 	

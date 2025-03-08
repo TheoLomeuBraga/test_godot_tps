@@ -8894,14 +8894,8 @@ script = ExtResource("3_r5xbj")
 [node name="base_camera_x" type="Node3D" parent="base_camera_y"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.522773, 0)
 
-[node name="base_pos" type="Node3D" parent="base_camera_y/base_camera_x"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.5)
-
-[node name="base_aim" type="Node3D" parent="base_camera_y/base_camera_x"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, 0.25)
-
 [node name="SpringArm3D" type="SpringArm3D" parent="base_camera_y/base_camera_x"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1, -0.5)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.1, 1, -0.5)
 spring_length = 2.0
 margin = 0.5
 
