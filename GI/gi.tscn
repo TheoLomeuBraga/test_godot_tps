@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://jeokfl3fyai6"]
+[gd_scene load_steps=16 format=3 uid="uid://jeokfl3fyai6"]
 
 [ext_resource type="LightmapGIData" uid="uid://bwkacp7fptrwp" path="res://GI/gi.lmbake" id="1_wtpft"]
 
@@ -37,11 +37,33 @@ lightmap_size_hint = Vector2i(17, 9)
 material = SubResource("StandardMaterial3D_x85w0")
 add_uv2 = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wtpft"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 0.568627, 0, 1)
+emission_energy_multiplier = 2.0
+distance_fade_min_distance = 1.1
+distance_fade_max_distance = 5.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_qhkj3"]
+lightmap_size_hint = Vector2i(17, 9)
+material = SubResource("StandardMaterial3D_wtpft")
+add_uv2 = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x0ui3"]
+metallic = 0.75
+metallic_specular = 1.0
+roughness = 0.3
+
+[sub_resource type="SphereMesh" id="SphereMesh_yqu1l"]
+lightmap_size_hint = Vector2i(17, 9)
+material = SubResource("StandardMaterial3D_x0ui3")
+add_uv2 = true
+
 [sub_resource type="Environment" id="Environment_u1u5r"]
 ambient_light_source = 2
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_yybfq"]
-auto_exposure_enabled = true
 
 [node name="Gi" type="Node3D"]
 
@@ -66,12 +88,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 0)
 mesh = SubResource("SphereMesh_a8ugn")
 skeleton = NodePath("../..")
 
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="group_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 0)
+mesh = SubResource("SphereMesh_qhkj3")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="group_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("SphereMesh_yqu1l")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="group_1"]
 environment = SubResource("Environment_u1u5r")
 
 [node name="LightmapGI" type="LightmapGI" parent="group_1"]
 camera_attributes = SubResource("CameraAttributesPractical_yybfq")
 light_data = ExtResource("1_wtpft")
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="group_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="Camera3D" type="Camera3D" parent="group_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
