@@ -1,43 +1,40 @@
-[gd_scene load_steps=16 format=3 uid="uid://jeokfl3fyai6"]
+[gd_scene load_steps=42 format=3 uid="uid://jeokfl3fyai6"]
 
 [ext_resource type="LightmapGIData" uid="uid://bwkacp7fptrwp" path="res://GI/gi.lmbake" id="1_wtpft"]
+[ext_resource type="VoxelGIData" uid="uid://b1xakquk6303h" path="res://GI/gi.VoxelGI_data.res" id="2_qhkj3"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qhkj3"]
+[sub_resource type="Environment" id="Environment_u1u5r"]
+ambient_light_source = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cqmbu"]
 albedo_color = Color(1, 0, 0, 1)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_x0ui3"]
-lightmap_size_hint = Vector2i(52, 52)
-material = SubResource("StandardMaterial3D_qhkj3")
-add_uv2 = true
+[sub_resource type="PlaneMesh" id="PlaneMesh_tlk1q"]
+material = SubResource("StandardMaterial3D_cqmbu")
 size = Vector2(10, 10)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yqu1l"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1yfba"]
 albedo_color = Color(0, 1, 0, 1)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_cqmbu"]
-lightmap_size_hint = Vector2i(52, 52)
-material = SubResource("StandardMaterial3D_yqu1l")
-add_uv2 = true
+[sub_resource type="PlaneMesh" id="PlaneMesh_x85w0"]
+material = SubResource("StandardMaterial3D_1yfba")
 size = Vector2(10, 10)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tlk1q"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a8ugn"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_1yfba"]
-lightmap_size_hint = Vector2i(14, 21)
-material = SubResource("StandardMaterial3D_tlk1q")
-add_uv2 = true
+[sub_resource type="BoxMesh" id="BoxMesh_u1u5r"]
+material = SubResource("StandardMaterial3D_a8ugn")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x85w0"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yybfq"]
 albedo_color = Color(0, 0, 0, 1)
 emission_enabled = true
 emission = Color(0, 1, 1, 1)
 
-[sub_resource type="SphereMesh" id="SphereMesh_a8ugn"]
-lightmap_size_hint = Vector2i(17, 9)
-material = SubResource("StandardMaterial3D_x85w0")
-add_uv2 = true
+[sub_resource type="SphereMesh" id="SphereMesh_i8ytj"]
+material = SubResource("StandardMaterial3D_yybfq")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wtpft"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ia4l"]
 albedo_color = Color(0, 0, 0, 1)
 emission_enabled = true
 emission = Color(1, 0.568627, 0, 1)
@@ -45,67 +42,211 @@ emission_energy_multiplier = 2.0
 distance_fade_min_distance = 1.1
 distance_fade_max_distance = 5.0
 
-[sub_resource type="SphereMesh" id="SphereMesh_qhkj3"]
-lightmap_size_hint = Vector2i(17, 9)
-material = SubResource("StandardMaterial3D_wtpft")
-add_uv2 = true
+[sub_resource type="SphereMesh" id="SphereMesh_mp0ab"]
+material = SubResource("StandardMaterial3D_5ia4l")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x0ui3"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uw85u"]
 metallic = 0.75
 metallic_specular = 1.0
 roughness = 0.3
 
-[sub_resource type="SphereMesh" id="SphereMesh_yqu1l"]
-lightmap_size_hint = Vector2i(17, 9)
-material = SubResource("StandardMaterial3D_x0ui3")
+[sub_resource type="SphereMesh" id="SphereMesh_8rc8l"]
+material = SubResource("StandardMaterial3D_uw85u")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u1u5r"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_yybfq"]
+lightmap_size_hint = Vector2i(50, 50)
+material = SubResource("StandardMaterial3D_u1u5r")
+add_uv2 = true
+uv2_padding = 0.0
+size = Vector2(10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i8ytj"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5ia4l"]
+lightmap_size_hint = Vector2i(52, 52)
+material = SubResource("StandardMaterial3D_i8ytj")
+add_uv2 = true
+size = Vector2(10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mp0ab"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_uw85u"]
+lightmap_size_hint = Vector2i(14, 21)
+material = SubResource("StandardMaterial3D_mp0ab")
 add_uv2 = true
 
-[sub_resource type="Environment" id="Environment_u1u5r"]
-ambient_light_source = 2
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8rc8l"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(0, 1, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_td33u"]
+lightmap_size_hint = Vector2i(17, 9)
+material = SubResource("StandardMaterial3D_8rc8l")
+add_uv2 = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u7337"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 0.568627, 0, 1)
+emission_energy_multiplier = 2.0
+distance_fade_min_distance = 1.1
+distance_fade_max_distance = 5.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_ffomj"]
+lightmap_size_hint = Vector2i(17, 9)
+material = SubResource("StandardMaterial3D_u7337")
+add_uv2 = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7aajx"]
+metallic = 0.75
+metallic_specular = 1.0
+roughness = 0.3
+
+[sub_resource type="SphereMesh" id="SphereMesh_qai24"]
+lightmap_size_hint = Vector2i(17, 9)
+material = SubResource("StandardMaterial3D_7aajx")
+add_uv2 = true
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_yybfq"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wtpft"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qhkj3"]
+material = SubResource("StandardMaterial3D_wtpft")
+size = Vector2(10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x0ui3"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_yqu1l"]
+material = SubResource("StandardMaterial3D_x0ui3")
+size = Vector2(10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tlk1q"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_1yfba"]
+material = SubResource("StandardMaterial3D_tlk1q")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x85w0"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(0, 1, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_a8ugn"]
+material = SubResource("StandardMaterial3D_x85w0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_td33u"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 0.568627, 0, 1)
+emission_energy_multiplier = 2.0
+distance_fade_min_distance = 1.1
+distance_fade_max_distance = 5.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_u7337"]
+material = SubResource("StandardMaterial3D_td33u")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ffomj"]
+metallic = 0.75
+metallic_specular = 1.0
+roughness = 0.3
+
+[sub_resource type="SphereMesh" id="SphereMesh_7aajx"]
+material = SubResource("StandardMaterial3D_ffomj")
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_x0ui3"]
+
 [node name="Gi" type="Node3D"]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_u1u5r")
+
+[node name="group_0" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="group_0"]
+mesh = SubResource("PlaneMesh_tlk1q")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="group_0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 4, -2)
+mesh = SubResource("PlaneMesh_x85w0")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="group_0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_u1u5r")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="group_0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 0)
+mesh = SubResource("SphereMesh_i8ytj")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="group_0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 0)
+mesh = SubResource("SphereMesh_mp0ab")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="group_0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("SphereMesh_8rc8l")
+
+[node name="Camera3D" type="Camera3D" parent="group_0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="group_0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 0.74524
+
 [node name="group_1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="group_1"]
-mesh = SubResource("PlaneMesh_x0ui3")
+mesh = SubResource("PlaneMesh_yybfq")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="group_1"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 4, -2)
-mesh = SubResource("PlaneMesh_cqmbu")
+mesh = SubResource("PlaneMesh_5ia4l")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="group_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("BoxMesh_1yfba")
+mesh = SubResource("BoxMesh_uw85u")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="group_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 0)
-mesh = SubResource("SphereMesh_a8ugn")
+mesh = SubResource("SphereMesh_td33u")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="group_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 0)
-mesh = SubResource("SphereMesh_qhkj3")
+mesh = SubResource("SphereMesh_ffomj")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="group_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-mesh = SubResource("SphereMesh_yqu1l")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="group_1"]
-environment = SubResource("Environment_u1u5r")
+mesh = SubResource("SphereMesh_qai24")
 
 [node name="LightmapGI" type="LightmapGI" parent="group_1"]
+quality = 0
 camera_attributes = SubResource("CameraAttributesPractical_yybfq")
 light_data = ExtResource("1_wtpft")
 
 [node name="ReflectionProbe" type="ReflectionProbe" parent="group_1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+size = Vector3(10, 10, 10)
+ambient_mode = 2
+ambient_color_energy = 0.0
 
 [node name="Camera3D" type="Camera3D" parent="group_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
@@ -115,3 +256,50 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
 light_bake_mode = 1
 shadow_enabled = true
 omni_range = 0.74524
+
+[node name="group_2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="group_2"]
+mesh = SubResource("PlaneMesh_qhkj3")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="group_2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 4, -2)
+mesh = SubResource("PlaneMesh_yqu1l")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="group_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_1yfba")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="group_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 0)
+mesh = SubResource("SphereMesh_a8ugn")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="group_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 0)
+mesh = SubResource("SphereMesh_u7337")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="group_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("SphereMesh_7aajx")
+
+[node name="Camera3D" type="Camera3D" parent="group_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="group_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 0.74524
+
+[node name="VoxelGI" type="VoxelGI" parent="group_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+subdiv = 0
+size = Vector3(10, 10, 10)
+camera_attributes = SubResource("CameraAttributesPractical_x0ui3")
+data = ExtResource("2_qhkj3")
