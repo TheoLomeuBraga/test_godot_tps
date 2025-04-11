@@ -46,12 +46,27 @@ distance_fade_max_distance = 5.0
 material = SubResource("StandardMaterial3D_5ia4l")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uw85u"]
-metallic = 0.75
+metallic = 1.0
 metallic_specular = 1.0
-roughness = 0.3
+roughness = 0.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_8rc8l"]
 material = SubResource("StandardMaterial3D_uw85u")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qhkj3"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.392157)
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.0
+clearcoat_enabled = true
+clearcoat_roughness = 0.0
+anisotropy = 1.0
+refraction_enabled = true
+refraction_scale = 0.1
+
+[sub_resource type="SphereMesh" id="SphereMesh_x0ui3"]
+material = SubResource("StandardMaterial3D_qhkj3")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u1u5r"]
 albedo_color = Color(1, 0, 0, 1)
@@ -102,14 +117,9 @@ lightmap_size_hint = Vector2i(17, 9)
 material = SubResource("StandardMaterial3D_u7337")
 add_uv2 = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7aajx"]
-metallic = 0.75
-metallic_specular = 1.0
-roughness = 0.3
-
 [sub_resource type="SphereMesh" id="SphereMesh_qai24"]
 lightmap_size_hint = Vector2i(17, 9)
-material = SubResource("StandardMaterial3D_7aajx")
+material = SubResource("StandardMaterial3D_uw85u")
 add_uv2 = true
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_yybfq"]
@@ -152,13 +162,8 @@ distance_fade_max_distance = 5.0
 [sub_resource type="SphereMesh" id="SphereMesh_u7337"]
 material = SubResource("StandardMaterial3D_td33u")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ffomj"]
-metallic = 0.75
-metallic_specular = 1.0
-roughness = 0.3
-
 [sub_resource type="SphereMesh" id="SphereMesh_7aajx"]
-material = SubResource("StandardMaterial3D_ffomj")
+material = SubResource("StandardMaterial3D_uw85u")
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_x0ui3"]
 
@@ -197,6 +202,12 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 mesh = SubResource("SphereMesh_8rc8l")
 
+[node name="ReflectionProbe" type="ReflectionProbe" parent="group_0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+size = Vector3(10, 10, 10)
+ambient_mode = 2
+ambient_color_energy = 0.0
+
 [node name="Camera3D" type="Camera3D" parent="group_0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
 
@@ -204,7 +215,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
 light_bake_mode = 1
 shadow_enabled = true
-omni_range = 0.74524
+omni_range = 7.0
+
+[node name="ReflectionProbe2" type="ReflectionProbe" parent="group_0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+size = Vector3(10, 10, 10)
+ambient_mode = 2
+ambient_color_energy = 0.0
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="group_0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 1)
+mesh = SubResource("SphereMesh_x0ui3")
+
+[node name="ReflectionProbe3" type="ReflectionProbe" parent="group_0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 1)
+blend_distance = 0.01
+max_distance = 10.0
+size = Vector3(1.02, 1.02, 1.02)
+ambient_mode = 2
+ambient_color_energy = 0.0
 
 [node name="group_1" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
@@ -242,20 +271,38 @@ quality = 0
 camera_attributes = SubResource("CameraAttributesPractical_yybfq")
 light_data = ExtResource("1_wtpft")
 
+[node name="Camera3D" type="Camera3D" parent="group_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
+
 [node name="ReflectionProbe" type="ReflectionProbe" parent="group_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 size = Vector3(10, 10, 10)
 ambient_mode = 2
 ambient_color_energy = 0.0
 
-[node name="Camera3D" type="Camera3D" parent="group_1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
-
 [node name="OmniLight3D" type="OmniLight3D" parent="group_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
 light_bake_mode = 1
 shadow_enabled = true
-omni_range = 0.74524
+omni_range = 7.0
+
+[node name="ReflectionProbe2" type="ReflectionProbe" parent="group_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+size = Vector3(10, 10, 10)
+ambient_mode = 2
+ambient_color_energy = 0.0
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="group_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 1)
+mesh = SubResource("SphereMesh_x0ui3")
+
+[node name="ReflectionProbe3" type="ReflectionProbe" parent="group_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 1)
+blend_distance = 0.01
+max_distance = 10.0
+size = Vector3(1.02, 1.02, 1.02)
+ambient_mode = 2
+ambient_color_energy = 0.0
 
 [node name="group_2" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
@@ -288,6 +335,10 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 mesh = SubResource("SphereMesh_7aajx")
 
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="group_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 1)
+mesh = SubResource("SphereMesh_x0ui3")
+
 [node name="Camera3D" type="Camera3D" parent="group_2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
 
@@ -295,11 +346,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
 light_bake_mode = 1
 shadow_enabled = true
-omni_range = 0.74524
+omni_range = 7.0
 
 [node name="VoxelGI" type="VoxelGI" parent="group_2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 1.37866)
 subdiv = 0
-size = Vector3(10, 10, 10)
+size = Vector3(10, 10, 7.24268)
 camera_attributes = SubResource("CameraAttributesPractical_x0ui3")
 data = ExtResource("2_qhkj3")
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="group_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.01422, 0)
+blend_distance = 0.01
+max_distance = 10.0
+size = Vector3(1.02, 1, 1.02)
+ambient_mode = 2
+ambient_color_energy = 0.0
+
+[node name="ReflectionProbe2" type="ReflectionProbe" parent="group_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 1)
+blend_distance = 0.01
+max_distance = 10.0
+size = Vector3(1.02, 1.02, 1.02)
+ambient_mode = 2
+ambient_color_energy = 0.0

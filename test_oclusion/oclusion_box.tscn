@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0emesms2dy07"]
+
+[ext_resource type="ArrayOccluder3D" uid="uid://cyollh1n4civt" path="res://test_oclusion/oclusion_box.occ" id="1_obh5x"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_gf4nj"]
+
+[node name="OclusionBox" type="MeshInstance3D"]
+mesh = SubResource("BoxMesh_gf4nj")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+occluder = ExtResource("1_obh5x")

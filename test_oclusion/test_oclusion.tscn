@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvn7mp7tpwqpb"]
+
+[ext_resource type="PackedScene" uid="uid://c0emesms2dy07" path="res://test_oclusion/oclusion_box.tscn" id="1_agv7i"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_gvvdi"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_agv7i"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_h81w4"]
+
+[node name="TestOclusion" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+mesh = SubResource("SphereMesh_gvvdi")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+mesh = SubResource("PrismMesh_agv7i")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+mesh = SubResource("CylinderMesh_h81w4")
+
+[node name="OclusionBox" parent="." instance=ExtResource("1_agv7i")]
