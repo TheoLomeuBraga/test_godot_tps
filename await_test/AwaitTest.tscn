@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://t7vvprqvcnhf"]
 
-[ext_resource type="Script" uid="uid://x044t1qmnhtc" path="res://await_test/await_test.gd" id="1_mbu3b"]
+[ext_resource type="Script" uid="uid://bln8100m0s66e" path="res://await_test/await_test.gd" id="1_mbu3b"]
 
 [sub_resource type="Environment" id="Environment_3bai0"]
 ambient_light_source = 2
