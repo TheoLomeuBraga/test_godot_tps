@@ -8,6 +8,11 @@
 
 config_version=5
 
+[animation]
+
+warnings/check_invalid_track_paths=false
+warnings/check_angle_interpolation_type_conflicting=false
+
 [application]
 
 config/name="test_godot_tps"
@@ -33,6 +38,10 @@ window/size/viewport_height=480
 window/size/always_on_top=true
 window/stretch/mode="canvas_items"
 window/stretch/aspect="ignore"
+
+[filesystem]
+
+import/blender/enabled=false
 
 [input]
 
