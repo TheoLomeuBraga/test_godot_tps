@@ -8,11 +8,6 @@
 
 config_version=5
 
-[animation]
-
-warnings/check_invalid_track_paths=false
-warnings/check_angle_interpolation_type_conflicting=false
-
 [application]
 
 config/name="test_godot_tps"
@@ -21,10 +16,6 @@ config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/bg_color=Color(0.243137, 0.537255, 0.843137, 1)
 boot_splash/image="res://logo/blue-outline.png"
 config/icon="res://icon.svg"
-
-[audio]
-
-general/text_to_speech=true
 
 [autoload]
 
@@ -104,4 +95,5 @@ locale/translations_pot_files=PackedStringArray("res://localization_test/localiz
 
 [rendering]
 
-occlusion_culling/use_occlusion_culling=true
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
