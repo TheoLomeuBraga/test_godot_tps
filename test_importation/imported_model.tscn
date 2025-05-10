@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4ecbdy0ygtpa"]
+
+[ext_resource type="PackedScene" uid="uid://kwqfhqock2lc" path="res://test_importation/model.glb" id="1_wviqk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wviqk"]
+albedo_color = Color(0.948777, 0.691938, 0.458362, 1)
+
+[node name="model" instance=ExtResource("1_wviqk")]
+
+[node name="Suzanne" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_wviqk")

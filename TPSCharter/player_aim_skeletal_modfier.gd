@@ -3,11 +3,11 @@
 class_name PlayerAimSkeletonModifier
 extends SkeletonModifier3D
 
-@export_enum(" ") var right_head_bone: String
+@export_enum(" ") var head_bone: String
 @export_enum(" ") var right_arm_bone: String
 @export_enum(" ") var spine_bone: String
 
-var bone_property_array : Array[String] = ["right_arm_bone","right_head_bone","spine_bone"]
+var bone_property_array : Array[String] = ["right_arm_bone","head_bone","spine_bone"]
 func _validate_property(property: Dictionary) -> void:
 	for pn in bone_property_array:
 		if property.name == pn:
@@ -18,13 +18,13 @@ func _validate_property(property: Dictionary) -> void:
 			break
 
 
-@export var aim_rotation : float
+@export_range(-90,90) var aim_rotation : float
 
 var skeleton: Skeleton3D
 
 func modfy_head() -> void:
 	
-	var bone_idx: int = skeleton.find_bone(right_head_bone)
+	var bone_idx: int = skeleton.find_bone(head_bone)
 	if bone_idx  == -1:
 		return
 	

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwb00pwi31idu"]
+
+[ext_resource type="PackedScene" uid="uid://bm30tjojpvl28" path="res://test_importation/editable_animation.glb" id="1_3ryot"]
+
+[node name="editable_animation" instance=ExtResource("1_3ryot")]
