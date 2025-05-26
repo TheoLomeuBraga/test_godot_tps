@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://jurtxhso8lfs"]
+
+[ext_resource type="Script" uid="uid://dwedxd56kpf8h" path="res://button_that_create_cube/button_that_create_cube.gd" id="1_c86hj"]
+
+[node name="TestButton" type="Node3D"]
+
+[node name="CubeCreator" type="Node3D" parent="."]
+script = ExtResource("1_c86hj")
+metadata/_custom_type_script = "uid://dwedxd56kpf8h"
