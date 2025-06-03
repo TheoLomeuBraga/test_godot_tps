@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://bu4y023l0n6n3"]
+
+[ext_resource type="Shader" uid="uid://b6u1tapk4uu5s" path="res://particle_based_trail/trail_test_gpu_particles.gdshader" id="1_6ycx0"]
+[ext_resource type="Shader" uid="uid://pjy5uhlk88vy" path="res://particle_based_trail/trail_test_geo.gdshader" id="2_4uncf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4uncf"]
+shader = ExtResource("1_6ycx0")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5237m"]
+render_priority = 0
+shader = ExtResource("2_4uncf")
+
+[sub_resource type="QuadMesh" id="QuadMesh_qm7ks"]
+material = SubResource("ShaderMaterial_5237m")
+
+[node name="TrailTest" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 4
+lifetime = 4.0
+speed_scale = 30.0
+process_material = SubResource("ShaderMaterial_4uncf")
+draw_pass_1 = SubResource("QuadMesh_qm7ks")

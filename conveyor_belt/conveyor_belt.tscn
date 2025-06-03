@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://cfbf86vayeeop"]
+
+[ext_resource type="Script" uid="uid://culh0up64idnx" path="res://conveyor_belt/conveyor_belt.gd" id="1_tg8mm"]
+[ext_resource type="Script" uid="uid://wgxf83erq5qa" path="res://free_camera/free_camera.gd" id="2_ferdf"]
+[ext_resource type="Texture2D" uid="uid://c68cw148tyewa" path="res://conveyor_belt/arow.png" id="2_m002l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nm1it"]
+shading_mode = 0
+albedo_texture = ExtResource("2_m002l")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qsenf"]
+material = SubResource("StandardMaterial3D_nm1it")
+
+[sub_resource type="Environment" id="Environment_ferdf"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[node name="ConveyorBelt" type="Node"]
+script = ExtResource("1_tg8mm")
+conveyor_belt_model = SubResource("PlaneMesh_qsenf")
+
+[node name="FreeCamera" type="Camera3D" parent="."]
+fov = 90.0
+script = ExtResource("2_ferdf")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="FreeCamera"]
+environment = SubResource("Environment_ferdf")
