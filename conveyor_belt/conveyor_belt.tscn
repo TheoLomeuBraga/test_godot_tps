@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cfbf86vayeeop"]
+[gd_scene load_steps=8 format=3 uid="uid://cfbf86vayeeop"]
 
 [ext_resource type="Script" uid="uid://culh0up64idnx" path="res://conveyor_belt/conveyor_belt.gd" id="1_tg8mm"]
 [ext_resource type="Script" uid="uid://wgxf83erq5qa" path="res://free_camera/free_camera.gd" id="2_ferdf"]
@@ -16,6 +16,8 @@ background_mode = 1
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 
+[sub_resource type="MultiMesh" id="MultiMesh_m002l"]
+
 [node name="ConveyorBelt" type="Node"]
 script = ExtResource("1_tg8mm")
 conveyor_belt_model = SubResource("PlaneMesh_qsenf")
@@ -26,3 +28,6 @@ script = ExtResource("2_ferdf")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="FreeCamera"]
 environment = SubResource("Environment_ferdf")
+
+[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="."]
+multimesh = SubResource("MultiMesh_m002l")
