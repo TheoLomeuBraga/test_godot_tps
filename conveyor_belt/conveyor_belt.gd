@@ -48,6 +48,8 @@ func add_belt(position : Vector3i, rotation : Vector3i = Vector3.ZERO,speed : fl
 	update_cb_next_target(position + to_vec3i(Vector3(-1.0,0.0,0.0)))
 	update_cb_next_target(position + to_vec3i(Vector3(0.0,0.0,1.0)))
 	update_cb_next_target(position + to_vec3i(Vector3(0.0,0.0,-1.0)))
+	update_cb_next_target(position + to_vec3i(Vector3(0.0,1.0,0.0)))
+	update_cb_next_target(position + to_vec3i(Vector3(0.0,-1.0,0.0)))
 	
 	update_belts_next = true
 
@@ -84,9 +86,21 @@ func create_simple_test_loop_belt(pos : Vector3i = Vector3.ZERO) -> void:
 	add_item_to_belt(to_vec3i(Vector3(pos) + Vector3(1,0,-1)),"sphere")
 	
 
+func create_simple_test_vertical_loop_belt(pos : Vector3i = Vector3.ZERO) -> void:
+	
+	add_belt(pos,Vector3i(0,-90,90))
+	add_belt(to_vec3i(Vector3(pos) + Vector3(1,0,0)),to_vec3i(Vector3(-90,0,0)))
+	add_belt(to_vec3i(Vector3(pos) + Vector3(0,-1,0)),to_vec3i(Vector3(90,0,0)))
+	add_belt(to_vec3i(Vector3(pos) + Vector3(1,-1,0)),to_vec3i(Vector3(0,90,90)))
+	
+	add_item_to_belt(pos,"cube")
+	add_item_to_belt(to_vec3i(Vector3(pos) + Vector3(1,-1,0)),"sphere")
+	
+
 func start_tests() -> void:
 	create_simple_test_belt()
-	create_simple_test_loop_belt(to_vec3i(Vector3(11,0,0)))
+	create_simple_test_loop_belt(to_vec3i(Vector3(10,0,0)))
+	create_simple_test_vertical_loop_belt(to_vec3i(Vector3(20,0,0)))
 	
 	
 
