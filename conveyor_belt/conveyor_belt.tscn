@@ -10,6 +10,7 @@ albedo_texture = ExtResource("2_m002l")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_qsenf"]
 material = SubResource("StandardMaterial3D_nm1it")
+size = Vector2(1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m002l"]
 albedo_color = Color(0, 0, 1, 1)
