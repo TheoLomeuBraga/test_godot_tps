@@ -9,7 +9,7 @@ var items_mult_mesh_models : Dictionary[String,MultiMeshInstance3D]
 var conveyor_belts : Dictionary[Vector3i,ConveyorBeltData]
 
 var update_belts_next : bool = false
-var clean_items : bool = false
+var clean_items : bool = true
 
 const max_item_per_type_count = 1000
 func initiate_mult_mesh_instance(mesh : Mesh) -> MultiMeshInstance3D:
@@ -21,28 +21,40 @@ func initiate_mult_mesh_instance(mesh : Mesh) -> MultiMeshInstance3D:
 	add_child(mult_mesh)
 	return mult_mesh
 
-func add_belt(position : Vector3i, rotation : Vector3i = Vector3.ZERO) -> void:
+func to_vec3i(v : Vector3) -> Vector3i:
+	return Vector3i(floor(v.x),floor(v.y),floor(v.z))
+
+
+
+func update_cb_next_target(position : Vector3i) -> void:
+	if conveyor_belts.has(position):
+		var belt : ConveyorBeltData = conveyor_belts[position]
+		var next_belt_pos : Vector3i = to_vec3i(belt.to_global(Vector3(0.0,0.0,-1.0)))
+		#print(belt.to_global(Vector3(0.0,0.0,-1.0))," ",to_vec3i(belt.to_global(Vector3(0.0,0.0,-1.0))))
+		if conveyor_belts.has(next_belt_pos):
+			#print(position,"	",next_belt_pos)
+			belt.next = conveyor_belts[next_belt_pos]
+		else:
+			#print(position)
+			belt.next = null
+
+func add_belt(position : Vector3i, rotation : Vector3i = Vector3.ZERO,speed : float = 1.0) -> void:
 	var belt : ConveyorBeltData = ConveyorBeltData.new()
 	add_child(belt)
 	belt.global_position = position
 	belt.global_rotation_degrees = rotation
+	belt.speed = speed
 	conveyor_belts[position] = belt
 	
-	var next_belt : ConveyorBeltData
-	if conveyor_belts.has(Vector3i(belt.to_global(Vector3(0.0,0.0,-1.0)))):
-		next_belt = conveyor_belts[Vector3i(belt.to_global(Vector3(0.0,0.0,-1.0)))]
-	if next_belt != null:
-		belt.next = next_belt
-	
-	var previous_belt : ConveyorBeltData
-	if conveyor_belts.has(Vector3i(belt.to_global(Vector3(0.0,0.0,1.0)))):
-		previous_belt = conveyor_belts[Vector3i(belt.to_global(Vector3(0.0,0.0,1.0)))]
-	if previous_belt != null:
-		previous_belt.next = belt
+	update_cb_next_target(position)
+	update_cb_next_target(position + to_vec3i(Vector3(1.0,0.0,0.0)))
+	update_cb_next_target(position + to_vec3i(Vector3(-1.0,0.0,0.0)))
+	update_cb_next_target(position + to_vec3i(Vector3(0.0,0.0,1.0)))
+	update_cb_next_target(position + to_vec3i(Vector3(0.0,0.0,-1.0)))
 	
 	update_belts_next = true
 
-func add_item_to_belt(belt_position : Vector3i,item_name : String,item_position : Vector3 = Vector3.ZERO) -> void:
+func add_item_to_belt(belt_position : Vector3i,item_name : String,item_position : Vector3 = belt_position) -> void:
 	var item : ConveyorBeltItem = ConveyorBeltItem.new()
 	item.item_name = item_name
 	item.position = item_position
@@ -53,16 +65,38 @@ func add_item_to_belt(belt_position : Vector3i,item_name : String,item_position 
 			return
 		
 	conveyor_belts[belt_position].items.push_back(item)
+
+func create_simple_test_belt(pos : Vector3i = Vector3.ZERO) -> void:
+	for i in range(0,5):
+		add_belt(to_vec3i(Vector3(0,0,-i)) + pos)
+		
+	for i in range(0,10):
+		add_belt(to_vec3i(Vector3(-i,0,-5)) + pos,to_vec3i(Vector3(0,90,0)),5)
+	
+	add_item_to_belt(pos,"cube")
+
+func create_simple_test_loop_belt(pos : Vector3i = Vector3.ZERO) -> void:
+	'''
+	add_belt(pos)
+	add_belt(to_vec3i(1,0,0) + pos,to_vec3i(0,90,0)) # <-
+	add_belt(to_vec3i(0,0,-1) + pos,to_vec3i(0,-90,0))
+	add_belt(to_vec3i(1,0,-1) + pos,to_vec3i(0,180,0))
+	
+	add_item_to_belt(pos,"cube")
+	'''
+	
+	add_belt(Vector3i.ZERO)
+	add_belt(to_vec3i(Vector3(1,0,0)),to_vec3i(Vector3(0,90,0))) # <-
+	add_belt(to_vec3i(Vector3(0,0,-1)),to_vec3i(Vector3(0,-90,0)))
+	add_belt(to_vec3i(Vector3(1,0,-1)),to_vec3i(Vector3(0,180,0)))
+	
+	add_item_to_belt(Vector3i.ZERO,"cube")
 	
 
 func start_tests() -> void:
-	#coveyer_belt_mult_mesh.multimesh.set_instance_transform(0, Transform3D(Basis(), Vector3(0, 0, 0)))
-	#items_mult_mesh_models["cube"].multimesh.set_instance_transform(0, Transform3D(Basis(), Vector3(0, 0, 0)))
+	#create_simple_test_belt()
+	create_simple_test_loop_belt(to_vec3i(Vector3(11,0,0)))
 	
-	for i in range(0,100):
-		add_belt(Vector3i(0,0,-i))
-	
-	add_item_to_belt(Vector3i.ZERO,"cube")
 
 var transform_null : Transform3D
 
@@ -92,14 +126,33 @@ func _process(delta: float) -> void:
 		for mm in items_mult_mesh_models:
 			for i in range(0,max_item_per_type_count):
 				items_mult_mesh_models[mm].multimesh.set_instance_transform(i,transform_null)
+		clean_items = false
 	
 	#update_visual_positions
 	var item_progresion : Dictionary[String,int]
 	for mm in items_mult_mesh_models:
+		
 		item_progresion[mm] = 0
 	
 	for c in get_children():
 		if c is ConveyorBeltData:
-			for i : ConveyorBeltItem in c.items:
-				items_mult_mesh_models[i.item_name].multimesh.set_instance_transform(item_progresion[i.item_name],Transform3D(Basis(),i.position))
-				item_progresion[i.item_name] += 1
+			
+			var cb_end = c.to_global(Vector3(0.0,0.0,-0.5))
+			
+			for i : int in range(0,c.items.size()):
+				
+				var i_data : ConveyorBeltItem = c.items[i]
+				
+				if i_data.valid:
+					
+					items_mult_mesh_models[i_data.item_name].multimesh.set_instance_transform(item_progresion[i_data.item_name],Transform3D(Basis(),i_data.position))
+					item_progresion[i_data.item_name] += 1
+					
+					
+					
+					i_data.position = i_data.position.move_toward(cb_end,c.speed * delta)
+					if i_data.position == cb_end and c.next != null:
+						i_data.valid = false
+						add_item_to_belt(to_vec3i(c.next.position),i_data.item_name,i_data.position)
+						
+						clean_items = true
