@@ -30,12 +30,9 @@ func update_cb_next_target(position : Vector3i) -> void:
 	if conveyor_belts.has(position):
 		var belt : ConveyorBeltData = conveyor_belts[position]
 		var next_belt_pos : Vector3i = to_vec3i(belt.to_global(Vector3(0.0,0.0,-1.0)))
-		#print(belt.to_global(Vector3(0.0,0.0,-1.0))," ",to_vec3i(belt.to_global(Vector3(0.0,0.0,-1.0))))
 		if conveyor_belts.has(next_belt_pos):
-			#print(position,"	",next_belt_pos)
 			belt.next = conveyor_belts[next_belt_pos]
 		else:
-			#print(position)
 			belt.next = null
 
 func add_belt(position : Vector3i, rotation : Vector3i = Vector3.ZERO,speed : float = 1.0) -> void:
@@ -68,34 +65,29 @@ func add_item_to_belt(belt_position : Vector3i,item_name : String,item_position 
 
 func create_simple_test_belt(pos : Vector3i = Vector3.ZERO) -> void:
 	for i in range(0,5):
-		add_belt(to_vec3i(Vector3(0,0,-i)) + pos)
+		add_belt(to_vec3i(Vector3(0,0,-i)) + pos,Vector3i.ZERO,2)
 		
 	for i in range(0,10):
 		add_belt(to_vec3i(Vector3(-i,0,-5)) + pos,to_vec3i(Vector3(0,90,0)),5)
 	
 	add_item_to_belt(pos,"cube")
+	add_item_to_belt(to_vec3i(Vector3(0,0,-5)) + pos,"sphere")
 
 func create_simple_test_loop_belt(pos : Vector3i = Vector3.ZERO) -> void:
-	'''
+	
 	add_belt(pos)
-	add_belt(to_vec3i(1,0,0) + pos,to_vec3i(0,90,0)) # <-
-	add_belt(to_vec3i(0,0,-1) + pos,to_vec3i(0,-90,0))
-	add_belt(to_vec3i(1,0,-1) + pos,to_vec3i(0,180,0))
+	add_belt(to_vec3i(Vector3(pos) + Vector3(1,0,0)),to_vec3i(Vector3(0,90,0))) # <-
+	add_belt(to_vec3i(Vector3(pos) + Vector3(0,0,-1)),to_vec3i(Vector3(0,-90,0)))
+	add_belt(to_vec3i(Vector3(pos) + Vector3(1,0,-1)),to_vec3i(Vector3(0,180,0)))
 	
 	add_item_to_belt(pos,"cube")
-	'''
-	
-	add_belt(Vector3i.ZERO)
-	add_belt(to_vec3i(Vector3(1,0,0)),to_vec3i(Vector3(0,90,0))) # <-
-	add_belt(to_vec3i(Vector3(0,0,-1)),to_vec3i(Vector3(0,-90,0)))
-	add_belt(to_vec3i(Vector3(1,0,-1)),to_vec3i(Vector3(0,180,0)))
-	
-	add_item_to_belt(Vector3i.ZERO,"cube")
+	add_item_to_belt(to_vec3i(Vector3(pos) + Vector3(1,0,-1)),"sphere")
 	
 
 func start_tests() -> void:
-	#create_simple_test_belt()
+	create_simple_test_belt()
 	create_simple_test_loop_belt(to_vec3i(Vector3(11,0,0)))
+	
 	
 
 var transform_null : Transform3D
@@ -110,7 +102,13 @@ func _ready() -> void:
 	
 	start_tests()
 
-
+func process_tests(delta: float) -> void:
+	if conveyor_belts.has(Vector3i(-9,0,-5)):
+		for i in conveyor_belts[Vector3i(-9,0,-5)].items:
+			if i.valid:
+				i.valid = false
+				add_item_to_belt(Vector3i(0,0,0),i.item_name,Vector3i(0,0,0))
+				clean_items = true
 
 
 func _process(delta: float) -> void:
@@ -156,3 +154,5 @@ func _process(delta: float) -> void:
 						add_item_to_belt(to_vec3i(c.next.position),i_data.item_name,i_data.position)
 						
 						clean_items = true
+						
+	process_tests(delta)
