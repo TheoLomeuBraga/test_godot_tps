@@ -11,6 +11,7 @@ var conveyor_belts : Dictionary[Vector3i,ConveyorBeltData]
 var update_belts_next : bool = false
 var clean_items : bool = true
 
+
 const max_item_per_type_count = 100000
 func initiate_mult_mesh_instance(mesh : Mesh) -> MultiMeshInstance3D:
 	var mult_mesh : MultiMeshInstance3D = MultiMeshInstance3D.new()
@@ -34,8 +35,6 @@ func update_cb_next_target(position : Vector3i) -> void:
 		belt_tf_calculator.rotation_degrees = belt.rotation
 		
 		var next_belt_pos : Vector3i = to_vec3i(belt_tf_calculator.to_global(Vector3(0.0,0.0,-1.0)))
-		if Vector3i(belt_tf_calculator.to_global(Vector3(0.0,0.0,-1.0))) != to_vec3i(belt_tf_calculator.to_global(Vector3(0.0,0.0,-1.0))):
-			print(Vector3i(belt_tf_calculator.to_global(Vector3(0.0,0.0,-1.0))),to_vec3i(belt_tf_calculator.to_global(Vector3(0.0,0.0,-1.0))))
 		
 		if conveyor_belts.has(next_belt_pos):
 			belt.next = conveyor_belts[next_belt_pos] # <-
@@ -52,8 +51,6 @@ func add_belt(position : Vector3i, rotation : Vector3i = Vector3.ZERO,speed : fl
 	
 	var belt : ConveyorBeltData = ConveyorBeltData.new()
 	
-
-	
 	belt.position = position
 	belt.rotation = rotation
 	belt.speed = speed
@@ -63,7 +60,7 @@ func add_belt(position : Vector3i, rotation : Vector3i = Vector3.ZERO,speed : fl
 	
 	belt.transform = belt_tf_calculator.transform
 	
-	belt.end = to_vec3i(belt_tf_calculator.to_global(Vector3(0.0,0.0,-0.5)))
+	belt.end = belt_tf_calculator.to_global(Vector3(0.0,0.0,-0.5))
 	conveyor_belts[position] = belt
 	
 	update_cb_next_target(position)
@@ -87,11 +84,12 @@ func belt_has_valid_item(belt_position : Vector3i) -> bool:
 			return true
 	return false
 
-func add_item_to_belt(belt_position : Vector3i,item_name : String,item_position : Vector3 = belt_position) -> void:
+func add_item_to_belt(belt_position : Vector3i,item_name : String,item_position : Vector3 = belt_position, visible : bool = true) -> void:
 	var item : ConveyorBeltItem = ConveyorBeltItem.new()
 	item.item_name = item_name
 	item.position = item_position
 	item.valid = true
+	item.visible = visible
 	for i in conveyor_belts[belt_position].items.size():
 		if not conveyor_belts[belt_position].items[i].valid:
 			conveyor_belts[belt_position].items[i] = item
@@ -116,6 +114,7 @@ func create_simple_test_loop_belt(pos : Vector3i = Vector3.ZERO) -> void:
 	add_belt(to_vec3i(Vector3(pos) + Vector3(0,0,-1)),to_vec3i(Vector3(0,-90,0)))
 	add_belt(to_vec3i(Vector3(pos) + Vector3(1,0,-1)),to_vec3i(Vector3(0,180,0)))
 	
+	
 	add_item_to_belt(pos,"cube")
 	add_item_to_belt(to_vec3i(Vector3(pos) + Vector3(1,0,-1)),"sphere")
 	
@@ -130,7 +129,7 @@ func create_simple_test_vertical_loop_belt(pos : Vector3i = Vector3.ZERO) -> voi
 	add_item_to_belt(pos,"cube")
 	add_item_to_belt(to_vec3i(Vector3(pos) + Vector3(1,-1,0)),"sphere")
 
-func create_simple_test_mega_belt(pos : Vector3i = Vector3.ZERO) -> void:
+func create_simple_test_mega_belt(pos : Vector3i = Vector3.ZERO,visible : bool = true) -> void:
 	add_belt(pos,Vector3(0,0,0),20)
 	add_belt(to_vec3i(Vector3(pos) + Vector3(1,0,0)),to_vec3i(Vector3(0,90,0)),20)
 	
@@ -139,21 +138,19 @@ func create_simple_test_mega_belt(pos : Vector3i = Vector3.ZERO) -> void:
 	for i in range(1,100):
 		add_belt(pos + Vector3i(0,0,-i), Vector3(0,0,0) ,belt_speed)
 		add_belt(pos + Vector3i(1,0,-i), Vector3(0,180,0) ,belt_speed)
-		
+	
 	
 	for i in range(10,90):
 		if i % 2 == 1:
-			add_item_to_belt(pos + Vector3i(0,0,-i),"cube")
-			add_item_to_belt(pos + Vector3i(1,0,-i),"cube")
+			add_item_to_belt(pos + Vector3i(0,0,-i),"cube",pos + Vector3i(0,0,-i),visible)
+			add_item_to_belt(pos + Vector3i(1,0,-i),"cube",pos + Vector3i(0,0,-i),visible)
 		else:
-			add_item_to_belt(pos + Vector3i(0,0,-i),"sphere")
-			add_item_to_belt(pos + Vector3i(1,0,-i),"sphere")
+			add_item_to_belt(pos + Vector3i(0,0,-i),"sphere",pos + Vector3i(0,0,-i),visible)
+			add_item_to_belt(pos + Vector3i(1,0,-i),"sphere",pos + Vector3i(0,0,-i),visible)
 	
 	add_belt(to_vec3i(Vector3(pos) + Vector3(0,0,-100)),to_vec3i(Vector3(0,-90,0)),belt_speed)
 	add_belt(to_vec3i(Vector3(pos) + Vector3(1,0,-100)),to_vec3i(Vector3(0,180,0)),belt_speed)
 	
-	#add_item_to_belt(pos,"cube")
-	#add_item_to_belt(to_vec3i(Vector3(pos) + Vector3(1,0,-1)),"sphere")
 
 func start_tests() -> void:
 	
@@ -161,10 +158,9 @@ func start_tests() -> void:
 	create_simple_test_loop_belt(to_vec3i(Vector3(10,0,0)))
 	create_simple_test_vertical_loop_belt(to_vec3i(Vector3(20,0,0)))
 	
-	
-	for i in range(0,20):
+	for i in range(0,50):
 		create_simple_test_mega_belt(to_vec3i(Vector3(30 + (i * 2),0,0)))
-	
+	print("belt count: ",belt_count)
 
 
 var transform_null : Transform3D
@@ -192,9 +188,10 @@ func process_tests(delta: float) -> void:
 
 
 
-var global_delta : float = 1.0/60.0
+var global_delta : float = 0.0 # 1.0/ Engine.max_fps
+var global_delta_acumolator : float = 0.0
 
-var aAa : float = 0.0
+
 
 func process_single_belt(id : int) -> void:
 	
@@ -210,11 +207,8 @@ func process_single_belt(id : int) -> void:
 			i_data.position = i_data.position.move_toward(c.end,c.speed * global_delta)
 			if i_data.position == c.end and c.next != null and not belt_has_valid_item(to_vec3i(c.next.position)):
 				
-				#if aAa > 5:
-				#	print(c.position," ",c.next.position)
-				
 				i_data.valid = false
-				add_item_to_belt(to_vec3i(c.next.position),i_data.item_name,i_data.position)
+				add_item_to_belt(to_vec3i(c.next.position),i_data.item_name,i_data.position,i_data.visible)
 					
 				clean_items = true
 
@@ -244,7 +238,7 @@ func update_belt_visual() -> void:
 		var c : ConveyorBeltData = belts_array[id]
 		for i : int in c.items.size():
 			var i_data : ConveyorBeltItem = c.items[i]
-			if i_data.valid:
+			if i_data.valid and i_data.visible:
 				items_mult_mesh_models[i_data.item_name].multimesh.set_instance_transform(item_progresion[i_data.item_name],Transform3D(Basis(),i_data.position))
 				item_progresion[i_data.item_name] += 1
 	
@@ -261,15 +255,20 @@ func process_belts(delta: float) -> void:
 	if belt_task_id == -1:
 		belt_task_id = WorkerThreadPool.add_group_task(process_single_belt, belts_array.size())
 	
+	global_delta_acumolator += delta
 	if WorkerThreadPool.is_group_task_completed(belt_task_id):
+		global_delta = global_delta_acumolator
+		global_delta_acumolator = 0
 		update_belt_visual()
 		belt_task_id = WorkerThreadPool.add_group_task(process_single_belt, belts_array.size())
-		
 	
 	
 	process_tests(delta)
 
 
 func _process(delta: float) -> void:
-	aAa += delta
 	process_belts(delta)
+
+func _exit_tree() -> void:
+	if not WorkerThreadPool.is_group_task_completed(belt_task_id):
+		WorkerThreadPool.wait_for_group_task_completion(belt_task_id)
