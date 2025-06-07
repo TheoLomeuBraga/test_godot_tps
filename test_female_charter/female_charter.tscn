@@ -1,9 +1,9 @@
 [gd_scene load_steps=19 format=4 uid="uid://b6rx48yc6h4no"]
 
-[ext_resource type="Shader" uid="uid://bu41fvayjajc" path="res://visual_fx_test/sky.gdshader" id="1_g22hq"]
-[ext_resource type="Shader" uid="uid://dbtfac0xat2f7" path="res://test_female_charter/toom_shader_vertex.gdshader" id="2_tsrd5"]
+[ext_resource type="Shader" uid="uid://buctuo4aa10u6" path="res://visual_fx_test/sky.gdshader" id="1_g22hq"]
+[ext_resource type="Shader" uid="uid://dpgygwq6usclm" path="res://test_female_charter/toom_shader_vertex.gdshader" id="2_tsrd5"]
 [ext_resource type="Texture2D" uid="uid://bqms0w7bw3qvy" path="res://test_female_charter/shading_gradient.tres" id="3_4a0qx"]
-[ext_resource type="Shader" uid="uid://b36s5pxkat2jv" path="res://test_female_charter/toom_shader.gdshader" id="4_nmesb"]
+[ext_resource type="Shader" uid="uid://bdmj0xepkvh4h" path="res://test_female_charter/toom_shader.gdshader" id="4_nmesb"]
 [ext_resource type="Texture2D" uid="uid://b5afiu5achyuc" path="res://test_female_charter/lowpoly_hypoly_charter_test_head.png" id="5_n0ic7"]
 
 [sub_resource type="Gradient" id="Gradient_2yvl8"]

@@ -30,6 +30,10 @@ window/size/always_on_top=true
 window/stretch/mode="canvas_items"
 window/stretch/aspect="ignore"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/qodot/plugin.cfg")
+
 [filesystem]
 
 import/blender/enabled=false
