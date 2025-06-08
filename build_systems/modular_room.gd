@@ -13,7 +13,10 @@ class_name ModularRoom
 func set_module(dir : Vector3, on : bool) -> void:
 	var n : ModularRoomPart = modules[dir]
 	if n != null:
-		n.set_part(ModularRoomPart.Parts.NONE)
+		if on:
+			n.set_part(ModularRoomPart.Parts.WALL)
+		else:
+			n.set_part(ModularRoomPart.Parts.NONE)
 
 func reset() -> void:
 	for pos : Vector3 in modules:

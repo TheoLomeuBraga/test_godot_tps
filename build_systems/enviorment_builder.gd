@@ -26,11 +26,9 @@ func update_room(pos : Vector3) -> void:
 		
 		if modular_rooms.has(pos + Vector3(0.0,5.0,0.0)):
 			room.set_module(Vector3.UP,false)
-			print("up")
 		
 		if modular_rooms.has(pos + Vector3(0.0,-5.0,0.0)):
 			room.set_module(Vector3.DOWN,false)
-			print("down")
 		
 		if modular_rooms.has(pos + Vector3(0.0,0.0,5.0)):
 			room.set_module(Vector3.BACK,false)

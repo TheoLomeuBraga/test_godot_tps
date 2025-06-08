@@ -1,2 +1,2 @@
 extends ModularRoomPart
-class_name ModularRoomWall
+class_name ModularRoomFloor
