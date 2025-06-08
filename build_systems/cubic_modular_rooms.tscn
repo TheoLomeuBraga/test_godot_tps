@@ -1,0 +1,91 @@
+[gd_scene load_steps=16 format=4 uid="uid://c3vqhkfimwj5k"]
+
+[ext_resource type="Shader" uid="uid://dv8d733tyqk52" path="res://cartoon light 2/sky.gdshader" id="1_2d0ib"]
+[ext_resource type="Script" uid="uid://vavt26qule3o" path="res://build_systems/enviorment_builder.gd" id="2_2366k"]
+[ext_resource type="Script" uid="uid://cn8yo2vj3i1ci" path="res://free_camera/free_camera.gd" id="2_dhxk6"]
+[ext_resource type="PackedScene" uid="uid://bon62aicdl3vv" path="res://build_systems/modular_room.tscn" id="3_2366k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dhxk6"]
+transparency = 1
+albedo_color = Color(0, 1, 1, 0.392157)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2366k"]
+material = SubResource("StandardMaterial3D_dhxk6")
+size = Vector3(5, 5, 5)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_dhxk6"]
+_surfaces = [{
+"aabb": AABB(-2.50058, -2.50058, -2.50058, 5.00115, 5.00115, 5.00115),
+"attribute_data": PackedByteArray("AAAAAAAAAACrqio/AAAAAKuqqj4AAAAAAACAPwAAAAAAAAAAAAAAP6uqKj8AAAA/q6qqPgAAAD8AAIA/AAAAP6uqqj4AAAAAAAAAAAAAAD+rqio/AAAAAKuqqj4AAAA/q6qqPgAAAD8AAAAAAACAP6uqKj8AAAA/q6qqPgAAgD+rqqo+AAAAP6uqKj8AAAA/q6oqPwAAAD8AAIA/AAAAP6uqqj4AAIA/q6oqPwAAgD+rqio/AACAPwAAgD8AAIA/"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAAEAAIAAgAEAAYAAQAFAAMAAwAFAAcACAAMAAoACgAMAA4ACQANAAsACwANAA8AEAAUABIAEgAUABYAEQAVABMAEwAVABcA"),
+"material": SubResource("StandardMaterial3D_dhxk6"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("dgkgwHYJIEB2CSBAdgkgQHYJIEB2CSDAdgkgQHYJIEB2CSBAdgkgwHYJIEB2CSDAdgkgwHYJIMB2CSBAdgkgQHYJIMB2CSDAdgkgQHYJIMB2CSBAdgkgwHYJIMB2CSDAdgkgQHYJIEB2CSBAdgkgwHYJIEB2CSDAdgkgQHYJIEB2CSDAdgkgwHYJIEB2CSBAdgkgQHYJIMB2CSBAdgkgwHYJIMB2CSDAdgkgQHYJIMB2CSDAdgkgwHYJIMB2CSBAdgkgQHYJIEB2CSBAdgkgwHYJIMB2CSBAdgkgwHYJIEB2CSBAdgkgQHYJIMB2CSBAdgkgQHYJIEB2CSDAdgkgwHYJIMB2CSDAdgkgwHYJIEB2CSDAdgkgQHYJIMB2CSDA/3//f////7//////AAD/v/9//3////+//////wAA/7//f/9/////v/////8AAP+//3//f////7//////AAD/v///AID/////AAAAgP9//7///wCA/////wAAAID/f/+///8AgP////8AAACA/3//v///AID/////AAAAgP9//78AgP//AAD/vwCAAAD///+/AID//wAA/78AgAAA////vwCA//8AAP+/AIAAAP///78AgP//AAD/vwCAAAD///+/")
+}]
+
+[sub_resource type="Gradient" id="Gradient_2366k"]
+colors = PackedColorArray(0.176242, 0.000329359, 0.434636, 1, 0, 0.610816, 0.610816, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4frrt"]
+gradient = SubResource("Gradient_2366k")
+width = 32
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uco5w"]
+shader = ExtResource("1_2d0ib")
+shader_parameter/gradient = SubResource("GradientTexture1D_4frrt")
+
+[sub_resource type="Sky" id="Sky_urpwu"]
+sky_material = SubResource("ShaderMaterial_uco5w")
+
+[sub_resource type="Environment" id="Environment_yusqw"]
+background_mode = 2
+sky = SubResource("Sky_urpwu")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2d0ib"]
+albedo_color = Color(0.309804, 0.286275, 0.2, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2d0ib"]
+material = SubResource("StandardMaterial3D_2d0ib")
+size = Vector2(100, 100)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_dhxk6"]
+data = PackedVector3Array(50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0, -50, 50, 0, -50)
+
+[node name="CubicModularRooms" type="Node3D"]
+
+[node name="FreeCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+fov = 90.0
+script = ExtResource("2_dhxk6")
+metadata/_custom_type_script = "uid://cn8yo2vj3i1ci"
+
+[node name="EnviormentBuilder" type="Node" parent="FreeCamera"]
+script = ExtResource("2_2366k")
+room_model = ExtResource("3_2366k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FreeCamera/EnviormentBuilder"]
+mesh = SubResource("BoxMesh_2366k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FreeCamera/EnviormentBuilder/MeshInstance3D"]
+mesh = SubResource("ArrayMesh_dhxk6")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_yusqw")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.577987, -0.576076, -0.577987, 0.707107, -3.09086e-08, 0.707107, -0.407347, -0.817396, 0.407347, 0, 3, 35)
+
+[node name="floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_2d0ib")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_dhxk6")
