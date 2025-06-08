@@ -102,5 +102,31 @@ func _physics_process(delta: float) -> void:
 					modular_rooms.erase(room_pos)
 					room.queue_free()
 					update_surounding_rooms(room_pos)
+			elif result["collider"].get_parent().get_parent().get_parent() is ModularRoom:
+				var room : ModularRoom = result["collider"].get_parent().get_parent().get_parent()
+				var room_pos : Vector3 = room.global_position
+				
+				indicator.global_position = room_pos
+				
+				if Input.is_action_just_pressed("shot"):
+					modular_rooms.erase(room_pos)
+					room.queue_free()
+					update_surounding_rooms(room_pos)
 			else:
 				indicator.visible = false
+			
+		elif build_mode == BuildModes.DOOR:
+			if result["collider"].get_parent().get_parent() is ModularRoomWall:
+				
+				var wall : ModularRoomWall = result["collider"].get_parent().get_parent()
+				
+				indicator.visible = true
+				indicator.position = wall.global_position
+				
+				if Input.is_action_just_pressed("shot"):
+					wall.set_part(ModularRoomPart.Parts.DOOR)
+			else:
+				indicator.visible = false
+				
+				
+				
