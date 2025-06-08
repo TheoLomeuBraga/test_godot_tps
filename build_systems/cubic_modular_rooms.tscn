@@ -71,10 +71,36 @@ script = ExtResource("2_2366k")
 room_model = ExtResource("3_2366k")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="FreeCamera/EnviormentBuilder"]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
 mesh = SubResource("BoxMesh_2366k")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="FreeCamera/EnviormentBuilder/MeshInstance3D"]
 mesh = SubResource("ArrayMesh_dhxk6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FreeCamera/EnviormentBuilder"]
+anchors_preset = -1
+anchor_top = 0.721
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.0800171
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="FreeCamera/EnviormentBuilder/VBoxContainer"]
+layout_mode = 2
+text = "[1] - insert"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="FreeCamera/EnviormentBuilder/VBoxContainer"]
+layout_mode = 2
+text = "[2] - remove"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="FreeCamera/EnviormentBuilder/VBoxContainer"]
+layout_mode = 2
+text = "[3] - door"
+horizontal_alignment = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_yusqw")
