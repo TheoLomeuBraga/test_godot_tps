@@ -9,6 +9,9 @@ class_name EnviormentBuilder
 
 var modular_rooms : Dictionary[Vector3,ModularRoom]
 
+func update_room(pos : Vector3) -> void:
+	pass
+
 func place_room(pos : Vector3) -> void:
 	var room : ModularRoom = room_model.instantiate()
 	base_sceane.add_child(room)
