@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bon62aicdl3vv"]
+[gd_scene load_steps=10 format=3 uid="uid://bon62aicdl3vv"]
 
 [ext_resource type="Script" uid="uid://be28bm4lqrav5" path="res://build_systems/modular_room.gd" id="1_0thgb"]
+[ext_resource type="Script" uid="uid://yi62unvttbfd" path="res://build_systems/modular_room_part.gd" id="2_kx7t2"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_b485w"]
 size = Vector3(0.1, 5, 5)
@@ -29,6 +30,7 @@ script = ExtResource("1_0thgb")
 [node name="+x" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0)
 mesh = SubResource("BoxMesh_b485w")
+script = ExtResource("2_kx7t2")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="+x"]
 
@@ -38,6 +40,7 @@ shape = SubResource("ConcavePolygonShape3D_b485w")
 [node name="-x" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 0)
 mesh = SubResource("BoxMesh_b485w")
+script = ExtResource("2_kx7t2")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="-x"]
 
@@ -47,6 +50,7 @@ shape = SubResource("ConcavePolygonShape3D_0thgb")
 [node name="+y" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1.91069e-15, 0, 2.5, 0)
 mesh = SubResource("BoxMesh_b485w")
+script = ExtResource("2_kx7t2")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="+y"]
 
@@ -56,6 +60,7 @@ shape = SubResource("ConcavePolygonShape3D_eptj4")
 [node name="-y" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1.91069e-15, 0, -2.5, 0)
 mesh = SubResource("BoxMesh_b485w")
+script = ExtResource("2_kx7t2")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="-y"]
 
@@ -65,6 +70,7 @@ shape = SubResource("ConcavePolygonShape3D_kx7t2")
 [node name="+z" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 2.5)
 mesh = SubResource("BoxMesh_b485w")
+script = ExtResource("2_kx7t2")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="+z"]
 
@@ -74,6 +80,7 @@ shape = SubResource("ConcavePolygonShape3D_14mfr")
 [node name="-z" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -2.5)
 mesh = SubResource("BoxMesh_b485w")
+script = ExtResource("2_kx7t2")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="-z"]
 

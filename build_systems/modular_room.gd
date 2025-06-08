@@ -11,14 +11,13 @@ class_name ModularRoom
 }
 
 func set_module(dir : Vector3, on : bool) -> void:
-	var n : Node3D = modules[dir]
+	var n : ModularRoomPart = modules[dir]
 	if n != null:
-		n.visible = on
-		n.get_node("./StaticBody3D/CollisionShape3D").disabled = not on
+		n.set_part(ModularRoomPart.Parts.NONE)
 
 func reset() -> void:
 	for pos : Vector3 in modules:
-		set_module(pos,true)
+		modules[pos].set_part(ModularRoomPart.Parts.WALL)
 
 func _ready() -> void:
 	pass

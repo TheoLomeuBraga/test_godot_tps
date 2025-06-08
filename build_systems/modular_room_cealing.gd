@@ -1,0 +1,2 @@
+extends ModularRoomPart
+class_name ModularRoomCealing
