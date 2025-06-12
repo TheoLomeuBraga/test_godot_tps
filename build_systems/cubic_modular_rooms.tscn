@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://dv8d733tyqk52" path="res://cartoon light 2/sky.gdshader" id="1_2d0ib"]
 [ext_resource type="Script" uid="uid://vavt26qule3o" path="res://build_systems/enviorment_builder.gd" id="2_2366k"]
-[ext_resource type="Script" uid="uid://cn8yo2vj3i1ci" path="res://free_camera/free_camera.gd" id="2_dhxk6"]
+[ext_resource type="Script" uid="uid://wgxf83erq5qa" path="res://free_camera/free_camera.gd" id="2_dhxk6"]
 [ext_resource type="PackedScene" uid="uid://bon62aicdl3vv" path="res://build_systems/modular_room.tscn" id="3_2366k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dhxk6"]
@@ -30,20 +30,20 @@ _surfaces = [{
 [sub_resource type="Gradient" id="Gradient_2366k"]
 colors = PackedColorArray(0.176242, 0.000329359, 0.434636, 1, 0, 0.610816, 0.610816, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_4frrt"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2366k"]
 gradient = SubResource("Gradient_2366k")
 width = 32
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uco5w"]
 shader = ExtResource("1_2d0ib")
-shader_parameter/gradient = SubResource("GradientTexture1D_4frrt")
+shader_parameter/gradient = SubResource("GradientTexture1D_2366k")
 
-[sub_resource type="Sky" id="Sky_urpwu"]
+[sub_resource type="Sky" id="Sky_uco5w"]
 sky_material = SubResource("ShaderMaterial_uco5w")
 
 [sub_resource type="Environment" id="Environment_yusqw"]
 background_mode = 2
-sky = SubResource("Sky_urpwu")
+sky = SubResource("Sky_uco5w")
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.1
@@ -64,7 +64,6 @@ data = PackedVector3Array(50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 fov = 90.0
 script = ExtResource("2_dhxk6")
-metadata/_custom_type_script = "uid://cn8yo2vj3i1ci"
 
 [node name="EnviormentBuilder" type="Node" parent="FreeCamera"]
 script = ExtResource("2_2366k")

@@ -1,0 +1,143 @@
+[gd_scene load_steps=12 format=3 uid="uid://doe77ip3x0vf1"]
+
+[ext_resource type="Texture2D" uid="uid://cheye2smkiwdq" path="res://3D_belts/arow.png" id="1_2ft8f"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bjiw8"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_83p0d"]
+sky_material = SubResource("ProceduralSkyMaterial_bjiw8")
+
+[sub_resource type="Environment" id="Environment_h2mrh"]
+background_mode = 2
+sky = SubResource("Sky_83p0d")
+tonemap_mode = 2
+
+[sub_resource type="Curve3D" id="Curve3D_8onl7"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, -5, 0, 0, 0, 0, 0, 5, 0, 5, 0, 0, 5, 0, 0, 0, 10, 0, 0),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="Shader" id="Shader_8onl7"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.4.1.stable's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx;
+
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_enable;
+uniform ivec2 albedo_texture_size;
+uniform float point_size : hint_range(0.1, 128.0, 0.1);
+
+uniform float roughness : hint_range(0.0, 1.0);
+uniform sampler2D texture_metallic : hint_default_white, filter_linear_mipmap, repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r, filter_linear_mipmap, repeat_enable;
+
+uniform float specular : hint_range(0.0, 1.0, 0.01);
+uniform float metallic : hint_range(0.0, 1.0, 0.01);
+
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+void vertex() {
+	UV = UV * uv1_scale.xy + uv1_offset.xy;
+	UV.x -= TIME * 2.0;
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+
+	vec4 albedo_tex = texture(texture_albedo, base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+
+	float metallic_tex = dot(texture(texture_metallic, base_uv), metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	SPECULAR = specular;
+
+	vec4 roughness_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
+	float roughness_tex = dot(texture(texture_roughness, base_uv), roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ft8f"]
+render_priority = 0
+shader = SubResource("Shader_8onl7")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("1_2ft8f")
+shader_parameter/albedo_texture_size = Vector2i(512, 512)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 10, 1)
+shader_parameter/uv1_offset = Vector3(0, 0.645, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="Gradient" id="Gradient_2ft8f"]
+colors = PackedColorArray(0.154876, 0.154876, 0.154876, 1, 0.501407, 0.501406, 0.501406, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_bjiw8"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_83p0d"]
+width = 16
+height = 16
+color_ramp = SubResource("Gradient_2ft8f")
+noise = SubResource("FastNoiseLite_bjiw8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2mrh"]
+albedo_texture = SubResource("NoiseTexture2D_83p0d")
+texture_filter = 0
+
+[node name="3dBelts" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_h2mrh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_8onl7")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Path3D"]
+use_collision = true
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Path3D/CSGCombiner3D"]
+polygon = PackedVector2Array(-0.5, 0, -0.5, 0.1, 0.5, 0.1, 0.5, 0)
+mode = 2
+path_node = NodePath("../..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 1
+path_rotation_accurate = false
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+material = SubResource("ShaderMaterial_2ft8f")
+
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="Path3D/CSGCombiner3D"]
+polygon = PackedVector2Array(-0.55, -0.01, -0.6, 0.2, -0.5, 0.09, 0.5, 0.09, 0.6, 0.2, 0.55, -0.01)
+mode = 2
+path_node = NodePath("../..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+material = SubResource("StandardMaterial3D_h2mrh")

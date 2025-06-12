@@ -1,0 +1,96 @@
+[gd_scene load_steps=16 format=3 uid="uid://e0dn17spo3d"]
+
+[ext_resource type="Shader" uid="uid://dv8d733tyqk52" path="res://cartoon light 2/sky.gdshader" id="1_ed8yq"]
+[ext_resource type="Script" uid="uid://bi7yhtmb25k6u" path="res://projector/projector.gd" id="1_wwqxc"]
+[ext_resource type="Texture2D" uid="uid://vvqhdjo6xwbb" path="res://icon.png" id="2_1op2n"]
+[ext_resource type="Script" uid="uid://wgxf83erq5qa" path="res://free_camera/free_camera.gd" id="3_1op2n"]
+[ext_resource type="VideoStream" uid="uid://clvcs8hsjfsjk" path="res://projector/2025-06-09 12-17-25.ogv" id="4_yx0uu"]
+
+[sub_resource type="Gradient" id="Gradient_yx0uu"]
+colors = PackedColorArray(0.176242, 0.000329359, 0.434636, 1, 0, 0.610816, 0.610816, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4frrt"]
+gradient = SubResource("Gradient_yx0uu")
+width = 32
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wwqxc"]
+shader = ExtResource("1_ed8yq")
+shader_parameter/gradient = SubResource("GradientTexture1D_4frrt")
+
+[sub_resource type="Sky" id="Sky_urpwu"]
+sky_material = SubResource("ShaderMaterial_wwqxc")
+
+[sub_resource type="Environment" id="Environment_7s8lm"]
+background_mode = 1
+background_energy_multiplier = 0.0
+sky = SubResource("Sky_urpwu")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.1
+reflected_light_source = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l4fow"]
+metallic_specular = 0.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gukcw"]
+material = SubResource("StandardMaterial3D_l4fow")
+size = Vector2(100, 100)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_yx0uu"]
+viewport_path = NodePath("MeshInstance3D2/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yx0uu"]
+resource_local_to_scene = true
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_yx0uu")
+
+[sub_resource type="QuadMesh" id="QuadMesh_wwqxc"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_yx0uu")
+size = Vector2(2, 2)
+
+[node name="Projector" type="Node3D"]
+script = ExtResource("1_wwqxc")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_7s8lm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_gukcw")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 4, -1.74846e-07)
+light_energy = 2.0
+light_projector = ExtResource("2_1op2n")
+shadow_enabled = true
+spot_range = 10.0
+spot_angle = 30.0
+spot_angle_attenuation = 0.0245183
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 7)
+script = ExtResource("3_1op2n")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
+mesh = SubResource("QuadMesh_wwqxc")
+
+[node name="SubViewport" type="SubViewport" parent="MeshInstance3D2"]
+
+[node name="Control" type="Control" parent="MeshInstance3D2/SubViewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="MeshInstance3D2/SubViewport/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("4_yx0uu")
+autoplay = true

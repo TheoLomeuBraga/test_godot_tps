@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://cv3ud06yadvi7"]
+
+[ext_resource type="Script" uid="uid://wgxf83erq5qa" path="res://free_camera/free_camera.gd" id="1_ue0f0"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_d6mwm"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_ue0f0"]
+sky_material = SubResource("ProceduralSkyMaterial_d6mwm")
+
+[sub_resource type="Environment" id="Environment_48a1l"]
+background_mode = 2
+sky = SubResource("Sky_ue0f0")
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6q18t"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_6k4wc"]
+
+[sub_resource type="TextMesh" id="TextMesh_ue0f0"]
+text = "fuck
+"
+pixel_size = 0.05
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ue0f0"]
+rings = 16
+
+[node name="Soft" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_48a1l")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 4)
+script = ExtResource("1_ue0f0")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+size = Vector3(100, 1, 100)
+
+[node name="SoftBody3D" type="SoftBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+material_override = SubResource("StandardMaterial3D_6q18t")
+mesh = SubResource("SphereMesh_6k4wc")
+pressure_coefficient = 10.0
+
+[node name="SoftBody3D2" type="SoftBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, 0)
+material_override = SubResource("StandardMaterial3D_6q18t")
+mesh = SubResource("TextMesh_ue0f0")
+pressure_coefficient = 5.0
+
+[node name="SoftBody3D3" type="SoftBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3, 0)
+material_override = SubResource("StandardMaterial3D_6q18t")
+mesh = SubResource("CylinderMesh_ue0f0")
+pressure_coefficient = 100.0
