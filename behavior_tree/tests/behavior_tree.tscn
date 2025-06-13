@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://bt382fboudvx8"]
+[gd_scene load_steps=15 format=3 uid="uid://bt382fboudvx8"]
 
 [ext_resource type="Script" uid="uid://ca4ypcgmxvubj" path="res://behavior_tree/tests/charter_info_manager.gd" id="1_cqyfe"]
 [ext_resource type="Script" uid="uid://b1shtw43ypnot" path="res://behavior_tree/behavior_tree.gd" id="1_fhh1j"]
 [ext_resource type="Script" uid="uid://hbd2u0b6xvpm" path="res://behavior_tree/behavior_branch.gd" id="2_cqyfe"]
-[ext_resource type="Script" uid="uid://b22rh647lrgux" path="res://behavior_tree/behavior.gd" id="3_o3rye"]
+[ext_resource type="Script" uid="uid://bn4t1uugan8hs" path="res://behavior_tree/tests/on_floor.gd" id="4_o3rye"]
+[ext_resource type="Script" uid="uid://c55xungdhwy5k" path="res://behavior_tree/tests/on_air.gd" id="6_tm80t"]
+[ext_resource type="Script" uid="uid://gqtud72ej3tn" path="res://behavior_tree/tests/on_air_paused.gd" id="6_wqgbk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cqyfe"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -64,24 +66,26 @@ metadata/_custom_type_script = "uid://b1shtw43ypnot"
 
 [node name="BehaviorBranch" type="Node" parent="CharacterBody3D/BehaviorTree"]
 script = ExtResource("2_cqyfe")
-node_path = NodePath("..")
-variable = "test"
+node_path = NodePath("../..")
+variable = "floor"
 metadata/_custom_type_script = "uid://hbd2u0b6xvpm"
-
-[node name="on_floor" type="Node" parent="CharacterBody3D/BehaviorTree/BehaviorBranch"]
-script = ExtResource("3_o3rye")
-metadata/_custom_type_script = "uid://b22rh647lrgux"
 
 [node name="BehaviorBranch" type="Node" parent="CharacterBody3D/BehaviorTree/BehaviorBranch"]
 script = ExtResource("2_cqyfe")
+node_path = NodePath("../../..")
+variable = "air_pause"
 metadata/_custom_type_script = "uid://hbd2u0b6xvpm"
 
 [node name="on_air" type="Node" parent="CharacterBody3D/BehaviorTree/BehaviorBranch/BehaviorBranch"]
-script = ExtResource("3_o3rye")
+script = ExtResource("6_tm80t")
 metadata/_custom_type_script = "uid://b22rh647lrgux"
 
 [node name="on_air_paused" type="Node" parent="CharacterBody3D/BehaviorTree/BehaviorBranch/BehaviorBranch"]
-script = ExtResource("3_o3rye")
+script = ExtResource("6_wqgbk")
+metadata/_custom_type_script = "uid://b22rh647lrgux"
+
+[node name="on_floor" type="Node" parent="CharacterBody3D/BehaviorTree/BehaviorBranch"]
+script = ExtResource("4_o3rye")
 metadata/_custom_type_script = "uid://b22rh647lrgux"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

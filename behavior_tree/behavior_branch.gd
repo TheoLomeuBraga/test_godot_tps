@@ -8,6 +8,7 @@ var tree : BehaviorTree
 
 func get_next() -> Node:
 	var value = get_node(node_path).get(variable)
+	#print(variable," ",value)
 	if value is bool:
 		if value == true:
 			return get_child(1)
