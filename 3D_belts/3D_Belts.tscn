@@ -16,7 +16,7 @@ tonemap_mode = 2
 
 [sub_resource type="Curve3D" id="Curve3D_8onl7"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, -5, 0, 0, 0, 0, 0, 5, 0, 5, 0, 0, 5, 0, 0, 0, 10, 0, 0),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, -5, 0, 0, 0, 0, 0, 6.27616, 0, 6.44734, 0, 0, 5, 0, 0, 0, 10, 2, 0),
 "tilts": PackedFloat32Array(0, 0, 0)
 }
 point_count = 3
@@ -89,7 +89,6 @@ colors = PackedColorArray(0.154876, 0.154876, 0.154876, 1, 0.501407, 0.501406, 0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_83p0d"]
 width = 16
-height = 16
 color_ramp = SubResource("Gradient_2ft8f")
 noise = SubResource("FastNoiseLite_bjiw8")
 
@@ -134,7 +133,7 @@ path_node = NodePath("../..")
 path_interval_type = 0
 path_interval = 1.0
 path_simplify_angle = 0.0
-path_rotation = 2
+path_rotation = 1
 path_rotation_accurate = false
 path_local = false
 path_continuous_u = true
