@@ -1,0 +1,93 @@
+[gd_scene load_steps=13 format=3 uid="uid://bt382fboudvx8"]
+
+[ext_resource type="Script" uid="uid://ca4ypcgmxvubj" path="res://behavior_tree/tests/charter_info_manager.gd" id="1_cqyfe"]
+[ext_resource type="Script" uid="uid://b1shtw43ypnot" path="res://behavior_tree/behavior_tree.gd" id="1_fhh1j"]
+[ext_resource type="Script" uid="uid://hbd2u0b6xvpm" path="res://behavior_tree/behavior_branch.gd" id="2_cqyfe"]
+[ext_resource type="Script" uid="uid://b22rh647lrgux" path="res://behavior_tree/behavior.gd" id="3_o3rye"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cqyfe"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_o3rye"]
+sky_material = SubResource("ProceduralSkyMaterial_cqyfe")
+
+[sub_resource type="Environment" id="Environment_tm80t"]
+background_mode = 2
+sky = SubResource("Sky_o3rye")
+tonemap_mode = 2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fhh1j"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wqgbk"]
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_sb20s"]
+material = SubResource("StandardMaterial3D_wqgbk")
+radial_segments = 8
+rings = 3
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_cqyfe"]
+size = Vector2(10, 10)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_o3rye"]
+data = PackedVector3Array(5, 0, 5, -5, 0, 5, 5, 0, -5, -5, 0, 5, -5, 0, -5, 5, 0, -5)
+
+[node name="BehaviorTreeTest" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tm80t")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_cqyfe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_fhh1j")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+mesh = SubResource("CapsuleMesh_sb20s")
+
+[node name="camera_holder" type="Node3D" parent="CharacterBody3D"]
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/camera_holder"]
+transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 2, 5)
+fov = 90.0
+
+[node name="BehaviorTree" type="Node" parent="CharacterBody3D"]
+script = ExtResource("1_fhh1j")
+metadata/_custom_type_script = "uid://b1shtw43ypnot"
+
+[node name="BehaviorBranch" type="Node" parent="CharacterBody3D/BehaviorTree"]
+script = ExtResource("2_cqyfe")
+node_path = NodePath("..")
+variable = "test"
+metadata/_custom_type_script = "uid://hbd2u0b6xvpm"
+
+[node name="on_floor" type="Node" parent="CharacterBody3D/BehaviorTree/BehaviorBranch"]
+script = ExtResource("3_o3rye")
+metadata/_custom_type_script = "uid://b22rh647lrgux"
+
+[node name="BehaviorBranch" type="Node" parent="CharacterBody3D/BehaviorTree/BehaviorBranch"]
+script = ExtResource("2_cqyfe")
+metadata/_custom_type_script = "uid://hbd2u0b6xvpm"
+
+[node name="on_air" type="Node" parent="CharacterBody3D/BehaviorTree/BehaviorBranch/BehaviorBranch"]
+script = ExtResource("3_o3rye")
+metadata/_custom_type_script = "uid://b22rh647lrgux"
+
+[node name="on_air_paused" type="Node" parent="CharacterBody3D/BehaviorTree/BehaviorBranch/BehaviorBranch"]
+script = ExtResource("3_o3rye")
+metadata/_custom_type_script = "uid://b22rh647lrgux"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_cqyfe")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_o3rye")
