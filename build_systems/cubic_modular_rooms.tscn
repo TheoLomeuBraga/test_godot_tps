@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://dv8d733tyqk52" path="res://cartoon light 2/sky.gdshader" id="1_2d0ib"]
 [ext_resource type="Script" uid="uid://vavt26qule3o" path="res://build_systems/enviorment_builder.gd" id="2_2366k"]
-[ext_resource type="Script" uid="uid://wgxf83erq5qa" path="res://free_camera/free_camera.gd" id="2_dhxk6"]
+[ext_resource type="Script" uid="uid://cn8yo2vj3i1ci" path="res://free_camera/free_camera.gd" id="2_dhxk6"]
 [ext_resource type="PackedScene" uid="uid://bon62aicdl3vv" path="res://build_systems/modular_room.tscn" id="3_2366k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dhxk6"]
