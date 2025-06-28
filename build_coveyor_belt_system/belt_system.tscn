@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://c0b7x6yey1afb"]
+
+[ext_resource type="Script" uid="uid://ojq5mgty5nt4" path="res://build_coveyor_belt_system/build_system.gd" id="1_lb7pt"]
+
+[sub_resource type="Environment" id="Environment_2y3eo"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wx4n1"]
+shading_mode = 0
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_lbod0"]
+material = SubResource("StandardMaterial3D_wx4n1")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lb7pt"]
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wx4n1"]
+material = SubResource("StandardMaterial3D_lb7pt")
+size = Vector2(100, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lbod0"]
+size = Vector3(100, 1, 100)
+
+[node name="BeltSystem" type="Node3D"]
+script = ExtResource("1_lb7pt")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2y3eo")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1, 0)
+projection = 1
+size = 20.0
+
+[node name="indicator" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_lbod0")
+
+[node name="floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_wx4n1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_lbod0")
