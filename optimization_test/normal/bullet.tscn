@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://qhv8xmskgv3r"]
+
+[ext_resource type="Script" uid="uid://c33gbrqnukk0x" path="res://optimization_test/normal/bullet.gd" id="1_w2sd5"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_m8vk6"]
+radius = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xc60k"]
+shading_mode = 0
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_x4yj0"]
+material = SubResource("StandardMaterial3D_xc60k")
+radius = 0.1
+height = 0.2
+radial_segments = 4
+rings = 1
+
+[node name="CharacterBody3D" type="Area3D"]
+script = ExtResource("1_w2sd5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_m8vk6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_x4yj0")
+skeleton = NodePath("")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="queue_free"]

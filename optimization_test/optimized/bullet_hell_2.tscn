@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bokdagh2c4rma"]
+
+[ext_resource type="Script" uid="uid://c56ku00socfxx" path="res://optimization_test/optimized/bullet_hell_2.gd" id="1_64p1m"]
+[ext_resource type="PackedScene" uid="uid://di2jcqb3o72wa" path="res://optimization_test/optimized/bullet.tscn" id="2_m2oa4"]
+
+[node name="BulletHell2" type="Node3D"]
+script = ExtResource("1_64p1m")
+bullet_sceane = ExtResource("2_m2oa4")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1, -4.37114e-08)
+projection = 1
+size = 50.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="spawn"]

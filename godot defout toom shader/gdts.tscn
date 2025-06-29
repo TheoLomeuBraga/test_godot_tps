@@ -40,5 +40,13 @@ mesh = SubResource("TorusMesh_u5spr")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.866025, 0.353553, -0.353553, 2.98023e-08, 0.707107, 0.707107, 0.5, -0.612372, 0.612372, 0, 0, 0)
+directional_shadow_mode = 0
 
 [node name="ReflectionProbe" type="ReflectionProbe" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.22056)
+distance_fade_enabled = true
+distance_fade_begin = 5.0
+distance_fade_shadow = 5.0
+distance_fade_length = 5.0
