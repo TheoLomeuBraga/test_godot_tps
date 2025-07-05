@@ -1,0 +1,88 @@
+[gd_scene load_steps=10 format=3 uid="uid://d4l1rx0s1nwjj"]
+
+[ext_resource type="Script" uid="uid://wgxf83erq5qa" path="res://free_camera/free_camera.gd" id="1_f0t1y"]
+[ext_resource type="Script" uid="uid://lkxuhch5rfe2" path="res://navmesh_test/agent/test_agent.gd" id="1_hab03"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f0t1y"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_hab03"]
+sky_material = SubResource("ProceduralSkyMaterial_f0t1y")
+
+[sub_resource type="Environment" id="Environment_sy8mc"]
+background_mode = 2
+sky = SubResource("Sky_hab03")
+tonemap_mode = 2
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_3imhe"]
+vertices = PackedVector3Array(-22.5, 1, -4.5, -22.5, 1, 4.5, -13.5, 1, 4.5, -13.5, 1, -4.5, -4.5, 1, -4.5, -4.5, 1, 4.5, 4.5, 1, 4.5, 4.5, 1, -4.5, 5.5, 7, -4.5, 5.5, 7, 4.5, 14.5, 7, 4.5, 14.5, 7, -4.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(11, 10, 8), PackedInt32Array(8, 10, 9)]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3imhe"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hab03"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_sy8mc"]
+material = SubResource("StandardMaterial3D_hab03")
+
+[node name="LinkedNavMesh" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_sy8mc")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 1.0
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_3imhe")
+
+[node name="NavigationLink3D" type="NavigationLink3D" parent="NavigationRegion3D"]
+start_position = Vector3(4, 7, 0)
+end_position = Vector3(4, 1, 0)
+
+[node name="NavigationLink3D2" type="NavigationLink3D" parent="NavigationRegion3D"]
+start_position = Vector3(-14, 1, 0)
+end_position = Vector3(-4, 1, 0)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigationRegion3D"]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+size = Vector3(10, 1, 10)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 0)
+size = Vector3(10, 1, 10)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 6, 0)
+size = Vector3(10, 1, 10)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." node_paths=PackedStringArray("node_target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+script = ExtResource("1_hab03")
+speed = 5.0
+node_target = NodePath("../FreeCamera")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_3imhe")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+mesh = SubResource("CapsuleMesh_sy8mc")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="CharacterBody3D"]
+debug_enabled = true
+
+[node name="RecalculatePathTimer" type="Timer" parent="CharacterBody3D"]
+wait_time = 0.2
+autostart = true
+
+[node name="FreeCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 3)
+script = ExtResource("1_f0t1y")
+
+[connection signal="timeout" from="CharacterBody3D/RecalculatePathTimer" to="CharacterBody3D" method="recalculate_path"]
