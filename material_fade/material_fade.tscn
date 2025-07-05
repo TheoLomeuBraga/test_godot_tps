@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://fcc2cqxsmxpw"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_fi1km"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_twckv"]
+albedo_color = Color(1, 0, 0, 1)
+proximity_fade_enabled = true
+proximity_fade_distance = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j7wmy"]
+albedo_color = Color(0, 0, 1, 1)
+proximity_fade_distance = 0.1
+
+[sub_resource type="SphereMesh" id="SphereMesh_btxis"]
+
+[node name="MaterialFade" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_fi1km")
+surface_material_override/0 = SubResource("StandardMaterial3D_twckv")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.542215, 0, 0.671941)
+mesh = SubResource("BoxMesh_fi1km")
+surface_material_override/0 = SubResource("StandardMaterial3D_j7wmy")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.158216, 0.622439, 0.30531)
+mesh = SubResource("SphereMesh_btxis")
