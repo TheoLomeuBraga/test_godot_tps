@@ -1,0 +1,323 @@
+[gd_scene load_steps=11 format=4 uid="uid://dw4r8ru7qint"]
+
+[ext_resource type="Script" uid="uid://cqos4j8ink2up" path="res://rig_aim/rotation_skeletal_modfier.gd" id="1_lys0h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1i4qw"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_1mftt"]
+_surfaces = [{
+"aabb": AABB(-0.2, -0.2, -0.2, 0.4, 0.4, 0.4),
+"format": 34896613377,
+"index_count": 186,
+"index_data": PackedByteArray("DgAFAAIADwAFAA4ADwAOAAIABQAQAAIABQARABAAEAARAAIADwARAAUAEQAIAAIAEQASAAgACAASAAIAEQAAABIADwAAABEAEgAAABMAEgATAAIAEwAAAAIAAAAUAAIAAAABABQAFAABAAIAAAAVAAEAAQAWAAIAAQAVABYAFgAVAAIAAAAXABUADwAXAAAAFQAHAAIAFQAYAAcABwAYAAIAFQAXABgAGAAXABkAGAAZAAIAGQAXAAIACQAPAAIAGgAPAAkAGgAJAAIAGwAPABoADQAaAAIAGwAaAA0AGwANAAIAHAAPABsAFwAPABwAAwAbAAIAHQAbAAMAHAAbAB0AHQADAAIAHAAdAAwADAAdAAIAHAAMAAIAFwAcAB4ABAAcAAIAHwAcAAQAHwAEAAIAHgAcAB8ACwAfAAIAHgAfAAsAHgALAAIAFwAGAAIACgAeAAIAFwAgAAYAFwAeACAAIAAeAAoABgAgAAIAIAAKAAIA"),
+"lods": [0.00974832, PackedByteArray("BQAIAAIABQAAAAgACAAAAAIACQAAAAUACQAFAAIAAAABAAIAAAAGAAEACQAGAAAAAQAHAAIAAQAGAAcABwAGAAIABgAJAAQABgAKAAIABgAEAAoACgALAAIACgAEAAsACwAEAAIABAAMAAIABAADAAwADAADAAIABAAJAAMADQAJAAIAAwAJAA0AAwANAAIA"), 0.0378077, PackedByteArray("BQAAAAIAAwAAAAUAAwAFAAIAAAABAAIABAADAAIAAwAGAAAABgADAAQAAAAGAAEABgAEAAIAAQAHAAIABwAGAAIAAQAGAAcA"), 0.0921372, PackedByteArray("AAABAAIAAwABAAAAAwAAAAIAAQAEAAIABAADAAIAAQADAAQA")],
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 33,
+"vertex_data": PackedByteArray("if0AAAZnAACJ/QAA+JgAAP9/////fwAAvgkAAANPAAC+CQAA+7AAAPiYAAB1AgAA/38AAP//AACB2gAAgdoAAIHaAAB9JQAAA08AAL4JAAADTwAAQPYAAH0lAACB2gAAAAAAAP9/AAB9JQAAfSUAAP9/AAAAAAAABmcAAHUCAAD7sAAAvgkAABzHAACSFQAAbOoAAOI4AABA9gAAA08AAP//AAD/fwAAbOoAABzHAABA9gAA+7AAAPiYAACJ/QAAHMcAAGzqAAD7sAAAQPYAAOI4AACSFQAAkhUAAOI4AAB1AgAA+JgAAHUCAAAGZwAA4jgAAGzqAACSFQAAHMcAAAZnAACJ/QAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_qylsh"]
+resource_name = "charter_Cone"
+_surfaces = [{
+"aabb": AABB(-0.2, -0.2, -0.2, 0.4, 0.4, 0.4),
+"attribute_data": PackedByteArray("QXwCtEF8+8v/P/+/PAeC1/8//788B3yo/z//v/8//788h3yoQfz7y0H8ArQ8h4LX/Eu9g3FrcOv/P2/9/79v/XDrcOv7y72DcWuNlHwoPIeOFI2UjwL/v44UcOt8KML4cOuNlHyoPId8qML4jZRw642UjZSOgv+//z+OgvxLvYOCVzyH/z//v4JXPIchYumM/z//vyFi6Yz/P/+/cWuNlBVz3Z3/P/+/FXPdncJ4fKj/P/+/wnh8qP8//79BfAK0cH3/v/8//79wff+/QXz7y8J4gtf/P/+/wniC1xVzIeL/P/+/FXMh4nFrcOv/P/+/IWIU8/8//78hYhTzglfC+P8//7+CV8L4/EtB/P8//7/8S0H8/z9v/QM0Qfz/P/+/AzRB/P8//798KML43R0U8/8//7/dHRTz/z//v44UcOvqDCHi/z//v+oMIeL/P/+/PAeC170D+8u9A/vL/z//v48C/7+9AwK0/z//v70DArQ8B3yo/z//v+oM3Z3/P/+/6gzdnY4UjZT/P/+/3R3pjP8//7/dHemMfCg8h/8//78CtL2D/7+OgiHi6YyC1zyHFPPdncL4fKhv/f+/FPMh4sL4gtf7y0H8IeIU84LXwvgCtEH83Z0U872D+8vpjCHi3Z3pjOmM3Z29gwK0AzS9g/8//78DNL2D/z+Ogv8//78="),
+"format": 34896613399,
+"index_count": 186,
+"index_data": PackedByteArray("HgAMAAYAHwAgACEAIgAjACQAJQASACYAJwAoACkAKgArACwALQAAAC4ALwAwADEAMgAzAAIAAQA0ADUANgA3ADgAOQA6ADsADQA8AD0APgA/AEAAQQBCAEMARAAOAAQARQBGAEcASAAXAEkASgBLAEwATQAWAE4ATwBQAFEAUgADAFMAVABVAAcAVgAVAFcAWABZAFoAWwBcAF0ABQBeAF8AYABhAGIAFABjAGQAZQBmAGcAaAARAGkAEQBqAGsAaABqABEAagBsABgAagAKAGwAbAAKAG0AaAAKAGoACgAJAG4ACgBvAAkACQBvAHAACgBxAG8AaABxAAoAbwByABAAbwBxAHIAcgBxAHMAcQB0AA8AcQB1AHQAdAB1ABoAcQBoAHYAcQB2AHUAdQB3ABsAdQB2AHcAdwB2AAsAeABoABkAeQBoAHgAdgBoAHkAeQB4ABwAdgB5AHoAegB5AAgAdgB6AB0AEwB7AHwAfQB+AH8A"),
+"lods": [0.00974832, PackedByteArray("DAASAAYAEgAAAAYAEwAMAAYAFAATAAYABQAUAAYAAAABAAIAFQAFAAcAAwAVAAcAFgADAAQAAQANAAQAFwAWAAQADQAOAAQADgAXAAQAEQAKABgAGQAKABEAGQAPAAoACgAPAAkACQAPABAADwAZAAsADwALABoAGgALABsACwAZAAgACAAZABwACwAIAB0A"), 0.0378077, PackedByteArray("DAAAAAYABQAMAAYAAAABAAIAAwAFAAcAAQANAAQADgADAAQADQAOAAQACQAPABAACgAPAAkACAAPAAoADwAIAAsACAAKABEA"), 0.0921372, PackedByteArray("AAABAAIAAQADAAQABQAAAAYAAwAFAAcACAAJAAoACQAIAAsA")],
+"material": SubResource("StandardMaterial3D_1i4qw"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 128,
+"vertex_data": PackedByteArray("if0AAAZnb9OJ/QAA+Jg8w/9/////f7zIvgkAAPuwib3/f////3++lL4JAAADT6jY/3////9/4uz/f////388w74JAAADT/8/if0AAPiY/z+J/QAABmf/P74JAAD7sP8/+JgAAHUC4uyB2gAAgdqisP9/AAD//76U/38AAP///z+B2gAAgdr/P/iYAAB1Av8/gdoAAH0lnOIDTwAAvgmz6n0lAAB9JZziAAAAAP9/vMh9JQAAgdqisANPAABA9qSegdoAAH0l/z8DTwAAvgn/PwNPAABA9v8/fSUAAIHa/z99JQAAfSX/PwAAAAD/f/8//38AAAAA4uz4mAAAdQKz6vuwAAC+CbPq/3////9/s+r7sAAAvgkO5xzHAACSFQ7n/3////9/DuccxwAAkhWc4v9/////f5zigdoAAH0lwN1s6gAA4jjA3f9/////f8DdbOoAAOI4qNhA9gAAA0+o2P9/////f6jYQPYAAANPb9P/f////39v04n9AAAGZyDO//8AAP9/IM7/f////38gzv//AAD/f7zIif0AAPiYvMhA9gAA+7A8w/9/////fzzDQPYAAPuwib1s6gAAHMeJvf9/////f4m9bOoAABzHcreB2gAAgdpyt/9/////f3K3HMcAAGzqorD/f////3+isBzHAABs6ouo+7AAAED2i6j/f////3+LqPuwAABA9qSe+JgAAIn9pJ7/f////3+knviYAACJ/b6U/38AAP//vpQGZwAAif2+lP9/////f76UBmcAAIn9pJ7/f////3+kngNPAABA9ouo4jgAAGzqi6j/f////3+LqOI4AABs6qKw/3////9/orB9JQAAgdpyt5IVAAAcx3K3/3////9/creSFQAAHMeJvf9/////f4m9vgkAAPuwPMN1AgAA+Jg8w3UCAAD4mLzI/3////9/vMgAAAAA/38gznUCAAAGZyDO/3////9/IM51AgAABmdv074JAAADT2/T/3////9/b9OSFQAA4jio2P9/////f6jYkhUAAOI4wN19JQAAfSXA3f9/////f8Dd4jgAAJIVnOL/f////3+c4uI4AACSFQ7nA08AAL4JDuf/f////38O5wZnAAB1Av8//38AAAAA/z8cxwAAkhX/P/uwAAC+Cf8/bOoAAOI4/z9A9gAAA0//P///AAD/f/8/bOoAABzH/z9A9gAA+7D/P/iYAACJ/f8/HMcAAGzq/z/7sAAAQPb/PwZnAACJ/f8/4jgAAGzq/z91AgAA+Jj/P5IVAAAcx/8/4jgAAJIV/z+SFQAA4jj/P3UCAAAGZ/8/BmcAAHUCs+r/f////3+z6gZnAAB1AuLs/38AAAAA4uz/f////3/i7MK9gFpYtZtf0rd/XRjiy8wb1bB3ydmRvi3y23Sb36XKAAD/fwAA/38AAP9/AAD/fy3y23S4sEpoG9WwdwAA/38AAP9/AAD/f43LPFtG5t2gPNtxtH7dLMhK6EbPkvDyxgAA/38AAP9/AAD/fwAA/38AAP9/AAD/fy3y23Qh30dmId9HZiHfR2Zh08VeYdPFXmHTxV6Nyzxbjcs8W97F4VnexeFZ3sXhWW3BylltwcpZbcHKWcK9gFrCvYBamrrGW5q6xluausZb0rd/XdK3f11YtZtfWLWbXzKzGWIysxliMrMZYoOx+2SDsftkg7H7ZLiwSmi4sEpo/bEUbP2xFGz9sRRsDLmScAy5knAMuZJwG9Wwd6/346qv9+Oqr/fjqpLw8saS8PLGFOwBzhTsAc4U7AHOSuhGz0roRs/75HrO++R6zvvkes4Y4svMGOLLzJvfpcqb36XKft0syH7dLMjG22PFxttjxcbbY8V/2jvCf9o7wn/aO8LJ2ZG+ydmRvuDZILrg2SC64NkgujzbcbQ823G0xd6drMXenazF3p2sAAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/f0bm3aBG5t2g2/TQjdv00I3b9NCN")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_1mftt")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wtk57"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ncsy6"]
+_surfaces = [{
+"aabb": AABB(-0.06, -0.2, -0.06, 0.12, 1.2, 0.12),
+"format": 34896613377,
+"index_count": 186,
+"index_data": PackedByteArray("DgAFAAIADwAFAA4ADwAOAAIABQAQAAIABQARABAAEAARAAIADwARAAUAEQAIAAIAEQASAAgACAASAAIAEQATABIADwATABEAEgATAAAAEgAAAAIAAAATAAIAEwAJAAIAEwAUAAkACQAUAAIAEwAVABQAFAABAAIAFAAVAAEAAQAVAAIAEwAWABUADwAWABMAFQAKAAIAFQAXAAoACgAXAAIAFQAWABcAFwAWABgAFwAYAAIAGAAWAAIABgAPAAIAGQAPAAYAGQAGAAIAAwAPABkADAAZAAIAAwAZAAwAAwAMAAIAGgAPAAMAFgAPABoAGwADAAIAHAADABsAGgADABwAHAAbAAIAGgAcAA0ADQAcAAIAGgANAAIAFgAaAB0AHgAaAAIABAAaAB4ABAAeAAIAHQAaAAQAHwAEAAIAHQAEAB8AHQAfAAIAFgAHAAIACwAdAAIAFgAgAAcAFgAdACAAIAAdAAsABwAgAAIAIAALAAIA"),
+"lods": [0.00349346, PackedByteArray("BQAIAAIABQAAAAgACAAAAAIABgAAAAUABgAFAAIAAAAJAAIAAAABAAkACQABAAIAAAAHAAEABgAHAAAAAQAHAAoAAQAKAAIACgAHAAIABwALAAIABwAEAAsABwAGAAQACwAEAAIADAAGAAIAAwAGAAwAAwAMAAIABAAGAAMADQADAAIABAADAA0ABAANAAIA"), 0.00805864, PackedByteArray("BQAAAAIABgAAAAUABgAFAAIAAAABAAIAAAAHAAEAAQAHAAIABgAHAAAABwAEAAIABwAGAAQAAwAGAAIABAAGAAMABAADAAIA"), 0.0302045, PackedByteArray("AAABAAIAAwABAAAAAwAAAAIAAQAEAAIABAADAAIAAQADAAQA")],
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 33,
+"vertex_data": PackedByteArray("QPYAAANPAABA9gAA+7AAAP9/////fwAAkhUAAOI4AACSFQAAHMcAAPiYAAB1AgAAA08AAL4JAAD/fwAA//8AAIHaAAB9JQAA//8AAP9/AACB2gAAgdoAAANPAABA9gAAfSUAAH0lAAAAAAAA/38AAP9/AAAAAAAABmcAAHUCAAD7sAAAvgkAABzHAACSFQAAbOoAAOI4AACJ/QAABmcAAIn9AAD4mAAAbOoAABzHAAD4mAAAif0AABzHAABs6gAA+7AAAED2AADiOAAAkhUAAHUCAAD4mAAAvgkAAANPAAB1AgAABmcAAOI4AABs6gAAvgkAAPuwAAB9JQAAgdoAAAZnAACJ/QAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_0ugoh"]
+resource_name = "charter_Cone_001"
+_surfaces = [{
+"aabb": AABB(-0.06, -0.2, -0.06, 0.12, 1.2, 0.12),
+"attribute_data": PackedByteArray("wnh8qMJ4gtf/P/+/6gwh4v8//7/qDN2d/z//v/8//7/pjN2dwviC18L4fKjpjCHi/Eu9g3woPIf/P2/9fKg8h/vLvYP/v2/9cWuNlI4UjZRwff+/jwL/v3wowvhxa3DrcOuNlG/9/79w63DrfKjC+I2UjZSOgv+//z+OgvxLvYOCVzyH/z//v4JXPIchYumM/z//vyFi6Yz/P/+/cWuNlBVz3Z3/P/+/FXPdnf8//7/CeHyoQXwCtP8//79BfAK0cH3/v/8//79BfPvL/z//v0F8+8vCeILXFXMh4v8//78VcyHicWtw6/8//78hYhTz/z//vyFiFPOCV8L4/z//v4JXwvj8S0H8/z//v/xLQfz/P2/9AzRB/P8//78DNEH8/z//v3wowvjdHRTz/z//v90dFPOOFHDr/z//v44UcOv/P/+/6gwh4jwHgtc8B4LXvQP7y/8//7+9A/vL/z//v48C/7+9AwK0/z//v70DArQ8B3yo/z//vzwHfKjqDN2d/z//v44UjZT/P/+/3R3pjP8//7/dHemMfCg8h/8//78CtL2D/7+OgiHi6YyC1zyHFPPdnUH8ArRB/PvLFPMh4vvLQfwh4hTzgtfC+AK0QfzdnRTzvYP7y42UcOs8h4LX3Z3pjL2DArQ8h3yoAzS9g/8//78DNL2D/z+Ogv8//78="),
+"format": 34896613399,
+"index_count": 186,
+"index_data": PackedByteArray("HgAMAAYAHwAgACEAIgAjACQAJQASACYAJwAoACkAKgAAACsALAAtAC4ALwAwADEAFAAyADMANAA1AAIAAQA2ADcAOAA5ADoAFwA7ADwAPQA+AD8AQABBAEIAQwAOAAQARABFAEYARwAWAEgASQBKAEsATABNAE4ATwADAFAAUQBSAAcAUwBUAFUAVgAVAFcAWABZAFoAWwBcAF0AXgBfAGAABQBhAGIAEwBjAGQAZQBmAGcAaAAQAGkAEABqAGsAaABqABAAagBsABgAagBtAGwAbABtAAoAaABtAGoAbQBuABkAbQBvAG4AbgBvAAkAbQBwAG8AaABwAG0AbwBxABoAbwBwAHEAcQBwAHIAcABzABEAcAB0AHMAcwB0ABsAcABoAHUAcAB1AHQAdAALAHYAdAB1AAsACwB1AHcAeABoAA8ACABoAHgAdQBoAAgACAB4ABwAdQAIAHkAeQAIAHoAdQB5AB0ADQB7AHwAfQB+AH8A"),
+"lods": [0.00349346, PackedByteArray("DAASAAYAEgAAAAYADQAMAAYAEwANAAYABQATAAYAAAAUAAIAFAABAAIAFQAFAAcAAwAVAAcAFgADAAQAAQAXAAQADgAWAAQAFwAOAAQAEAAKABgADwAKABAACgAJABkACgARAAkADwARAAoACQARABoAEQAPAAsAEQALABsACwAPAAgACAAPABwACwAIAB0A"), 0.00805864, PackedByteArray("DAAAAAYADQAMAAYABQANAAYAAAABAAIAAwAFAAcAAQAOAAQADgADAAQADwAKABAADwARAAoACgARAAkAEQAPAAsACwAPAAgA"), 0.0302045, PackedByteArray("AAABAAIAAQADAAQABQAAAAYAAwAFAAcACAAJAAoACQAIAAsA")],
+"material": SubResource("StandardMaterial3D_wtk57"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 128,
+"vertex_data": PackedByteArray("QPYAAANPxuBA9gAA+7Aqyf9/////f1XNkhUAABzHVsX/f////38OrZIVAADiOB7m/3////9/Lfz/f////38qyZIVAADiOP8/QPYAAPuw/z9A9gAAA0//P5IVAAAcx/8/+JgAAHUCLfwDTwAAvgm29v9/AAD//w6tA08AAL4J/z/4mAAAdQL/P/9/AAD///8/gdoAAH0llet9JQAAfSWV6///AAD/f9LRAAAAAP9/0tEDTwAAQPYluoHaAACB2tHBgdoAAH0l/z///wAA/3//P4HaAACB2v8/A08AAED2/z99JQAAfSX/PwAAAAD/f/8//38AAAAALfz4mAAAdQK29vuwAAC+Cbb2/3////9/tvb7sAAAvgkh8RzHAACSFSHx/3////9/IfEcxwAAkhWV6/9/////f5XrgdoAAH0lHuZs6gAA4jge5v9/////fx7mbOoAAOI4xuD/f////3/G4ED2AAADT5Xbif0AAAZnldv/f////3+V24n9AAAGZ5XW//8AAP9/ldb/f////3+V1on9AAD4mNLR/3////9/0tGJ/QAA+JhVzUD2AAD7sFXNbOoAABzHKsn/f////38qyWzqAAAcx1bFgdoAAIHaVsX/f////39WxRzHAABs6tHB/3////9/0cEcxwAAbOpmvvuwAABA9ma+/3////9/Zr77sAAAQPYluviYAACJ/SW6/3////9/Jbr4mAAAif0Orf9/AAD//w6tBmcAAIn9Dq3/f////38OrQZnAACJ/SW6/3////9/JboDTwAAQPZmvuI4AABs6ma+/3////9/Zr7iOAAAbOrRwX0lAACB2tHB/3////9/0cF9JQAAgdpWxf9/////f1bFkhUAABzHKsm+CQAA+7Aqyb4JAAD7sFXNdQIAAPiYVc3/f////39VzXUCAAD4mNLR/3////9/0tEAAAAA/3+V1nUCAAAGZ5XW/3////9/ldZ1AgAABmeV274JAAADT5Xb/3////9/ldu+CQAAA0/G4JIVAADiOMbg/3////9/xuB9JQAAfSUe5v9/////fx7m4jgAAJIVlev/f////3+V6+I4AACSFSHxA08AAL4JIfH/f////38h8QZnAAB1Av8//38AAAAA/z8cxwAAkhX/P/uwAAC+Cf8/bOoAAOI4/z+J/QAABmf/P4n9AAD4mP8/bOoAABzH/z/4mAAAif3/PxzHAABs6v8/+7AAAED2/z8GZwAAif3/P+I4AABs6v8/dQIAAPiY/z99JQAAgdr/P74JAAD7sP8/4jgAAJIV/z91AgAABmf/P74JAAADT/8/BmcAAHUCtvb/f////3+29gZnAAB1Ai38/38AAAAALfz/f////38t/POy1k9apKNdo6ddWlvhUt8Hitd5ms1Byq/NT1Ci3aTbAAD/fwAA/38AAP9/AAD/f6/NT1A2yQW/B4rXeQAA/38AAP9/AAD/f7q4ikuKy0PHp6prV2vXVtWC8dDubJy2ZQAA/38AAP9/AAD/fwAA/38AAP9/AAD/f6/NT1D5wDZJ+cA2SfnANkkwvNNJMLzTSTC800m6uIpLuriKS7y1m028tZtNvLWbTfOy1k/zstZPO7A1UjuwNVI7sDVSfa24VH2tuFR9rbhUp6prV6eqa1ejp11ao6ddWlqko11apKNdq6BcYaugXGGroFxhbJy2ZWyctmVfl/VqX5f1al+X9WotkYNxLZGDcS2Rg3EHitd51vn39db59/XW+ff1gvHQ7oLx0O716p7o9eqe6PXqnui25ZHjtuWR47blkeNb4VLfW+FS36LdpNui3aTbXNpa2FzaWthc2lrYa9dW1WvXVtW41IDSuNSA0rjUgNI00sPPNNLDzzTSw8/WzwvN1s8LzdbPC82azUHKms1ByorLQ8eKy0PH08nOw9PJzsPTyc7DAAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fzbJBb82yQW/T9BPsk/QT7JP0E+y")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ncsy6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_31we6"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vuuwi"]
+_surfaces = [{
+"aabb": AABB(-0.1, -0.2, -0.2, 0.2, 0.4, 0.4),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAD/////AAAAAP//AAD//wAA////////AAD//wAAAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ustns"]
+resource_name = "charter_Cube_001"
+_surfaces = [{
+"aabb": AABB(-0.1, -0.2, -0.2, 0.2, 0.4, 0.4),
+"attribute_data": PackedByteArray("/1////+f/7//n////1//v/9f/7//n/9//5//v/9f/3//X/9//5//P/+f/3//X/8//1//P/+fAAD/n/8//18AAP8f/3//X/8//1//f/8f/z//n/9//9//P//f/3//n/8/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_31we6"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAP//VNUAAP//AABU1QAA/////1TVAAAAAAAAVNUAAAAAAAD///////8AAP//AAD//wAA/////wAAAAD/////AAAAAFTV////////VNX/////AABU1f//AAD//1TV//8AAP///78AAP//////v/////////+/AAAAAP///78AAAAAAAD/v///AAD///+///8AAAAA/78AAAAA////v/////8AAP//AAD///////8AAP//AAD/////////////VNVU1VTVVNVU1VTVVNVU1f+//7//v/+//7//v/+//7+qKqoqqiqqKqoqqiqqKqoq/////////////////////wAA/38AAP9/AAD/fwAA/3//f/+//3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_vuuwi")
+
+[node name="Aimer" type="Node3D"]
+
+[node name="charter" type="Node3D" parent="."]
+
+[node name="Armature" type="Node3D" parent="charter"]
+
+[node name="Skeleton3D" type="Skeleton3D" parent="charter/Armature"]
+bones/0/name = "Bone"
+bones/0/parent = -1
+bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+bones/0/enabled = true
+bones/0/position = Vector3(0, 0, 0)
+bones/0/rotation = Quaternion(0, 0.707107, 0, 0.707107)
+bones/0/scale = Vector3(1, 1, 1)
+bones/1/name = "Bone.001"
+bones/1/parent = 0
+bones/1/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+bones/1/enabled = true
+bones/1/position = Vector3(0, 0.4, 0)
+bones/1/rotation = Quaternion(0, -0.382683, 0, 0.92388)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/name = "Bone.002"
+bones/2/parent = 1
+bones/2/rest = Transform3D(0, 1, -1.42109e-14, -1, 0, 3.13916e-07, 3.13916e-07, -1.42109e-14, 1, 0, 0.6, 0)
+bones/2/enabled = true
+bones/2/position = Vector3(0, 0.6, 0)
+bones/2/rotation = Quaternion(0.270598, -0.270598, -0.653282, 0.653281)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/name = "Cone"
+bones/3/parent = 2
+bones/3/rest = Transform3D(1, -7.54979e-08, 3.13916e-07, 7.54979e-08, 1, 0, -3.13916e-07, 2.37e-14, 1, 0, 0.2, 0)
+bones/3/enabled = true
+bones/3/position = Vector3(0, 0.2, 0)
+bones/3/rotation = Quaternion(5.92501e-15, 1.56958e-07, 3.7749e-08, 1)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/name = "Bone.003"
+bones/4/parent = 1
+bones/4/rest = Transform3D(0, 1, -1.42109e-14, -1, 0, 3.13916e-07, 3.13916e-07, -1.42109e-14, 1, 0, 0.4, 0.4)
+bones/4/enabled = true
+bones/4/position = Vector3(0, 0.4, 0.4)
+bones/4/rotation = Quaternion(-6.00652e-08, -1.4501e-07, -0.382683, 0.92388)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/name = "Cone.001"
+bones/5/parent = 4
+bones/5/rest = Transform3D(1, -7.54979e-08, 3.13916e-07, 7.54979e-08, 1, 0, -3.13916e-07, 2.37e-14, 1, -1.74846e-08, 0, 1.27146e-08)
+bones/5/enabled = true
+bones/5/position = Vector3(-1.74846e-08, 0, 1.27146e-08)
+bones/5/rotation = Quaternion(5.92501e-15, 1.56958e-07, 3.7749e-08, 1)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/name = "Cube.001"
+bones/6/parent = 1
+bones/6/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+bones/6/enabled = true
+bones/6/position = Vector3(0, 0.2, 0)
+bones/6/rotation = Quaternion(0, 0, 0, 1)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/name = "Cube"
+bones/7/parent = 0
+bones/7/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+bones/7/enabled = true
+bones/7/position = Vector3(0, 0.2, 0)
+bones/7/rotation = Quaternion(0, 0, 0, 1)
+bones/7/scale = Vector3(1, 1, 1)
+
+[node name="Cone" type="BoneAttachment3D" parent="charter/Armature/Skeleton3D"]
+transform = Transform3D(-2.98691e-08, 1, -3.30764e-14, -1, -4.37113e-08, 1.39095e-08, 8.64791e-08, -5.96047e-08, 1, 0.2, 1, -1.19209e-08)
+bone_name = "Cone"
+bone_idx = 3
+
+[node name="Cone" type="MeshInstance3D" parent="charter/Armature/Skeleton3D/Cone"]
+mesh = SubResource("ArrayMesh_qylsh")
+skeleton = NodePath("")
+
+[node name="Cone_001" type="BoneAttachment3D" parent="charter/Armature/Skeleton3D"]
+transform = Transform3D(0.707107, 0.707107, -7.60512e-08, -0.707107, 0.707107, 1.05853e-07, 1.33119e-07, -5.96047e-08, 1, 0.282843, 0.8, 0.282843)
+bone_name = "Cone.001"
+bone_idx = 5
+
+[node name="Cone_001" type="MeshInstance3D" parent="charter/Armature/Skeleton3D/Cone_001"]
+mesh = SubResource("ArrayMesh_0ugoh")
+skeleton = NodePath("")
+
+[node name="Cube_001" type="BoneAttachment3D" parent="charter/Armature/Skeleton3D"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0.6, 0)
+bone_name = "Cube.001"
+bone_idx = 6
+
+[node name="Cube_001" type="MeshInstance3D" parent="charter/Armature/Skeleton3D/Cube_001"]
+mesh = SubResource("ArrayMesh_ustns")
+skeleton = NodePath("")
+
+[node name="Cube" type="BoneAttachment3D" parent="charter/Armature/Skeleton3D"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 0.2, 0)
+bone_name = "Cube"
+bone_idx = 7
+
+[node name="Cube" type="MeshInstance3D" parent="charter/Armature/Skeleton3D/Cube"]
+mesh = SubResource("ArrayMesh_ustns")
+skeleton = NodePath("")
+
+[node name="body" type="SkeletonModifier3D" parent="charter/Armature/Skeleton3D"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+rotation_edit_mode = 0
+rotation_order = 2
+top_level = false
+visible = true
+visibility_parent = NodePath("")
+active = true
+influence = 1.0
+script = ExtResource("1_lys0h")
+right_arm_bone = "Bone"
+aim_rotation = 90.0
+axis = 1
+metadata/_custom_type_script = "uid://cqos4j8ink2up"
+
+[node name="chest" type="SkeletonModifier3D" parent="charter/Armature/Skeleton3D"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+rotation_edit_mode = 0
+rotation_order = 2
+top_level = false
+visible = true
+visibility_parent = NodePath("")
+active = true
+influence = 1.0
+script = ExtResource("1_lys0h")
+right_arm_bone = "Bone.001"
+aim_rotation = -45.0
+axis = 1
+metadata/_custom_type_script = "uid://cqos4j8ink2up"
+
+[node name="head" type="SkeletonModifier3D" parent="charter/Armature/Skeleton3D"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+rotation_edit_mode = 0
+rotation_order = 2
+top_level = false
+visible = true
+visibility_parent = NodePath("")
+active = true
+influence = 1.0
+script = ExtResource("1_lys0h")
+right_arm_bone = "Bone.002"
+aim_rotation = -45.0
+axis = 1
+metadata/_custom_type_script = "uid://cqos4j8ink2up"
+
+[node name="cannon_y" type="SkeletonModifier3D" parent="charter/Armature/Skeleton3D"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+rotation_edit_mode = 0
+rotation_order = 2
+top_level = false
+visible = true
+visibility_parent = NodePath("")
+active = true
+influence = 1.0
+script = ExtResource("1_lys0h")
+right_arm_bone = "Bone.003"
+aim_rotation = -45.0
+axis = 1
+metadata/_custom_type_script = "uid://cqos4j8ink2up"
+
+[node name="cannon_z" type="SkeletonModifier3D" parent="charter/Armature/Skeleton3D"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+rotation_edit_mode = 0
+rotation_order = 2
+top_level = false
+visible = true
+visibility_parent = NodePath("")
+active = true
+influence = 1.0
+script = ExtResource("1_lys0h")
+right_arm_bone = "Bone.003"
+aim_rotation = 45.0
+axis = 2
+metadata/_custom_type_script = "uid://cqos4j8ink2up"

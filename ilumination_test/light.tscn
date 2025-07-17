@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://te1wesjq7t5v"]
+
+[ext_resource type="LightmapGIData" uid="uid://d2fmt0d75dvoa" path="res://ilumination_test/light.lmbake" id="1_68h5y"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7afhy"]
+lightmap_size_hint = Vector2i(27, 27)
+add_uv2 = true
+size = Vector2(5, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dnp4g"]
+emission_enabled = true
+emission = Color(0, 1, 1, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_pxfng"]
+lightmap_size_hint = Vector2i(17, 9)
+material = SubResource("StandardMaterial3D_dnp4g")
+add_uv2 = true
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_7hqn6"]
+
+[node name="Light" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_7afhy")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("SphereMesh_pxfng")
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+camera_attributes = SubResource("CameraAttributesPractical_7hqn6")
+light_data = ExtResource("1_68h5y")

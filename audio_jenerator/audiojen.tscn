@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://des4qt766hul2"]
+
+[ext_resource type="Script" uid="uid://buuc1xhqy5tps" path="res://audio_jenerator/audiojen.gd" id="1_ckbbw"]
+
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_ckbbw"]
+
+[node name="Audiojen" type="Node"]
+script = ExtResource("1_ckbbw")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamGenerator_ckbbw")

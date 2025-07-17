@@ -1,0 +1,73 @@
+[gd_scene load_steps=14 format=3 uid="uid://clf8xy2mmr7vr"]
+
+[sub_resource type="Gradient" id="Gradient_8e36e"]
+offsets = PackedFloat32Array(0, 0.0958084, 0.296407, 0.568862)
+colors = PackedColorArray(1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0.945545, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_isxh1"]
+gradient = SubResource("Gradient_8e36e")
+
+[sub_resource type="Curve" id="Curve_nkprj"]
+
+[sub_resource type="Curve" id="Curve_lm3lc"]
+_data = [Vector2(0.180556, 0.00272036), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_6ycgs"]
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_gvhvm"]
+curve_x = SubResource("Curve_nkprj")
+curve_y = SubResource("Curve_lm3lc")
+curve_z = SubResource("Curve_6ycgs")
+
+[sub_resource type="Curve" id="Curve_8e36e"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.133333, 0.00979328), 0.0, 0.0, 0, 0, Vector2(0.325, 0.00979328), 0.0, 0.0, 0, 0, Vector2(0.355556, -1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_isxh1"]
+curve = SubResource("Curve_8e36e")
+
+[sub_resource type="Curve" id="Curve_u376o"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0333333, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_i6jjh"]
+curve = SubResource("Curve_u376o")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nkprj"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.1
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+orbit_velocity_min = 1.0
+orbit_velocity_max = 1.0
+orbit_velocity_curve = SubResource("CurveXYZTexture_gvhvm")
+radial_velocity_min = 9.99998
+radial_velocity_max = 9.99998
+radial_velocity_curve = SubResource("CurveTexture_isxh1")
+gravity = Vector3(0, 0, 0)
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_i6jjh")
+color_ramp = SubResource("GradientTexture1D_isxh1")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lm3lc"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_6ycgs"]
+material = SubResource("StandardMaterial3D_lm3lc")
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="Test" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 64
+lifetime = 2.0
+explosiveness = 0.9
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_nkprj")
+draw_pass_1 = SubResource("BoxMesh_6ycgs")

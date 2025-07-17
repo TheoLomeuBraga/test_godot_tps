@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://bn0n0pfcm7u8c"]
+
+[ext_resource type="Script" uid="uid://cg1pnm3ftio7g" path="res://slicer/slice.gd" id="1_lnsom"]
+[ext_resource type="Shader" uid="uid://bcydei26p6h0f" path="res://slicer/slice_shader.gdshader" id="2_pqo1j"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_pqo1j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wa7eq"]
+render_priority = 0
+shader = ExtResource("2_pqo1j")
+shader_parameter/slicer_position = Vector3(2, 0, 0)
+shader_parameter/slicer_normal = Vector3(0, 0, 1)
+shader_parameter/albedo = Color(0.0823529, 0.180392, 0.231373, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2lkgc"]
+cull_mode = 2
+albedo_color = Color(0.450648, 0.450648, 0.450648, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_wa7eq"]
+material = SubResource("StandardMaterial3D_2lkgc")
+
+[node name="Slice" type="Node3D"]
+script = ExtResource("1_lnsom")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_pqo1j")
+surface_material_override/0 = SubResource("ShaderMaterial_wa7eq")
+
+[node name="slicer" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+mesh = SubResource("QuadMesh_wa7eq")

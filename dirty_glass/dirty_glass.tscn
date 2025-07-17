@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bg1c502qggi8w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rvf73"]
+transparency = 1
+albedo_color = Color(0.827451, 1, 1, 0.133333)
+
+[sub_resource type="QuadMesh" id="QuadMesh_xeu1b"]
+material = SubResource("StandardMaterial3D_rvf73")
+
+[node name="DirtyGlass" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 3.30806e-06, -1.87755e-06, -1.49013e-08, 0.499998, 0.866027, 3.78489e-06, -0.866027, 0.499998, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 1.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_xeu1b")
