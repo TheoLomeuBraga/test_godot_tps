@@ -1,17 +1,11 @@
-[gd_scene load_steps=558 format=4 uid="uid://bnmksuyjxli6k"]
+[gd_scene load_steps=553 format=4 uid="uid://bnmksuyjxli6k"]
 
 [ext_resource type="Script" uid="uid://cn8yo2vj3i1ci" path="res://free_camera/free_camera.gd" id="1_7c3jg"]
-[ext_resource type="Script" uid="uid://ctm1nxukm411n" path="res://addons/qodot/src/nodes/qodot_map.gd" id="1_yo4kv"]
-[ext_resource type="Resource" uid="uid://c36hv0o6g0udo" path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" id="2_72vkg"]
-[ext_resource type="Script" uid="uid://bim8doq0tfq8i" path="res://addons/qodot/src/nodes/qodot_entity.gd" id="3_e3ux2"]
-[ext_resource type="Script" uid="uid://rys0mfn8yxm3" path="res://addons/qodot/game_definitions/fgd/point_classes/light.gd" id="4_7c3jg"]
 [ext_resource type="LightmapGIData" uid="uid://crsttwtl6t2lo" path="res://kuaqe/test_quodot.lmbake" id="6_sgi7q"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_yo4kv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_72vkg"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e3ux2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sgi7q"]
 albedo_color = Color(0.521206, 0.236343, 0, 1)
@@ -2029,12 +2023,6 @@ mesh = SubResource("BoxMesh_yo4kv")
 shape = SubResource("BoxShape3D_72vkg")
 
 [node name="QodotMap" type="Node3D" parent="."]
-script = ExtResource("1_yo4kv")
-map_file = "/home/theo/programing/godot/test_godot_tps/kuaqe/dm1.map"
-entity_fgd = ExtResource("2_72vkg")
-texture_file_extensions = PackedStringArray("png", "jpg", "jpeg", "bmp")
-default_material = SubResource("StandardMaterial3D_e3ux2")
-metadata/_custom_type_script = "uid://ctm1nxukm411n"
 
 [node name="entity_0_worldspawn" type="StaticBody3D" parent="QodotMap"]
 
@@ -4083,30 +4071,12 @@ shape = SubResource("ConvexPolygonShape3D_bmhn8")
 
 [node name="entity_1_info_intermission" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, 7.5, 27)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "info_intermission",
-"mangle": "20 210 0",
-"origin": "432 896 120"
-}
 
 [node name="entity_2_info_intermission" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72, 12.5, 18.5)
-script = ExtResource("3_e3ux2")
-properties = {
-"angle": "180",
-"classname": "info_intermission",
-"mangle": "15 180 0",
-"origin": "296 1152 200"
-}
 
 [node name="entity_3_trigger_changelevel" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 6, 70)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "trigger_changelevel",
-"map": "dm2"
-}
 
 [node name="entity_3_mesh_instance" type="MeshInstance3D" parent="QodotMap/entity_3_trigger_changelevel"]
 cast_shadow = 2
@@ -4115,110 +4085,39 @@ mesh = SubResource("ArrayMesh_1fwqf")
 
 [node name="entity_4_light_torch_small_walltorch" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.625, -5.75, -1.875)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "light_torch_small_walltorch",
-"light": "200",
-"origin": "-30 1466 -92"
-}
 
 [node name="entity_5_item_health" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.5, -9, 24)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "item_health",
-"origin": "384 1624 -144",
-"spawnflags": "1"
-}
 
 [node name="entity_6_item_health" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.5, -9, 27)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "item_health",
-"origin": "432 1624 -144",
-"spawnflags": "1"
-}
 
 [node name="entity_7_item_spikes" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.5, -9, 29.5)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "item_spikes",
-"origin": "472 1464 -144"
-}
 
 [node name="entity_8_item_spikes" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88, -9, 29.5)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "item_spikes",
-"origin": "472 1408 -144"
-}
 
 [node name="entity_9_weapon_nailgun" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.5, 0, -35)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "weapon_nailgun",
-"origin": "-560 1384 0"
-}
 
 [node name="entity_10_item_shells" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.5, 0, -33.5)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "item_shells",
-"origin": "-536 1000 0",
-"spawnflags": "1"
-}
 
 [node name="entity_11_weapon_grenadelauncher" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68, 3, -19.5)
-script = ExtResource("3_e3ux2")
-properties = {
-"angle": "180",
-"classname": "weapon_grenadelauncher",
-"origin": "-312 1088 48"
-}
 
 [node name="entity_12_weapon_nailgun" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 3, 68)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "weapon_nailgun",
-"origin": "1088 704 48"
-}
 
 [node name="entity_13_item_armor2" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.5, 0, -24.5)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "item_armor2",
-"origin": "-392 1416 0"
-}
 
 [node name="entity_14_item_armor1" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.5, -9, -25)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "item_armor1",
-"origin": "-400 1112 -144"
-}
 
 [node name="entity_15_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 99.5, 5.5, -23)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 200,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "-368 1592 88",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39481" type="OmniLight3D" parent="QodotMap/entity_15_light"]
 light_energy = 2.0
@@ -4229,25 +4128,9 @@ omni_range = 7.11111
 
 [node name="entity_16_light_torch_small_walltorch" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.625, 3.75, -43.375)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "light_torch_small_walltorch",
-"origin": "-694 1658 60"
-}
 
 [node name="entity_17_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 93.5, -3, -7.5)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 150,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "-120 1496 -48",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39482" type="OmniLight3D" parent="QodotMap/entity_17_light"]
 light_energy = 1.5
@@ -4258,17 +4141,6 @@ omni_range = 4.0
 
 [node name="entity_18_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 89, -7.5, -16.5)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 250,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "-264 1424 -120",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39483" type="OmniLight3D" parent="QodotMap/entity_18_light"]
 light_energy = 2.5
@@ -4279,17 +4151,6 @@ omni_range = 11.1111
 
 [node name="entity_19_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 99.5, -7.5, -17)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 250,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "-272 1592 -120",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39484" type="OmniLight3D" parent="QodotMap/entity_19_light"]
 light_energy = 2.5
@@ -4300,17 +4161,6 @@ omni_range = 11.1111
 
 [node name="entity_20_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 41.125, 1, 30.125)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 150,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "482 658 16",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39485" type="OmniLight3D" parent="QodotMap/entity_20_light"]
 light_energy = 1.5
@@ -4321,210 +4171,75 @@ omni_range = 4.0
 
 [node name="entity_21_weapon_supershotgun" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72, 0, 3)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "weapon_supershotgun",
-"origin": "48 1152 0"
-}
 
 [node name="entity_22_light_torch_small_walltorch" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.375, 3.75, -30.875)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "light_torch_small_walltorch",
-"origin": "-494 1398 60"
-}
 
 [node name="entity_23_info_player_deathmatch" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.5, -7.5, 17.5)
-script = ExtResource("3_e3ux2")
-properties = {
-"angle": "180",
-"classname": "info_player_deathmatch",
-"origin": "280 1416 -120"
-}
 
 [node name="entity_24_info_player_deathmatch" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89, 4.5, 70.5)
-script = ExtResource("3_e3ux2")
-properties = {
-"angle": "225",
-"classname": "info_player_deathmatch",
-"origin": "1128 1424 72"
-}
 
 [node name="entity_25_info_player_deathmatch" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87, 1.5, 6.5)
-script = ExtResource("3_e3ux2")
-properties = {
-"angle": "90",
-"classname": "info_player_deathmatch",
-"origin": "104 1392 24"
-}
 
 [node name="entity_26_info_player_deathmatch" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.75, 1.5, -27)
-script = ExtResource("3_e3ux2")
-properties = {
-"angle": "180",
-"classname": "info_player_deathmatch",
-"origin": "-432 1596 24"
-}
 
 [node name="entity_27_info_player_deathmatch" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61, 1.5, -41)
-script = ExtResource("3_e3ux2")
-properties = {
-"angle": "90",
-"classname": "info_player_deathmatch",
-"origin": "-656 976 24"
-}
 
 [node name="entity_28_info_player_deathmatch" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 1.5, -35)
-script = ExtResource("3_e3ux2")
-properties = {
-"angle": "0",
-"classname": "info_player_deathmatch",
-"origin": "-560 768 24"
-}
 
 [node name="entity_29_info_player_deathmatch" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47, 1.5, 36)
-script = ExtResource("3_e3ux2")
-properties = {
-"angle": "0",
-"classname": "info_player_deathmatch",
-"origin": "576 752 24"
-}
 
 [node name="entity_30_item_shells" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.5, 0, 19)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "item_shells",
-"origin": "304 1016 0"
-}
 
 [node name="entity_31_item_health" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.5, 0, 12.5)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "item_health",
-"origin": "200 1272 0"
-}
 
 [node name="entity_32_item_health" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.5, 0, 9.5)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "item_health",
-"origin": "152 1272 0"
-}
 
 [node name="entity_33_item_health" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.75, 0, -42)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "item_health",
-"origin": "-672 1372 0"
-}
 
 [node name="entity_34_item_health" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.25, 0, -42)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "item_health",
-"origin": "-672 1412 0"
-}
 
 [node name="entity_35_item_spikes" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.75, 0, -14)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "item_spikes",
-"origin": "-224 748 0"
-}
 
 [node name="entity_36_item_health" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.5, 0, 56.5)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "item_health",
-"origin": "904 1032 0"
-}
 
 [node name="entity_37_item_health" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.5, 0, 56.5)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "item_health",
-"origin": "904 1096 0"
-}
 
 [node name="entity_38_item_shells" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.5, 0, 39.5)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "item_shells",
-"origin": "632 856 0"
-}
 
 [node name="entity_39_item_rockets" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.5, 0, 36.5)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "item_rockets",
-"origin": "584 856 0",
-"spawnflags": "1"
-}
 
 [node name="entity_40_item_shells" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.5, -9, -7.25)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "item_shells",
-"origin": "-116 1160 -144"
-}
 
 [node name="entity_41_item_health" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.25, -9, -15.5)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "item_health",
-"origin": "-248 692 -144"
-}
 
 [node name="entity_42_item_health" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.25, -9, -18.75)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "item_health",
-"origin": "-300 692 -144"
-}
 
 [node name="entity_43_item_health" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.5, 0, 27.5)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "item_health",
-"origin": "440 808 0",
-"spawnflags": "2"
-}
 
 [node name="entity_44_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 100.5, -1.5, -1)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 200,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "-16 1608 -24",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39486" type="OmniLight3D" parent="QodotMap/entity_44_light"]
 light_energy = 2.0
@@ -4535,14 +4250,6 @@ omni_range = 7.11111
 
 [node name="entity_45_func_button" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.5, 0, -23)
-script = ExtResource("3_e3ux2")
-properties = {
-"angle": "-2",
-"classname": "func_button",
-"lip": "4",
-"target": "t3",
-"wait": "10"
-}
 
 [node name="entity_45_mesh_instance" type="MeshInstance3D" parent="QodotMap/entity_45_func_button"]
 cast_shadow = 2
@@ -4551,16 +4258,6 @@ mesh = SubResource("ArrayMesh_3v3os")
 
 [node name="entity_46_func_door" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.5, -0.625, -11.5)
-script = ExtResource("3_e3ux2")
-properties = {
-"angle": "180",
-"classname": "func_door",
-"sounds": "4",
-"spawnflags": "1",
-"speed": "175",
-"targetname": "t3",
-"wait": "8"
-}
 
 [node name="entity_46_mesh_instance" type="MeshInstance3D" parent="QodotMap/entity_46_func_door"]
 cast_shadow = 2
@@ -4569,33 +4266,12 @@ mesh = SubResource("ArrayMesh_wcn8a")
 
 [node name="entity_47_light_torch_small_walltorch" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.375, 3.75, -41.125)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "light_torch_small_walltorch",
-"origin": "-658 934 60"
-}
 
 [node name="entity_48_light_torch_small_walltorch" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.125, 3.25, -32.375)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "light_torch_small_walltorch",
-"origin": "-518 1058 52"
-}
 
 [node name="entity_49_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 83, -4.25, 23.25)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 100,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "372 1328 -68",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39487" type="OmniLight3D" parent="QodotMap/entity_49_light"]
 light_bake_mode = 1
@@ -4604,17 +4280,6 @@ omni_range = 1.77778
 
 [node name="entity_50_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 45, -4.25, 30.5)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 150,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "488 720 -68",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39488" type="OmniLight3D" parent="QodotMap/entity_50_light"]
 light_energy = 1.5
@@ -4625,17 +4290,6 @@ omni_range = 4.0
 
 [node name="entity_51_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 47.25, -4.25, 0)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 200,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "0 756 -68",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39489" type="OmniLight3D" parent="QodotMap/entity_51_light"]
 light_energy = 2.0
@@ -4646,17 +4300,6 @@ omni_range = 7.11111
 
 [node name="entity_52_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 48, -4.25, -21.75)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 200,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "-348 768 -68",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39490" type="OmniLight3D" parent="QodotMap/entity_52_light"]
 light_energy = 2.0
@@ -4667,17 +4310,6 @@ omni_range = 7.11111
 
 [node name="entity_53_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 67.25, -4.25, -21.75)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 250,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "-348 1076 -68",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39491" type="OmniLight3D" parent="QodotMap/entity_53_light"]
 light_energy = 2.5
@@ -4688,41 +4320,15 @@ omni_range = 11.1111
 
 [node name="entity_54_light_torch_small_walltorch" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.125, -5.75, 19.625)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "light_torch_small_walltorch",
-"origin": "314 1410 -92"
-}
 
 [node name="entity_55_light_torch_small_walltorch" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.125, -5.75, -7.125)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "light_torch_small_walltorch",
-"origin": "-114 1298 -92"
-}
 
 [node name="entity_56_light_torch_small_walltorch" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.375, -5.75, 31.375)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "light_torch_small_walltorch",
-"origin": "502 1654 -92"
-}
 
 [node name="entity_57_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 58, -7.25, 28.25)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 225,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "452 928 -116",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39492" type="OmniLight3D" parent="QodotMap/entity_57_light"]
 light_energy = 2.25
@@ -4733,17 +4339,6 @@ omni_range = 9.0
 
 [node name="entity_58_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 58.25, -7.25, 11.25)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 225,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "180 932 -116",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39493" type="OmniLight3D" parent="QodotMap/entity_58_light"]
 light_energy = 2.25
@@ -4754,17 +4349,6 @@ omni_range = 9.0
 
 [node name="entity_59_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 61, -7.25, 3)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 175,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "48 976 -116",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39494" type="OmniLight3D" parent="QodotMap/entity_59_light"]
 light_energy = 1.75
@@ -4775,17 +4359,6 @@ omni_range = 5.44444
 
 [node name="entity_60_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 58.75, -7.25, -6)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 225,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "-96 940 -116",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39495" type="OmniLight3D" parent="QodotMap/entity_60_light"]
 light_energy = 2.25
@@ -4796,17 +4369,6 @@ omni_range = 9.0
 
 [node name="entity_61_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 78, -5.75, 30.5)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 200,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "488 1248 -92",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39496" type="OmniLight3D" parent="QodotMap/entity_61_light"]
 light_energy = 2.0
@@ -4817,49 +4379,18 @@ omni_range = 7.11111
 
 [node name="entity_62_light_torch_small_walltorch" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.625, -5.75, 17.125)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "light_torch_small_walltorch",
-"origin": "274 1338 -92"
-}
 
 [node name="entity_63_light_torch_small_walltorch" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.875, -5.75, -7.875)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "light_torch_small_walltorch",
-"origin": "-126 990 -92"
-}
 
 [node name="entity_64_light_torch_small_walltorch" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.875, -5.75, 7.125)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "light_torch_small_walltorch",
-"origin": "114 990 -92"
-}
 
 [node name="entity_65_light_torch_small_walltorch" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.875, -5.75, 24.125)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "light_torch_small_walltorch",
-"origin": "386 990 -92"
-}
 
 [node name="entity_66_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 66, 13, -19)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 300,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "-304 1056 208",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39497" type="OmniLight3D" parent="QodotMap/entity_66_light"]
 light_energy = 3.0
@@ -4870,17 +4401,6 @@ omni_range = 16.0
 
 [node name="entity_67_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 51, 13, -19)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 300,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "-304 816 208",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39498" type="OmniLight3D" parent="QodotMap/entity_67_light"]
 light_energy = 3.0
@@ -4891,17 +4411,6 @@ omni_range = 16.0
 
 [node name="entity_68_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 50.5, 13, 0)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 300,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "0 808 208",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39499" type="OmniLight3D" parent="QodotMap/entity_68_light"]
 light_energy = 3.0
@@ -4912,17 +4421,6 @@ omni_range = 16.0
 
 [node name="entity_69_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 50.5, 13, 17.5)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 300,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "280 808 208",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39500" type="OmniLight3D" parent="QodotMap/entity_69_light"]
 light_energy = 3.0
@@ -4933,17 +4431,6 @@ omni_range = 16.0
 
 [node name="entity_70_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 51, 5.5, 26.5)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 200,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "424 816 88",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39501" type="OmniLight3D" parent="QodotMap/entity_70_light"]
 light_energy = 2.0
@@ -4954,25 +4441,9 @@ omni_range = 7.11111
 
 [node name="entity_71_light_flame_large_yellow" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.875, 11.75, 30.875)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "light_flame_large_yellow",
-"origin": "494 814 188"
-}
 
 [node name="entity_72_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 45.5, 8, 55)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 200,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "880 728 128",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39502" type="OmniLight3D" parent="QodotMap/entity_72_light"]
 light_energy = 2.0
@@ -4983,17 +4454,6 @@ omni_range = 7.11111
 
 [node name="entity_73_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 70.5, 8, 19)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 300,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "304 1128 128",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39503" type="OmniLight3D" parent="QodotMap/entity_73_light"]
 light_energy = 3.0
@@ -5004,17 +4464,6 @@ omni_range = 16.0
 
 [node name="entity_74_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 62, 8, 14)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 250,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "224 992 128",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39504" type="OmniLight3D" parent="QodotMap/entity_74_light"]
 light_energy = 2.5
@@ -5025,53 +4474,18 @@ omni_range = 11.1111
 
 [node name="entity_75_light_torch_small_walltorch" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.875, 3.75, 8.625)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "light_torch_small_walltorch",
-"light": "225",
-"origin": "138 542 60"
-}
 
 [node name="entity_76_light_torch_small_walltorch" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.875, 3.75, 17.125)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "light_torch_small_walltorch",
-"light": "225",
-"origin": "274 542 60"
-}
 
 [node name="entity_77_light_torch_small_walltorch" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.875, 3.75, 25.625)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "light_torch_small_walltorch",
-"light": "225",
-"origin": "410 542 60"
-}
 
 [node name="entity_78_light_torch_small_walltorch" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.875, 3.75, 38.125)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "light_torch_small_walltorch",
-"light": "250",
-"origin": "610 542 60"
-}
 
 [node name="entity_79_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 77, 4.5, 56)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 150,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "896 1232 72",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39505" type="OmniLight3D" parent="QodotMap/entity_79_light"]
 light_energy = 1.5
@@ -5082,17 +4496,6 @@ omni_range = 4.0
 
 [node name="entity_80_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 56, 7, 35)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 250,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "560 896 112",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39506" type="OmniLight3D" parent="QodotMap/entity_80_light"]
 light_energy = 2.5
@@ -5103,17 +4506,6 @@ omni_range = 11.1111
 
 [node name="entity_81_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 58, 7, 53.5)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 300,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "856 928 112",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39507" type="OmniLight3D" parent="QodotMap/entity_81_light"]
 light_energy = 3.0
@@ -5124,17 +4516,6 @@ omni_range = 16.0
 
 [node name="entity_82_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 53.5, 7, 40)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 250,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "640 856 112",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39508" type="OmniLight3D" parent="QodotMap/entity_82_light"]
 light_energy = 2.5
@@ -5145,17 +4526,6 @@ omni_range = 11.1111
 
 [node name="entity_83_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 66, 7, 35)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 250,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "560 1056 112",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39509" type="OmniLight3D" parent="QodotMap/entity_83_light"]
 light_energy = 2.5
@@ -5166,17 +4536,6 @@ omni_range = 11.1111
 
 [node name="entity_84_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 75.5, 7, 35)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 250,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "560 1208 112",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39510" type="OmniLight3D" parent="QodotMap/entity_84_light"]
 light_energy = 2.5
@@ -5187,17 +4546,6 @@ omni_range = 11.1111
 
 [node name="entity_85_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 66, 16.25, 46.75)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 300,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "748 1056 260",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39511" type="OmniLight3D" parent="QodotMap/entity_85_light"]
 light_energy = 3.0
@@ -5208,17 +4556,6 @@ omni_range = 16.0
 
 [node name="entity_86_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 80.25, 16.25, 46.75)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 300,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "748 1284 260",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39512" type="OmniLight3D" parent="QodotMap/entity_86_light"]
 light_energy = 3.0
@@ -5229,25 +4566,9 @@ omni_range = 16.0
 
 [node name="entity_87_light_torch_small_walltorch" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.625, 6.75, 71.625)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "light_torch_small_walltorch",
-"origin": "1146 682 108"
-}
 
 [node name="entity_88_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 63.25, 8.5, 63.5)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 200,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "1016 1012 136",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39513" type="OmniLight3D" parent="QodotMap/entity_88_light"]
 light_energy = 2.0
@@ -5258,17 +4579,6 @@ omni_range = 7.11111
 
 [node name="entity_89_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 82.5, 7.25, 62.5)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 200,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "1000 1320 116",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39514" type="OmniLight3D" parent="QodotMap/entity_89_light"]
 light_energy = 2.0
@@ -5279,120 +4589,45 @@ omni_range = 7.11111
 
 [node name="entity_90_light_torch_small_walltorch" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.125, 3.75, 46.875)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "light_torch_small_walltorch",
-"origin": "750 1442 60"
-}
 
 [node name="entity_91_light_torch_small_walltorch" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.625, 3.75, 37.875)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "light_torch_small_walltorch",
-"origin": "606 794 60"
-}
 
 [node name="entity_92_light_torch_small_walltorch" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.875, 6.75, 71.625)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "light_torch_small_walltorch",
-"origin": "1146 1054 108"
-}
 
 [node name="entity_93_light_torch_small_walltorch" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82.625, 6.75, 71.625)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "light_torch_small_walltorch",
-"origin": "1146 1322 108"
-}
 
 [node name="entity_94_light_flame_large_yellow" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.125, 13.75, 14.875)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "light_flame_large_yellow",
-"origin": "238 1378 220"
-}
 
 [node name="entity_95_light_flame_large_yellow" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.875, 13.75, -11.125)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "light_flame_large_yellow",
-"origin": "-178 1374 220"
-}
 
 [node name="entity_96_light_flame_large_yellow" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.875, 13.75, -11.125)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "light_flame_large_yellow",
-"origin": "-178 1646 220"
-}
 
 [node name="entity_97_light_flame_large_yellow" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.875, 13.75, 14.875)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "light_flame_large_yellow",
-"origin": "238 1646 220"
-}
 
 [node name="entity_98_light_flame_large_yellow" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.875, 13.75, 30.875)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "light_flame_large_yellow",
-"light": "200",
-"origin": "494 1070 220"
-}
 
 [node name="entity_99_light_flame_large_yellow" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.875, 13.75, 30.875)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "light_flame_large_yellow",
-"light": "200",
-"origin": "494 1198 220"
-}
 
 [node name="entity_100_light_flame_large_yellow" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82.875, 13.75, 30.875)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "light_flame_large_yellow",
-"light": "200",
-"origin": "494 1326 220"
-}
 
 [node name="entity_101_light_flame_large_yellow" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.875, 13.75, 30.875)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "light_flame_large_yellow",
-"light": "200",
-"origin": "494 1454 220"
-}
 
 [node name="entity_102_light_flame_large_yellow" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.875, 13.75, 30.875)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "light_flame_large_yellow",
-"light": "200",
-"origin": "494 1582 220"
-}
 
 [node name="entity_103_func_button" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.5, -6.5, 31.75)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "func_button",
-"target": "t2"
-}
 
 [node name="entity_103_mesh_instance" type="MeshInstance3D" parent="QodotMap/entity_103_func_button"]
 cast_shadow = 2
@@ -5401,11 +4636,6 @@ mesh = SubResource("ArrayMesh_abxki")
 
 [node name="entity_104_func_door_secret" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.25, 3, 30)
-script = ExtResource("3_e3ux2")
-properties = {
-"angle": "180",
-"classname": "func_door_secret"
-}
 
 [node name="entity_104_mesh_instance" type="MeshInstance3D" parent="QodotMap/entity_104_func_door_secret"]
 cast_shadow = 2
@@ -5414,17 +4644,6 @@ mesh = SubResource("ArrayMesh_t1eos")
 
 [node name="entity_105_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 76, 8.5, -20)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 300,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "-320 1216 136",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39515" type="OmniLight3D" parent="QodotMap/entity_105_light"]
 light_energy = 3.0
@@ -5435,11 +4654,6 @@ omni_range = 16.0
 
 [node name="entity_106_trigger_teleport" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, -5.5, 16.5)
-script = ExtResource("3_e3ux2")
-properties = {
-"classname": "trigger_teleport",
-"target": "t1"
-}
 
 [node name="entity_106_mesh_instance" type="MeshInstance3D" parent="QodotMap/entity_106_trigger_teleport"]
 cast_shadow = 2
@@ -5448,28 +4662,9 @@ mesh = SubResource("ArrayMesh_l86gj")
 
 [node name="entity_107_info_teleport_destination" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.25, 1, 28)
-script = ExtResource("3_e3ux2")
-properties = {
-"angle": "90",
-"classname": "info_teleport_destination",
-"light": "250",
-"origin": "448 1028 16",
-"targetname": "t1"
-}
 
 [node name="entity_108_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 46, 8.5, -32.5)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 300,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "-520 736 136",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39516" type="OmniLight3D" parent="QodotMap/entity_108_light"]
 light_energy = 3.0
@@ -5480,17 +4675,6 @@ omni_range = 16.0
 
 [node name="entity_109_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 88.75, 5.25, -26)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 200,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "-416 1420 84",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39517" type="OmniLight3D" parent="QodotMap/entity_109_light"]
 light_energy = 2.0
@@ -5501,17 +4685,6 @@ omni_range = 7.11111
 
 [node name="entity_110_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 89.5, 8.5, -8)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 200,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "-128 1432 136",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39518" type="OmniLight3D" parent="QodotMap/entity_110_light"]
 light_energy = 2.0
@@ -5522,13 +4695,6 @@ omni_range = 7.11111
 
 [node name="entity_111_func_door" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85, -5.25, 28.5)
-script = ExtResource("3_e3ux2")
-properties = {
-"angle": "-2",
-"classname": "func_door",
-"sounds": "4",
-"targetname": "t2"
-}
 
 [node name="entity_111_mesh_instance" type="MeshInstance3D" parent="QodotMap/entity_111_func_door"]
 cast_shadow = 2
@@ -5537,12 +4703,6 @@ mesh = SubResource("ArrayMesh_rnnn2")
 
 [node name="entity_112_func_door" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85, -5.25, 26.25)
-script = ExtResource("3_e3ux2")
-properties = {
-"angle": "-2",
-"classname": "func_door",
-"targetname": "t2"
-}
 
 [node name="entity_112_mesh_instance" type="MeshInstance3D" parent="QodotMap/entity_112_func_door"]
 cast_shadow = 2
@@ -5551,18 +4711,6 @@ mesh = SubResource("ArrayMesh_70c7q")
 
 [node name="entity_113_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 100, -5, 14)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 300,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "224 1600 -80",
-"style": "2",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39519" type="OmniLight3D" parent="QodotMap/entity_113_light"]
 light_energy = 3.0
@@ -5573,17 +4721,6 @@ omni_range = 16.0
 
 [node name="entity_114_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 93.5, -4.5, -14)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 200,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "-224 1496 -72",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39520" type="OmniLight3D" parent="QodotMap/entity_114_light"]
 light_energy = 2.0
@@ -5594,17 +4731,6 @@ omni_range = 7.11111
 
 [node name="entity_115_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 93.75, 14, 8.25)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 200,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "132 1500 224",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39521" type="OmniLight3D" parent="QodotMap/entity_115_light"]
 light_energy = 2.0
@@ -5615,17 +4741,6 @@ omni_range = 7.11111
 
 [node name="entity_116_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 94, 14, 0)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 200,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "0 1504 224",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39522" type="OmniLight3D" parent="QodotMap/entity_116_light"]
 light_energy = 2.0
@@ -5636,17 +4751,6 @@ omni_range = 7.11111
 
 [node name="entity_117_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 87.75, 5.5, 12.25)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 200,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "196 1404 88",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39523" type="OmniLight3D" parent="QodotMap/entity_117_light"]
 light_energy = 2.0
@@ -5657,17 +4761,6 @@ omni_range = 7.11111
 
 [node name="entity_118_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 87.25, 5.5, 2.25)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 200,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "36 1396 88",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39524" type="OmniLight3D" parent="QodotMap/entity_118_light"]
 light_energy = 2.0
@@ -5678,17 +4771,6 @@ omni_range = 7.11111
 
 [node name="entity_119_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 96.75, 5.5, -6.75)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 200,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "-108 1548 88",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39525" type="OmniLight3D" parent="QodotMap/entity_119_light"]
 light_energy = 2.0
@@ -5699,17 +4781,6 @@ omni_range = 7.11111
 
 [node name="entity_120_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 97.25, 5.5, 5.75)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 200,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "92 1556 88",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39526" type="OmniLight3D" parent="QodotMap/entity_120_light"]
 light_energy = 2.0
@@ -5720,17 +4791,6 @@ omni_range = 7.11111
 
 [node name="entity_121_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 97.25, 5.5, 18.25)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 200,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "292 1556 88",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39527" type="OmniLight3D" parent="QodotMap/entity_121_light"]
 light_energy = 2.0
@@ -5741,17 +4801,6 @@ omni_range = 7.11111
 
 [node name="entity_122_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 95.5, 5.5, 28)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 250,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "448 1528 88",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39528" type="OmniLight3D" parent="QodotMap/entity_122_light"]
 light_energy = 2.5
@@ -5762,17 +4811,6 @@ omni_range = 11.1111
 
 [node name="entity_123_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 84.25, 5.25, 27.75)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 250,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "444 1348 84",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39529" type="OmniLight3D" parent="QodotMap/entity_123_light"]
 light_energy = 2.5
@@ -5783,26 +4821,9 @@ omni_range = 11.1111
 
 [node name="entity_124_info_player_start" type="Node3D" parent="QodotMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.25, 1.5, 20.25)
-script = ExtResource("3_e3ux2")
-properties = {
-"angle": "180",
-"classname": "info_player_start",
-"origin": "324 1156 24"
-}
 
 [node name="entity_125_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 66.25, 7.5, -3)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 150,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "-48 1060 120",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39530" type="OmniLight3D" parent="QodotMap/entity_125_light"]
 light_energy = 1.5
@@ -5813,17 +4834,6 @@ omni_range = 4.0
 
 [node name="entity_126_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 78.25, 7.5, -3.5)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 150,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "-56 1252 120",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39531" type="OmniLight3D" parent="QodotMap/entity_126_light"]
 light_energy = 1.5
@@ -5834,17 +4844,6 @@ omni_range = 4.0
 
 [node name="entity_127_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 72, 7, 4.5)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 200,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "72 1152 112",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39532" type="OmniLight3D" parent="QodotMap/entity_127_light"]
 light_energy = 2.0
@@ -5855,17 +4854,6 @@ omni_range = 7.11111
 
 [node name="entity_128_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 71.75, 18.5, 0.25)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 200,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "4 1148 296",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39533" type="OmniLight3D" parent="QodotMap/entity_128_light"]
 light_energy = 2.0
@@ -5876,17 +4864,6 @@ omni_range = 7.11111
 
 [node name="entity_129_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 72.25, 18.5, 8.25)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 200,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "132 1156 296",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39534" type="OmniLight3D" parent="QodotMap/entity_129_light"]
 light_energy = 2.0
@@ -5897,17 +4874,6 @@ omni_range = 7.11111
 
 [node name="entity_130_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 62.25, 8, 2.25)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 200,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "36 996 128",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39535" type="OmniLight3D" parent="QodotMap/entity_130_light"]
 light_energy = 2.0
@@ -5918,17 +4884,6 @@ omni_range = 7.11111
 
 [node name="entity_131_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 81.75, 8, 1.75)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 200,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "28 1308 128",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39536" type="OmniLight3D" parent="QodotMap/entity_131_light"]
 light_energy = 2.0
@@ -5939,17 +4894,6 @@ omni_range = 7.11111
 
 [node name="entity_132_light" type="Node3D" parent="QodotMap"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 81.75, 8, 13.75)
-script = ExtResource("4_7c3jg")
-properties = {
-"_color": Color(1, 1, 1, 1),
-"angle": 0.0,
-"classname": "light",
-"delay": 0,
-"light": 200,
-"mangle": Vector3(0.005, 0, 0),
-"origin": "220 1308 128",
-"wait": 1
-}
 
 [node name="@OmniLight3D@39537" type="OmniLight3D" parent="QodotMap/entity_132_light"]
 light_energy = 2.0
