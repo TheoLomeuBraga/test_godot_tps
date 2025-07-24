@@ -1,0 +1,83 @@
+[gd_scene load_steps=13 format=4 uid="uid://r7bk0xooto1b"]
+
+[ext_resource type="Script" uid="uid://djoxgap6cbb8h" path="res://addons/qodot/src/nodes/qodot_map.gd" id="1_3visk"]
+[ext_resource type="Resource" uid="uid://c36hv0o6g0udo" path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" id="2_6be3r"]
+[ext_resource type="Script" uid="uid://irk21urv3bw0" path="res://addons/qodot/src/nodes/qodot_entity.gd" id="3_1ln13"]
+[ext_resource type="Texture2D" uid="uid://dkvj7k24ufswt" path="res://trenchbroom_entity_setup_tutorial/maps/textures/grass.png" id="4_1ln13"]
+[ext_resource type="Texture2D" uid="uid://crygsnql5xs5e" path="res://trenchbroom_entity_setup_tutorial/maps/textures/brick.png" id="5_mqcrs"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lu45p"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_2vf3q"]
+sky_material = SubResource("ProceduralSkyMaterial_lu45p")
+
+[sub_resource type="Environment" id="Environment_pc3x6"]
+background_mode = 2
+sky = SubResource("Sky_2vf3q")
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0f0r7"]
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y4xs5"]
+albedo_texture = ExtResource("4_1ln13")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vsp2h"]
+albedo_texture = ExtResource("5_mqcrs")
+texture_filter = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_jyas2"]
+_surfaces = [{
+"aabb": AABB(-5.75, -3.25, -4, 8, 2, 8),
+"attribute_data": PackedByteArray("AACAvgAAgL0AAIC+AACAPQAAgD4AAIA9AACAPgAAgL0AAIC+AACAvQAAgD4AAIC9AACAPgAAgD0AAIC+AACAPQAAgL4AAIC+AACAvgAAgD4AAIA+AACAPgAAgD4AAIC+AACAvgAAgL4AAIA+AACAvgAAgD4AAIA+AACAvgAAgD4AAIC+AACAvQAAgL4AAIA9AACAPgAAgD0AAIA+AACAvQAAgL4AAIC9AACAPgAAgL0AAIA+AACAPQAAgL4AAIA9"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAACAAMABAAFAAYABAAGAAcACAAJAAoACAAKAAsADAANAA4ADAAOAA8AEAARABIAEAASABMAFAAVABYAFAAWABcA"),
+"material": SubResource("StandardMaterial3D_y4xs5"),
+"name": "grass",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAC4wAAAoL8AAIDAAAC4wAAAUMAAAIDAAAAQQAAAUMAAAIDAAAAQQAAAoL8AAIDAAAC4wAAAoL8AAIDAAAC4wAAAoL8AAIBAAAC4wAAAUMAAAIBAAAC4wAAAUMAAAIDAAAAQQAAAUMAAAIDAAAC4wAAAUMAAAIDAAAC4wAAAUMAAAIBAAAAQQAAAUMAAAIBAAAAQQAAAoL8AAIDAAAAQQAAAoL8AAIBAAAC4wAAAoL8AAIBAAAC4wAAAoL8AAIDAAAAQQAAAoL8AAIDAAAAQQAAAUMAAAIDAAAAQQAAAUMAAAIBAAAAQQAAAoL8AAIBAAAC4wAAAoL8AAIBAAAAQQAAAoL8AAIBAAAAQQAAAUMAAAIBAAAC4wAAAUMAAAIBA/////////z//////////P/////////8//////////z8AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//v/9/AAD/f/8//38AAP9//z//fwAA/3//P/9/AAD/f/8//3////9//7//f////3//v/9/////f/+//3////9//7////9//3//P////3//f/8/////f/9//z////9//3//P/9//3////+//3//f////7//f/9/////v/9//3////+/")
+}, {
+"aabb": AABB(1.25, -1.25, -4, 1, 7, 8),
+"attribute_data": PackedByteArray("AABAPgAAAL8AAEA+AACAvQAAgD4AAIC9AACAPgAAAL8AAIC+AAAAvwAAgD4AAAC/AACAPgAAgL0AAIC+AACAvQAAgL4AAIC+AACAvgAAQL4AAIA+AABAvgAAgD4AAIC+AACAvgAAgL4AAIA+AACAvgAAgD4AAEC+AACAvgAAQL4AAIC+AAAAvwAAgL4AAIC9AACAPgAAgL0AAIA+AAAAvwAAQD4AAAC/AACAPgAAAL8AAIA+AACAvQAAQD4AAIC9"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAACAAMABAAFAAYABAAGAAcACAAJAAoACAAKAAsADAANAA4ADAAOAA8AEAARABIAEAASABMAFAAVABYAFAAWABcA"),
+"material": SubResource("StandardMaterial3D_vsp2h"),
+"name": "brick",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AACgPwAAuEAAAIDAAACgPwAAoL8AAIDAAAAQQAAAoL8AAIDAAAAQQAAAuEAAAIDAAACgPwAAuEAAAIDAAACgPwAAuEAAAIBAAACgPwAAoL8AAIBAAACgPwAAoL8AAIDAAAAQQAAAoL8AAIDAAACgPwAAoL8AAIDAAACgPwAAoL8AAIBAAAAQQAAAoL8AAIBAAAAQQAAAuEAAAIDAAAAQQAAAuEAAAIBAAACgPwAAuEAAAIBAAACgPwAAuEAAAIDAAAAQQAAAuEAAAIDAAAAQQAAAoL8AAIDAAAAQQAAAoL8AAIBAAAAQQAAAuEAAAIBAAACgPwAAuEAAAIBAAAAQQAAAuEAAAIBAAAAQQAAAoL8AAIBAAACgPwAAoL8AAIBA/////////z//////////P/////////8//////////z8AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//v/9/AAD/f/8//38AAP9//z//fwAA/3//P/9/AAD/f/8//3////9//7//f////3//v/9/////f/+//3////9//7////9//3//P////3//f/8/////f/9//z////9//3//P/9//3////+//3//f////7//f/9/////v/9//3////+/")
+}]
+
+[node name="Test" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_pc3x6")
+
+[node name="QodotMap" type="Node3D" parent="."]
+script = ExtResource("1_3visk")
+map_file = "res://trenchbroom_entity_setup_tutorial/maps/texture_test.map"
+entity_fgd = ExtResource("2_6be3r")
+base_texture_dir = "res://trenchbroom_entity_setup_tutorial/maps/textures"
+texture_file_extensions = PackedStringArray("png", "jpg", "jpeg", "bmp")
+default_material = SubResource("StandardMaterial3D_0f0r7")
+metadata/_custom_type_script = "uid://djoxgap6cbb8h"
+
+[node name="entity_0_worldspawn" type="Node3D" parent="QodotMap"]
+script = ExtResource("3_1ln13")
+properties = {
+"_tb_mod": "textures",
+"classname": "worldspawn"
+}
+
+[node name="entity_0_mesh_instance" type="MeshInstance3D" parent="QodotMap/entity_0_worldspawn"]
+cast_shadow = 2
+gi_mode = 0
+mesh = SubResource("ArrayMesh_jyas2")

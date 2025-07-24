@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://7ysyfehcaj8b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_paygi"]
+bg_color = Color(0.6, 0, 0.6, 1)
+border_width_right = 5
+border_color = Color(0.8, 0.368627, 0, 1)
+expand_margin_right = 5.0
+
+[node name="AnimatedUi" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_paygi")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_paygi")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_paygi")
+theme_override_styles/hover = SubResource("StyleBoxFlat_paygi")
+text = "aaaaa"

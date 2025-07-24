@@ -1,0 +1,14 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+uid="uid://d0wnhckfgudg1"
+path="res://.godot/imported/texture_test.map-dea0f845b017b36b5231a11dbcfc90bd.tres"
+
+[deps]
+
+source_file="res://trenchbroom_entity_setup_tutorial/maps/texture_test.map"
+dest_files=["res://.godot/imported/texture_test.map-dea0f845b017b36b5231a11dbcfc90bd.tres"]
+
+[params]
+
