@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://chkqby14xyexw"]
+[gd_scene load_steps=13 format=3 uid="uid://chkqby14xyexw"]
 
 [ext_resource type="Script" uid="uid://c6jyu0pan3mxb" path="res://croshair_to_angle/croshair_to_angle.gd" id="1_3ktdx"]
 
@@ -61,10 +61,20 @@ _data = {
 &"test_cross": SubResource("Animation_3ktdx")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ktdx"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_oi7c7"]
+material = SubResource("StandardMaterial3D_3ktdx")
+radius = 0.025
+height = 0.05
+
 [node name="CroshairToAngle" type="Camera3D"]
 fov = 90.0
 script = ExtResource("1_3ktdx")
 angle_calculation_target_path = NodePath("CroshairRight")
+angle_display_node_path = NodePath("angle_display")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_oi7c7")
@@ -98,3 +108,9 @@ mesh = SubResource("BoxMesh_sg8j7")
 libraries = {
 &"": SubResource("AnimationLibrary_uxji3")
 }
+
+[node name="angle_display" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="angle_display"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+mesh = SubResource("SphereMesh_oi7c7")

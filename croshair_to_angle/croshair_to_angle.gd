@@ -5,17 +5,21 @@ class_name CroshairToAngle
 @export var angle_calculation_target_path : NodePath
 var angle_calculation_target : Node3D
 
+@export var angle_display_node_path : NodePath
+var angle_display_node : Node3D
+
 func play_test() -> void:
 	$AnimationPlayer.play("test_cross")
 
 func _ready() -> void:
 	angle_calculation_target = get_node(angle_calculation_target_path)
+	angle_display_node = get_node(angle_display_node_path)
 	for c in get_children():
 		if c is Node3D:
 			var n : Node3D = c
 			n.set_meta("rest_position",n.position)
 	
-	#play_test()
+	play_test()
 	
 
 func calculate_angle() -> float:
@@ -37,4 +41,4 @@ func _process(delta: float) -> void:
 			n.position.z = n.get_meta("rest_position").z
 			
 	
-	print("angle calculated: ",calculate_angle())
+	angle_display_node.rotation_degrees.y = calculate_angle()
