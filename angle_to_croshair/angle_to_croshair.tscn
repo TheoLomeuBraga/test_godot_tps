@@ -1,0 +1,87 @@
+[gd_scene load_steps=9 format=3 uid="uid://gm6ltyd6nun6"]
+
+[ext_resource type="Script" uid="uid://bv1c677h0lq2k" path="res://angle_to_croshair/angle_to_croshair.gd" id="1_trnbf"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_7lt5n"]
+radius = 0.05
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_trnbf"]
+shading_mode = 0
+
+[sub_resource type="QuadMesh" id="QuadMesh_ys5cj"]
+size = Vector2(0.2, 0.02)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_roltl"]
+shading_mode = 0
+billboard_mode = 1
+fixed_size = true
+
+[sub_resource type="Animation" id="Animation_trnbf"]
+resource_name = "test_angle"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:dispersion_angle")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 90.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ys5cj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:dispersion_angle")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ys5cj"]
+_data = {
+&"RESET": SubResource("Animation_ys5cj"),
+&"test_angle": SubResource("Animation_trnbf")
+}
+
+[node name="AngleToCroshair" type="Node3D"]
+script = ExtResource("1_trnbf")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+fov = 90.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+mesh = SubResource("SphereMesh_7lt5n")
+surface_material_override/0 = SubResource("StandardMaterial3D_trnbf")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0, -2)
+mesh = SubResource("QuadMesh_ys5cj")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_roltl")
+
+[node name="Node3D2" type="Node3D" parent="."]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0, -2)
+mesh = SubResource("QuadMesh_ys5cj")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_roltl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ys5cj")
+}
