@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clwa3xop6ac5"
-path.s3tc="res://.godot/imported/icon.png-487276ed1e3a0c39cad0279d744ee560.s3tc.ctex"
+uid="uid://rs5cgv6uj6fi"
+path.s3tc="res://.godot/imported/test_01_living wall.png-d8404be5c288d864e33aa26c97f5552e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "8490910af15f0d9443934a40a5ee5913"
+}
 
 [deps]
 
-source_file="res://icon.png"
-dest_files=["res://.godot/imported/icon.png-487276ed1e3a0c39cad0279d744ee560.s3tc.ctex"]
+source_file="res://blender_test_level/test_01_living wall.png"
+dest_files=["res://.godot/imported/test_01_living wall.png-d8404be5c288d864e33aa26c97f5552e.s3tc.ctex"]
 
 [params]
 

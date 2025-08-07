@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clwa3xop6ac5"
-path.s3tc="res://.godot/imported/icon.png-487276ed1e3a0c39cad0279d744ee560.s3tc.ctex"
+uid="uid://byk30m3fq605p"
+path.s3tc="res://.godot/imported/test_01_raw_wood.png-3a9dcd123f1fbd32c23606cf79ebf15c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "6f872971bb1febe1a88f4afd4d8fce1b"
+}
 
 [deps]
 
-source_file="res://icon.png"
-dest_files=["res://.godot/imported/icon.png-487276ed1e3a0c39cad0279d744ee560.s3tc.ctex"]
+source_file="res://blender_test_level/test_01_raw_wood.png"
+dest_files=["res://.godot/imported/test_01_raw_wood.png-3a9dcd123f1fbd32c23606cf79ebf15c.s3tc.ctex"]
 
 [params]
 

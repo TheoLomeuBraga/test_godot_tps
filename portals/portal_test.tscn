@@ -1,0 +1,135 @@
+[gd_scene load_steps=18 format=3 uid="uid://cxikj6wkrf4gv"]
+
+[ext_resource type="Script" uid="uid://ck3aymtodu1l8" path="res://portals/portal_test.gd" id="1_5k0mg"]
+[ext_resource type="Script" uid="uid://cn8yo2vj3i1ci" path="res://free_camera/free_camera.gd" id="1_xvypx"]
+[ext_resource type="Texture2D" uid="uid://clwa3xop6ac5" path="res://icon.png" id="3_5k0mg"]
+[ext_resource type="Shader" uid="uid://cfm0ijjfw4cgv" path="res://portals/portal_shader.gdshader" id="3_bbljb"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bbljb"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_dnn1i"]
+sky_material = SubResource("ProceduralSkyMaterial_bbljb")
+
+[sub_resource type="Environment" id="Environment_ic3oe"]
+background_mode = 2
+sky = SubResource("Sky_dnn1i")
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5k0mg"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_omtkq"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bbljb"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_5k0mg"]
+viewport_path = NodePath("portal1/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bbljb"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_bbljb")
+shader_parameter/texture_albedo = SubResource("ViewportTexture_5k0mg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dnn1i"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_ic3oe"]
+material = SubResource("StandardMaterial3D_dnn1i")
+text = "HELLO"
+pixel_size = 0.05
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_bbljb"]
+viewport_path = NodePath("portal2/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dnn1i"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_bbljb")
+shader_parameter/texture_albedo = SubResource("ViewportTexture_bbljb")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bbljb"]
+albedo_texture = ExtResource("3_5k0mg")
+
+[node name="PortalTest" type="Node3D"]
+script = ExtResource("1_5k0mg")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ic3oe")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="FreeCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
+fov = 90.0
+script = ExtResource("1_xvypx")
+speed = 3.0
+metadata/_custom_type_script = "uid://cn8yo2vj3i1ci"
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+size = Vector3(10, 0.1, 10)
+material = SubResource("StandardMaterial3D_5k0mg")
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D2"]
+size = Vector3(10, 0.1, 10)
+material = SubResource("StandardMaterial3D_omtkq")
+
+[node name="portal1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0735, 0)
+layers = 2
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_bbljb")
+surface_material_override/0 = SubResource("ShaderMaterial_bbljb")
+
+[node name="SubViewport" type="SubViewport" parent="portal1"]
+size = Vector2i(1080, 600)
+
+[node name="Camera3D" type="Camera3D" parent="portal1/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
+cull_mask = 1048573
+fov = 90.0
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="portal1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+mesh = SubResource("TextMesh_ic3oe")
+
+[node name="portal2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 1.0735, 0)
+layers = 2
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_bbljb")
+surface_material_override/0 = SubResource("ShaderMaterial_dnn1i")
+
+[node name="SubViewport" type="SubViewport" parent="portal2"]
+size = Vector2i(1080, 600)
+
+[node name="Camera3D" type="Camera3D" parent="portal2/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
+cull_mask = 1048573
+fov = 90.0
+
+[node name="CSGBox3D" type="CSGBox3D" parent="portal2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -5, 0, 0)
+material_override = SubResource("StandardMaterial3D_bbljb")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="portal2"]
+transform = Transform3D(-4.37114e-08, -4.37114e-08, 1, -1, 1.91069e-15, -4.37114e-08, 0, -1, -4.37114e-08, 0, 0, -5)
+material_override = SubResource("StandardMaterial3D_bbljb")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="portal2"]
+transform = Transform3D(-4.37114e-08, -4.37114e-08, 1, 4.37114e-08, -1, -4.37114e-08, 1, 4.37114e-08, 4.37114e-08, 5, 0, -1)
+material_override = SubResource("StandardMaterial3D_bbljb")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="portal2"]
+transform = Transform3D(4.37114e-08, -1, -8.74228e-08, 4.37114e-08, 8.74228e-08, -1, 1, 4.37114e-08, 4.37114e-08, 0, 0, 5)
+material_override = SubResource("StandardMaterial3D_bbljb")
