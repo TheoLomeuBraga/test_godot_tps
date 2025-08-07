@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://brqidn2v3ggel"]
+[gd_scene load_steps=10 format=3 uid="uid://brqidn2v3ggel"]
 
 [ext_resource type="PackedScene" uid="uid://dy1a0adavc6bd" path="res://animation_loop_test/test_animation_loop.glb" id="1_s7mq6"]
 [ext_resource type="Script" uid="uid://bptrocl2foda4" path="res://animation_loop_test/start_animation.gd" id="2_yxb8i"]
@@ -15,11 +15,59 @@ background_mode = 2
 sky = SubResource("Sky_isfha")
 tonemap_mode = 2
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yxb8i"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_isfha"]
+resource_name = "RGB-loop"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Suzanne:surface_material_override/0:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(0, 1, 0, 1), Color(0, 0, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_x2g6w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Suzanne:surface_material_override/0:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6ksiv"]
+_data = {
+&"RESET": SubResource("Animation_x2g6w"),
+&"RGB-loop": SubResource("Animation_isfha")
+}
+
 [node name="test_animation_loop" instance=ExtResource("1_s7mq6")]
 script = ExtResource("2_yxb8i")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="0"]
 environment = SubResource("Environment_x2g6w")
 
-[node name="Camera3D" type="Camera3D" parent="." index="3"]
+[node name="Suzanne" parent="." index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_yxb8i")
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="." index="3"]
+libraries = {
+&"": SubResource("AnimationLibrary_6ksiv")
+}
+
+[node name="Camera3D" type="Camera3D" parent="." index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
