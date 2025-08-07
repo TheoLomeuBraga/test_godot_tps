@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://5ogtghvasyy0"]
+
+[ext_resource type="Script" uid="uid://l2y4sb7ks7hv" path="res://animation_loop_test/animation_player.gd" id="1_fouiw"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_n30up"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c0j5n"]
+resource_local_to_scene = true
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_twdo3"]
+resource_name = "RGB-loop"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:surface_material_override/0:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(0, 1, 0, 1), Color(0, 0, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4co57"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:surface_material_override/0:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xfxbn"]
+_data = {
+&"RESET": SubResource("Animation_4co57"),
+&"RGB-loop": SubResource("Animation_twdo3")
+}
+
+[node name="AnimationLoopTest" type="Node3D"]
+script = ExtResource("1_fouiw")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+mesh = SubResource("BoxMesh_n30up")
+surface_material_override/0 = SubResource("StandardMaterial3D_c0j5n")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_xfxbn")
+}
