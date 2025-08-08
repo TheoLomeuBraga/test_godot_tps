@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://cpokjy21lipe1"]
+
+[ext_resource type="Script" uid="uid://c8bh7i37aj0m7" path="res://quaternion_test/quaternion_test.gd" id="1_71ktj"]
+[ext_resource type="Texture2D" uid="uid://clwa3xop6ac5" path="res://icon.png" id="2_n14vq"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_n14vq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_670bj"]
+albedo_texture = ExtResource("2_n14vq")
+
+[node name="QuaternionTest" type="Node3D"]
+script = ExtResource("1_71ktj")
+x = 1.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_n14vq")
+surface_material_override/0 = SubResource("StandardMaterial3D_670bj")
