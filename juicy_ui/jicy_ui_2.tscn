@@ -1,0 +1,85 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnvhmt7sw5ge0"]
+
+[ext_resource type="Script" uid="uid://cih2hru02dlgo" path="res://juicy_ui/button_animation_component.gd" id="1_pg5mi"]
+
+[node name="JicyUi2" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 1.0
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="ButtonA" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = " "
+
+[node name="Label" type="Label" parent="VBoxContainer/ButtonA"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "AAAAA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonAnimationComponent" type="Node" parent="VBoxContainer/ButtonA"]
+script = ExtResource("1_pg5mi")
+trensition_type = 11
+target_scale = Vector2(5, 1)
+ajust_pivo = false
+metadata/_custom_type_script = "uid://cih2hru02dlgo"
+
+[node name="ButtonB" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = " "
+
+[node name="Label" type="Label" parent="VBoxContainer/ButtonB"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "BBBBB"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonAnimationComponent" type="Node" parent="VBoxContainer/ButtonB"]
+script = ExtResource("1_pg5mi")
+trensition_type = 9
+target_scale = Vector2(5, 1)
+ajust_pivo = false
+metadata/_custom_type_script = "uid://cih2hru02dlgo"
+
+[node name="ButtonC" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = " "
+
+[node name="Label" type="Label" parent="VBoxContainer/ButtonC"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "CCCCC"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonAnimationComponent" type="Node" parent="VBoxContainer/ButtonC"]
+script = ExtResource("1_pg5mi")
+trensition_type = 6
+target_scale = Vector2(5, 1)
+ajust_pivo = false
+metadata/_custom_type_script = "uid://cih2hru02dlgo"

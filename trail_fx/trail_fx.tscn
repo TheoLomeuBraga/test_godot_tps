@@ -1,0 +1,109 @@
+[gd_scene load_steps=14 format=3 uid="uid://dklno5lj6jqc4"]
+
+[ext_resource type="Script" uid="uid://d3l4rmc86l8ep" path="res://trail_fx/trail_fx.gd" id="1_urjjb"]
+[ext_resource type="Script" uid="uid://cn8yo2vj3i1ci" path="res://free_camera/free_camera.gd" id="1_v87lv"]
+[ext_resource type="Script" uid="uid://6ja8w83lwspe" path="res://trail_fx/animation_player_start_animation.gd" id="2_1ak67"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1ak67"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_urjjb"]
+sky_material = SubResource("ProceduralSkyMaterial_1ak67")
+
+[sub_resource type="Environment" id="Environment_c3qtc"]
+background_mode = 2
+sky = SubResource("Sky_urjjb")
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l0tuk"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_8v3qp"]
+material = SubResource("StandardMaterial3D_l0tuk")
+radius = 0.1
+height = 0.2
+radial_segments = 8
+rings = 3
+
+[sub_resource type="Curve" id="Curve_urjjb"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.497573, 0.504186), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_urjjb"]
+offsets = PackedFloat32Array(0, 0.548128, 0.796791)
+colors = PackedColorArray(1, 0.392157, 0, 0, 1, 0.392157, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_v87lv"]
+resource_name = "LeftRight"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TrailMesh:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1, 0, 0), Vector3(1, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1ak67"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TrailMesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_urjjb"]
+_data = {
+&"LeftRight": SubResource("Animation_v87lv"),
+&"RESET": SubResource("Animation_1ak67")
+}
+
+[node name="TrailFx" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_c3qtc")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="TrailMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_8v3qp")
+
+[node name="TrailFx" type="Line2D" parent="TrailMesh"]
+points = PackedVector2Array(239, 355, 424, 208, 16, 186, 558, 326)
+width_curve = SubResource("Curve_urjjb")
+gradient = SubResource("Gradient_urjjb")
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("1_urjjb")
+metadata/_custom_type_script = "uid://d3l4rmc86l8ep"
+
+[node name="FreeCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+fov = 90.0
+script = ExtResource("1_v87lv")
+metadata/_custom_type_script = "uid://cn8yo2vj3i1ci"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_urjjb")
+}
+script = ExtResource("2_1ak67")
+animation_name = "LeftRight"
