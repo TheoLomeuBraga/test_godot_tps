@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dxlgca7keg20t"]
 
-[ext_resource type="Script" uid="uid://wgxf83erq5qa" path="res://free_camera/free_camera.gd" id="1_dk7tv"]
+[ext_resource type="Script" uid="uid://cn8yo2vj3i1ci" path="res://free_camera/free_camera.gd" id="1_dk7tv"]
 [ext_resource type="Script" uid="uid://dtdnp8bhjlun0" path="res://dopler/test_dopler.gd" id="2_c2fot"]
 [ext_resource type="AudioStream" uid="uid://7tqgcytv6fh1" path="res://dopler/conductite_boss.ogg" id="2_valjs"]
 
@@ -13,10 +13,8 @@ ambient_light_energy = 0.5
 
 [node name="FreeCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
+doppler_tracking = 2
 script = ExtResource("1_dk7tv")
-
-[node name="AudioListener3D" type="AudioListener3D" parent="FreeCamera"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
