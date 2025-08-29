@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://dfxl1s1gcy1lo"]
+
+[ext_resource type="Script" uid="uid://cpg2d8kxnvlcs" path="res://camera_shake.gd" id="1_100ld"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h60v1"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_100ld"]
+sky_material = SubResource("ProceduralSkyMaterial_h60v1")
+
+[sub_resource type="Environment" id="Environment_f8262"]
+background_mode = 2
+sky = SubResource("Sky_100ld")
+tonemap_mode = 2
+
+[sub_resource type="Curve" id="Curve_100ld"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0.00242718, -0.00372088), 0.0, 0.0, 0, 0, Vector2(0.0631068, -0.596279), 0.0, 0.0, 0, 0, Vector2(0.101942, 0.467907), 0.0, 0.0, 0, 0, Vector2(0.152913, -0.777674), 0.0, 0.0, 0, 0, Vector2(0.157767, 0.673488), 0.0, 0.0, 0, 0, Vector2(0.25, -1), 0.0, 0.0, 0, 0, Vector2(0.252427, 0.201861), 0.0, 0.0, 0, 0, Vector2(0.31068, -0.487442), 0.0, 0.0, 0, 0, Vector2(0.356796, 0.60216), 0.0, 0.0, 0, 0, Vector2(0.400485, 0.226047), 0.0, 0.0, 0, 0, Vector2(0.432039, 0.87907), 0.0, 0.0, 0, 0, Vector2(0.495146, -0.00372088), 0.0, 0.0, 0, 0, Vector2(0.538835, 0.927442), 0.0, 0.0, 0, 0, Vector2(0.570388, -0.233488), 0.0, 0.0, 0, 0, Vector2(0.611651, -0.511628), 0.0, 0.0, 0, 0, Vector2(0.616505, 1), 0.0, 0.0, 0, 0, Vector2(0.696602, -0.523721), 0.0, 0.0, 0, 0, Vector2(0.76699, 1), 0.0, 0.0, 0, 0, Vector2(0.771845, -0.850233), 0.0, 0.0, 0, 0, Vector2(0.859223, 0.637209), 0.0, 0.0, 0, 0, Vector2(0.876214, -0.499535), 0.0, 0.0, 0, 0, Vector2(0.93932, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0325582), 0.0, 0.0, 0, 0]
+point_count = 23
+
+[sub_resource type="Curve" id="Curve_f8262"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0.00242718, 0.00837219), 0.0, 0.0, 0, 0, Vector2(0.0509709, 0.588837), 0.0, 0.0, 0, 0, Vector2(0.0558252, -0.124651), 0.0, 0.0, 0, 0, Vector2(0.0849514, -0.112558), 0.0, 0.0, 0, 0, Vector2(0.092233, 1), 0.0, 0.0, 0, 0, Vector2(0.128641, 1), 0.0, 0.0, 0, 0, Vector2(0.133495, -0.69667), 0.0, 0.0, 0, 0, Vector2(0.160194, 0.927442), 0.0, 0.0, 0, 0, Vector2(0.191748, -0.95907), 0.0, 0.0, 0, 0, Vector2(0.237864, 1), 0.0, 0.0, 0, 0, Vector2(0.242718, -0.717209), 0.0, 0.0, 0, 0, Vector2(0.257282, 0.0325582), 0.0, 0.0, 0, 0, Vector2(0.300971, -0.83814), 0.0, 0.0, 0, 0, Vector2(0.31068, 0.226047), 0.0, 0.0, 0, 0, Vector2(0.315534, 1), 0.0, 0.0, 0, 0, Vector2(0.393204, -0.95907), 0.0, 0.0, 0, 0, Vector2(0.393214, 0.915349), 0.0, 0.0, 0, 0, Vector2(0.446602, -0.946977), 0.0, 0.0, 0, 0, Vector2(0.458738, 1), 0.0, 0.0, 0, 0, Vector2(0.502427, -0.04), 0.0, 0.0, 0, 0, Vector2(0.514563, -0.898605), 0.0, 0.0, 0, 0, Vector2(0.589806, -0.934884), 0.0, 0.0, 0, 0, Vector2(0.706311, 0.383256), 0.0, 0.0, 0, 0, Vector2(0.757282, -1), 0.0, 0.0, 0, 0, Vector2(0.788835, 0.782326), 0.0, 0.0, 0, 0, Vector2(0.895631, 0.733954), 0.0, 0.0, 0, 0, Vector2(0.902913, -0.983256), 0.0, 0.0, 0, 0, Vector2(0.961165, -0.83814), 0.0, 0.0, 0, 0, Vector2(1, 0.00837219), 0.0, 0.0, 0, 0]
+point_count = 29
+
+[node name="CameraShake" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="DirectionalLight3D"]
+environment = SubResource("Environment_f8262")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="Camera3D" type="Camera3D" parent="Node3D"]
+script = ExtResource("1_100ld")
+shake_curve_x = SubResource("Curve_100ld")
+shake_curve_y = SubResource("Curve_f8262")
