@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4jqioif8p318"]
+
+[ext_resource type="Script" uid="uid://d33syipq887hr" path="res://custom_doc_test/custom_doc_test.gd" id="1_euaeq"]
+
+[node name="Test" type="Node"]
+
+[node name="CustomDoc" type="Node" parent="."]
+script = ExtResource("1_euaeq")
+metadata/_custom_type_script = "uid://d33syipq887hr"
