@@ -3,6 +3,7 @@
 [ext_resource type="VideoStream" uid="uid://cekjvg4lrkocx" path="res://video_display/video.ogv" id="1_couyp"]
 
 [node name="Cinema" type="Control"]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
