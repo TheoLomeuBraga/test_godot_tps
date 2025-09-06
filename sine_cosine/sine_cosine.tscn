@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://cy37gwo2ug18w"]
+
+[ext_resource type="Script" uid="uid://dk3gwiyqjw674" path="res://sine_cosine/reference_point.gd" id="1_6db0i"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6u46i"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_1xa6u"]
+sky_material = SubResource("ProceduralSkyMaterial_6u46i")
+
+[sub_resource type="Environment" id="Environment_bw881"]
+background_mode = 2
+sky = SubResource("Sky_1xa6u")
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6db0i"]
+shading_mode = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_pbytk"]
+material = SubResource("StandardMaterial3D_6db0i")
+radius = 0.05
+height = 0.1
+
+[node name="SineCosine" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 1)
+projection = 1
+size = 2.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bw881")
+
+[node name="reference_point" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_pbytk")
+script = ExtResource("1_6db0i")
