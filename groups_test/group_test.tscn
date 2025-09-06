@@ -1,16 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://dxgojsrssmhqe"]
+[gd_scene load_steps=12 format=3 uid="uid://dxgojsrssmhqe"]
 
 [ext_resource type="Script" uid="uid://cn8yo2vj3i1ci" path="res://free_camera/free_camera.gd" id="1_owb0u"]
 [ext_resource type="Script" uid="uid://dcwfnkbdido3c" path="res://groups_test/group_test.gd" id="1_pbd46"]
+[ext_resource type="Texture2D" uid="uid://bxrvfmf3o11i0" path="res://groups_test/360.jpg" id="2_s5nwf"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pbd46"]
-sky_top_color = Color(0, 0, 0, 1)
-sky_horizon_color = Color(0, 0, 0, 1)
-ground_bottom_color = Color(0, 0, 0, 1)
-ground_horizon_color = Color(0, 0, 0, 1)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lcici"]
+panorama = ExtResource("2_s5nwf")
+filter = false
 
 [sub_resource type="Sky" id="Sky_s5nwf"]
-sky_material = SubResource("ProceduralSkyMaterial_pbd46")
+sky_material = SubResource("PanoramaSkyMaterial_lcici")
 
 [sub_resource type="Environment" id="Environment_lcici"]
 background_mode = 2
