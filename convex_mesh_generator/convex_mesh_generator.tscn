@@ -1,0 +1,102 @@
+[gd_scene load_steps=12 format=3 uid="uid://diu4h3lfw5iuq"]
+
+[ext_resource type="Texture2D" uid="uid://clwa3xop6ac5" path="res://icon.png" id="1_gut07"]
+[ext_resource type="Script" uid="uid://bhvc0bpwhuh0g" path="res://convex_mesh_generator/convex_mesh_generator.gd" id="1_un1w6"]
+[ext_resource type="Script" uid="uid://cn8yo2vj3i1ci" path="res://free_camera/free_camera.gd" id="2_27dcs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_27dcs"]
+albedo_texture = ExtResource("1_gut07")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_gut07"]
+_surfaces = [{
+"aabb": AABB(-17, -1, -12, 43.6577, 1, 38),
+"attribute_data": PackedByteArray(0, 153, 178, 6, 5, 61, 152, 65, 60, 186, 13, 193, 0, 153, 178, 6, 217, 108, 22, 66, 173, 22, 223, 64, 0, 153, 178, 6, 253, 227, 53, 65, 103, 238, 9, 64, 0, 153, 178, 6, 200, 43, 156, 192, 40, 239, 135, 192, 0, 153, 178, 6, 189, 158, 201, 64, 37, 138, 221, 65),
+"format": 34359742489,
+"index_count": 18,
+"index_data": PackedByteArray(1, 0, 0, 0, 2, 0, 2, 0, 0, 0, 3, 0, 3, 0, 0, 0, 1, 0, 3, 0, 1, 0, 4, 0, 4, 0, 1, 0, 2, 0, 4, 0, 2, 0, 3, 0),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 5,
+"vertex_data": PackedByteArray(100, 254, 191, 64, 0, 0, 0, 0, 0, 0, 64, 193, 16, 67, 213, 65, 0, 0, 0, 0, 16, 25, 127, 63, 0, 0, 24, 185, 0, 0, 128, 191, 0, 128, 205, 185, 0, 0, 136, 193, 0, 0, 0, 0, 116, 22, 128, 192, 40, 83, 172, 191, 0, 0, 0, 0, 0, 0, 208, 65)
+}]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_p6j3m"]
+points = PackedVector3Array(0, 0, 0, 6, 0, -12, -17, 0, -4, -1.34225, 0, 26, 26.6577, 0, 1, 0, -1, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gut07"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p6j3m"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_un1w6"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_27dcs"]
+sky_material = SubResource("ProceduralSkyMaterial_un1w6")
+
+[sub_resource type="Environment" id="Environment_gut07"]
+background_mode = 2
+sky = SubResource("Sky_27dcs")
+tonemap_mode = 2
+
+[node name="ConvexMeshGenerator" type="MeshInstance3D" node_paths=PackedStringArray("colision_shape")]
+material_override = SubResource("StandardMaterial3D_27dcs")
+mesh = SubResource("ArrayMesh_gut07")
+script = ExtResource("1_un1w6")
+colision_shape = NodePath("StaticBody3D/CollisionShape3D")
+offset = Vector2(11.56, 0.5)
+uv_rotation = 8.26
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_p6j3m")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -5)
+top_level = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("BoxMesh_gut07")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_p6j3m")
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.35472, -4.73743)
+top_level = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D2"]
+mesh = SubResource("BoxMesh_gut07")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2"]
+shape = SubResource("BoxShape3D_p6j3m")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
+top_level = true
+fov = 90.0
+script = ExtResource("2_27dcs")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+top_level = true
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Camera3D/DirectionalLight3D"]
+environment = SubResource("Environment_gut07")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -12)
+
+[node name="Node3D2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, -4)
+
+[node name="Node3D3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.34225, 0, 26)
+
+[node name="Node3D5" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.6577, 0, 1)
+
+[node name="Node3D4" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)

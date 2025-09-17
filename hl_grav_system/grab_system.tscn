@@ -1,0 +1,114 @@
+[gd_scene load_steps=10 format=3 uid="uid://bwbti0wichrl3"]
+
+[ext_resource type="Script" uid="uid://c511h1mqfid6i" path="res://hl_grav_system/grab_system_camera.gd" id="1_7jfd6"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pjups"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_o1ols"]
+sky_material = SubResource("ProceduralSkyMaterial_pjups")
+
+[sub_resource type="Environment" id="Environment_lgmks"]
+background_mode = 2
+sky = SubResource("Sky_o1ols")
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7jfd6"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pjups"]
+material = SubResource("StandardMaterial3D_7jfd6")
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w3v8d"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_oqroe"]
+material = SubResource("StandardMaterial3D_w3v8d")
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_al5ft"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="GrabSystem" type="Node3D"]
+
+[node name="Node" type="Node" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Node"]
+environment = SubResource("Environment_lgmks")
+
+[node name="FreeCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+script = ExtResource("1_7jfd6")
+metadata/_custom_type_script = "uid://cn8yo2vj3i1ci"
+
+[node name="RayCast3D" type="RayCast3D" parent="FreeCamera"]
+target_position = Vector3(0, 0, -5)
+
+[node name="grab_point" type="StaticBody3D" parent="FreeCamera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FreeCamera/grab_point"]
+mesh = SubResource("BoxMesh_pjups")
+
+[node name="Generic6DOFJoint3D" type="Generic6DOFJoint3D" parent="FreeCamera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+node_a = NodePath("../grab_point")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+size = Vector3(100, 1, 100)
+
+[node name="props" type="Node" parent="."]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="props"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="props/RigidBody3D"]
+mesh = SubResource("BoxMesh_oqroe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="props/RigidBody3D"]
+shape = SubResource("BoxShape3D_al5ft")
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="props"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, -4)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="props/RigidBody3D2"]
+mesh = SubResource("BoxMesh_oqroe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="props/RigidBody3D2"]
+shape = SubResource("BoxShape3D_al5ft")
+
+[node name="RigidBody3D3" type="RigidBody3D" parent="props"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.775968, 2.65179, -4)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="props/RigidBody3D3"]
+mesh = SubResource("BoxMesh_oqroe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="props/RigidBody3D3"]
+shape = SubResource("BoxShape3D_al5ft")
+
+[node name="RigidBody3D4" type="RigidBody3D" parent="props"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.197438, 2.65179, -4)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="props/RigidBody3D4"]
+mesh = SubResource("BoxMesh_oqroe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="props/RigidBody3D4"]
+shape = SubResource("BoxShape3D_al5ft")
+
+[node name="RigidBody3D5" type="RigidBody3D" parent="props"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.494702, 3.28591, -4)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="props/RigidBody3D5"]
+mesh = SubResource("BoxMesh_oqroe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="props/RigidBody3D5"]
+shape = SubResource("BoxShape3D_al5ft")
