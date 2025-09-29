@@ -33,13 +33,13 @@ bones/42/rotation = Quaternion(2.6711e-16, 1, 1.885e-06, 6.81926e-16)
 bones/43/rotation = Quaternion(1.11508e-15, 0.707107, -0.707107, 5.99148e-16)
 
 [node name="Cube_007" parent="metarig/GeneralSkeleton" index="0"]
-transform = Transform3D(1, 5.32907e-15, 2.63374e-21, -5.32907e-15, 1, -3.7253e-09, -2.65359e-21, 3.72528e-09, 1, 6.11736e-15, -4.76837e-07, 1.91852e-07)
+transform = Transform3D(1, 5.3290722e-15, 2.6337425e-21, -5.3290705e-15, 1, -3.725404e-09, -2.6535944e-21, 3.7253827e-09, 0.99999976, 6.117357e-15, -4.7683716e-07, 1.8067658e-07)
 
 [node name="Cube_012" parent="metarig/GeneralSkeleton" index="1"]
-transform = Transform3D(1, 5.32907e-15, 2.63374e-21, -5.32907e-15, 1, -3.7253e-09, -2.65359e-21, 3.72528e-09, 1, 6.11736e-15, -4.76837e-07, 1.91852e-07)
+transform = Transform3D(1, 5.3290722e-15, 2.6337425e-21, -5.3290705e-15, 1, -3.725404e-09, -2.6535944e-21, 3.7253827e-09, 0.99999976, 6.117357e-15, -4.7683716e-07, 1.8067658e-07)
 
 [node name="Cylinder" parent="metarig/GeneralSkeleton" index="2"]
-transform = Transform3D(1, -2.22045e-16, -2.22045e-16, 2.22045e-16, 2.08616e-07, 1, -2.22045e-16, -1, 2.08616e-07, -2.39018e-17, 1.55056, -0.0409764)
+transform = Transform3D(1, -2.2204455e-16, -2.2204457e-16, 2.2204459e-16, 2.086163e-07, 1, -2.2204453e-16, -0.9999998, 2.0861637e-07, -2.3901847e-17, 1.5505555, -0.040976416)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="metarig" index="1"]
 libraries = {

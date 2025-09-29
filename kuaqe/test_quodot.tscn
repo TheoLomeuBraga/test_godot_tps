@@ -1,4 +1,4 @@
-[gd_scene load_steps=553 format=4 uid="uid://bnmksuyjxli6k"]
+[gd_scene load_steps=556 format=4 uid="uid://bnmksuyjxli6k"]
 
 [ext_resource type="Script" uid="uid://cn8yo2vj3i1ci" path="res://free_camera/free_camera.gd" id="1_7c3jg"]
 [ext_resource type="LightmapGIData" uid="uid://crsttwtl6t2lo" path="res://kuaqe/test_quodot.lmbake" id="6_sgi7q"]
@@ -2004,6 +2004,18 @@ _surfaces = [{
 }]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_eiw2v"]
+
+[sub_resource type="Gradient" id="Gradient_yo4kv"]
+colors = PackedColorArray(0, 0, 0, 1, 0.88235295, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_72vkg"]
+gradient = SubResource("Gradient_yo4kv")
+
+[sub_resource type="Environment" id="Environment_e3ux2"]
+fog_enabled = true
+fog_light_energy = 0.1
+adjustment_enabled = true
+adjustment_color_correction = SubResource("GradientTexture1D_72vkg")
 
 [node name="TestQuodot" type="Node3D"]
 
@@ -4905,3 +4917,6 @@ omni_range = 7.11111
 [node name="LightmapGI" type="LightmapGI" parent="."]
 camera_attributes = SubResource("CameraAttributesPractical_eiw2v")
 light_data = ExtResource("6_sgi7q")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_e3ux2")
