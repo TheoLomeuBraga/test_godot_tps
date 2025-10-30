@@ -1,0 +1,82 @@
+[gd_scene load_steps=15 format=3 uid="uid://bnyojp6o1ophc"]
+
+[ext_resource type="Script" uid="uid://l5eqn200tqaa" path="res://predictive_aim/character_body_3d.gd" id="1_s4kcr"]
+[ext_resource type="Script" uid="uid://cymqch0gouk3w" path="res://predictive_aim/turret.gd" id="2_yr7rk"]
+[ext_resource type="PackedScene" uid="uid://ccw3qxfqrwt3p" path="res://predictive_aim/projectile.tscn" id="3_3h28j"]
+
+[sub_resource type="Environment" id="Environment_yr7rk"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+tonemap_mode = 2
+
+[sub_resource type="Gradient" id="Gradient_3h28j"]
+colors = PackedColorArray(0.15127608, 0.15127608, 0.15127605, 1, 0.3403393, 0.34033933, 0.3403393, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_m8fyu"]
+frequency = 0.08
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ndirr"]
+noise = SubResource("FastNoiseLite_m8fyu")
+color_ramp = SubResource("Gradient_3h28j")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cuwp4"]
+albedo_texture = SubResource("NoiseTexture2D_ndirr")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5ffpp"]
+material = SubResource("StandardMaterial3D_cuwp4")
+size = Vector2(100, 100)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_viuir"]
+data = PackedVector3Array(50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0, -50, 50, 0, -50)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b1ewn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p4cxc"]
+albedo_color = Color(0.49019608, 0.5137255, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_n5gl6"]
+material = SubResource("StandardMaterial3D_p4cxc")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_s4kcr"]
+bottom_radius = 1.0
+height = 1.0
+radial_segments = 4
+
+[node name="Cenary" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_yr7rk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_5ffpp")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_viuir")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 15, 0)
+projection = 1
+fov = 90.0
+size = 25.0
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2, 11)
+script = ExtResource("1_s4kcr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_b1ewn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+mesh = SubResource("CapsuleMesh_n5gl6")
+
+[node name="turret" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2696247, 0)
+mesh = SubResource("CylinderMesh_s4kcr")
+script = ExtResource("2_yr7rk")
+bullet_scene = ExtResource("3_3h28j")
+
+[node name="muzle" type="Node3D" parent="turret"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

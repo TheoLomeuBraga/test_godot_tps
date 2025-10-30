@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=3 uid="uid://umsk1gibhs0n"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pp8p8"]
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(1, 1, 0, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c8l7p"]
+next_pass = SubResource("StandardMaterial3D_pp8p8")
+stencil_flags = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_24m3v"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0)
+stencil_mode = 3
+stencil_flags = 4
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_rbc4d"]
+material = SubResource("StandardMaterial3D_24m3v")
+radius = 1.0
+height = 5.0
+radial_segments = 4
+rings = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_24m3v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rbc4d"]
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+billboard_mode = 1
+billboard_keep_scale = true
+fixed_size = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_ha7yk"]
+material = SubResource("StandardMaterial3D_rbc4d")
+
+[node name="StencilTest" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+material_override = SubResource("StandardMaterial3D_c8l7p")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_rbc4d")
+skeleton = NodePath("../..")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_24m3v")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 2, 0, 0)
+mesh = SubResource("QuadMesh_ha7yk")
