@@ -1,0 +1,304 @@
+[gd_scene load_steps=12 format=3 uid="uid://b5n0vxoi6m6st"]
+
+[sub_resource type="Curve" id="Curve_je0pp"]
+_limits = [-2.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_tt4dx"]
+curve = SubResource("Curve_je0pp")
+
+[sub_resource type="Curve" id="Curve_retyv"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.20786518, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_bprxt"]
+curve = SubResource("Curve_retyv")
+
+[sub_resource type="Curve" id="Curve_tt4dx"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.115168534, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_retyv"]
+curve = SubResource("Curve_tt4dx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rgvuo"]
+emission_shape = 2
+emission_sphere_radius = 1.0
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 0.5000001
+orbit_velocity_curve = SubResource("CurveTexture_tt4dx")
+radial_velocity_min = -2.0000224
+radial_velocity_max = -1.0000223
+radial_velocity_curve = SubResource("CurveTexture_bprxt")
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_retyv")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_77btp"]
+shading_mode = 0
+albedo_color = Color(0.23921569, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_s3mo0"]
+material = SubResource("StandardMaterial3D_77btp")
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="Shader" id="Shader_je0pp"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.5.1.stable's ParticleProcessMaterial.
+
+shader_type particles;
+render_mode disable_velocity;
+
+uniform vec3 direction;
+uniform float spread;
+uniform float flatness;
+uniform float inherit_emitter_velocity_ratio = 0.0;
+uniform float initial_linear_velocity_min;
+uniform float initial_linear_velocity_max;
+uniform float directional_velocity_min;
+uniform float directional_velocity_max;
+uniform float angular_velocity_min;
+uniform float angular_velocity_max;
+uniform float orbit_velocity_min;
+uniform float orbit_velocity_max;
+uniform float radial_velocity_min;
+uniform float radial_velocity_max;
+uniform float linear_accel_min;
+uniform float linear_accel_max;
+uniform float radial_accel_min;
+uniform float radial_accel_max;
+uniform float tangent_accel_min;
+uniform float tangent_accel_max;
+uniform float damping_min;
+uniform float damping_max;
+uniform float initial_angle_min;
+uniform float initial_angle_max;
+uniform float scale_min;
+uniform float scale_max;
+uniform float hue_variation_min;
+uniform float hue_variation_max;
+uniform float anim_speed_min;
+uniform float anim_speed_max;
+uniform float anim_offset_min;
+uniform float anim_offset_max;
+uniform float lifetime_randomness;
+uniform vec3 emission_shape_offset = vec3(0.0);
+uniform vec3 emission_shape_scale = vec3(1.0);
+uniform vec3 velocity_pivot = vec3(0.0);
+uniform float emission_sphere_radius;
+uniform vec4 color_value : source_color;
+uniform vec3 gravity;
+uniform sampler2D orbit_velocity_curve : repeat_disable;
+uniform sampler2D scale_curve : repeat_disable;
+uniform sampler2D radial_velocity_curve : repeat_disable;
+
+vec4 rotate_hue(vec4 current_color, float hue_rot_angle) {
+	float hue_rot_c = cos(hue_rot_angle);
+	float hue_rot_s = sin(hue_rot_angle);
+	mat4 hue_rot_mat =
+			mat4(vec4(0.299, 0.587, 0.114, 0.0),
+					vec4(0.299, 0.587, 0.114, 0.0),
+					vec4(0.299, 0.587, 0.114, 0.0),
+					vec4(0.000, 0.000, 0.000, 1.0)) +
+			mat4(vec4(0.701, -0.587, -0.114, 0.0),
+					vec4(-0.299, 0.413, -0.114, 0.0),
+					vec4(-0.300, -0.588, 0.886, 0.0),
+					vec4(0.000, 0.000, 0.000, 0.0)) *
+					hue_rot_c +
+			mat4(vec4(0.168, 0.330, -0.497, 0.0),
+					vec4(-0.328, 0.035, 0.292, 0.0),
+					vec4(1.250, -1.050, -0.203, 0.0),
+					vec4(0.000, 0.000, 0.000, 0.0)) *
+					hue_rot_s;
+	return hue_rot_mat * current_color;
+}
+
+float rand_from_seed(inout uint seed) {
+	int k;
+	int s = int(seed);
+	if (s == 0) {
+		s = 305420679;
+	}
+	k = s / 127773;
+	s = 16807 * (s - k * 127773) - 2836 * k;
+	if (s < 0) {
+		s += 2147483647;
+	}
+	seed = uint(s);
+	return float(seed % uint(65536)) / 65535.0;
+}
+
+float rand_from_seed_m1_p1(inout uint seed) {
+	return rand_from_seed(seed) * 2.0 - 1.0;
+}
+
+uint hash(uint x) {
+	x = ((x >> uint(16)) ^ x) * uint(73244475);
+	x = ((x >> uint(16)) ^ x) * uint(73244475);
+	x = (x >> uint(16)) ^ x;
+	return x;
+}
+
+struct DisplayParameters {
+	vec3 scale;
+	float hue_rotation;
+	float animation_speed;
+	float animation_offset;
+	float lifetime;
+	vec4 color;
+	float emission_texture_position;
+};
+
+struct DynamicsParameters {
+	float angle;
+	float angular_velocity;
+	float initial_velocity_multiplier;
+	float directional_velocity;
+	float radial_velocity;
+	float orbit_velocity;
+};
+
+struct PhysicalParameters {
+	float linear_accel;
+	float radial_accel;
+	float tangent_accel;
+	float damping;
+};
+
+void calculate_initial_physical_params(inout PhysicalParameters params, inout uint alt_seed) {
+	params.linear_accel = mix(linear_accel_min, linear_accel_max, rand_from_seed(alt_seed));
+	params.radial_accel = mix(radial_accel_min, radial_accel_max, rand_from_seed(alt_seed));
+	params.tangent_accel = mix(tangent_accel_min, tangent_accel_max, rand_from_seed(alt_seed));
+	params.damping = mix(damping_min, damping_max, rand_from_seed(alt_seed));
+}
+
+void calculate_initial_dynamics_params(inout DynamicsParameters params, inout uint alt_seed) {
+	// -------------------- DO NOT REORDER OPERATIONS, IT BREAKS VISUAL COMPATIBILITY
+	// -------------------- ADD NEW OPERATIONS AT THE BOTTOM
+	params.angle = mix(initial_angle_min, initial_angle_max, rand_from_seed(alt_seed));
+	params.angular_velocity = mix(angular_velocity_min, angular_velocity_max, rand_from_seed(alt_seed));
+	params.initial_velocity_multiplier = mix(initial_linear_velocity_min, initial_linear_velocity_max, rand_from_seed(alt_seed));
+	params.directional_velocity = mix(directional_velocity_min, directional_velocity_max, rand_from_seed(alt_seed));
+	params.radial_velocity = mix(radial_velocity_min, radial_velocity_max, rand_from_seed(alt_seed));
+	params.orbit_velocity = mix(orbit_velocity_min, orbit_velocity_max, rand_from_seed(alt_seed));
+}
+
+void calculate_initial_display_params(inout DisplayParameters params, inout uint alt_seed) {
+	// -------------------- DO NOT REORDER OPERATIONS, IT BREAKS VISUAL COMPATIBILITY
+	// -------------------- ADD NEW OPERATIONS AT THE BOTTOM
+	float pi = 3.14159;
+	params.scale = vec3(mix(scale_min, scale_max, rand_from_seed(alt_seed)));
+	params.scale = sign(params.scale) * max(abs(params.scale), 0.001);
+	params.hue_rotation = pi * 2.0 * mix(hue_variation_min, hue_variation_max, rand_from_seed(alt_seed));
+	params.animation_speed = mix(anim_speed_min, anim_speed_max, rand_from_seed(alt_seed));
+	params.animation_offset = mix(anim_offset_min, anim_offset_max, rand_from_seed(alt_seed));
+	params.lifetime = (1.0 - lifetime_randomness * rand_from_seed(alt_seed));
+	params.color = color_value;
+}
+
+void process_display_param(inout DisplayParameters parameters, float lifetime) {
+	// Compile-time add textures.
+	parameters.scale *= texture(scale_curve, vec2(lifetime)).rgb;
+	parameters.color = rotate_hue(parameters.color, parameters.hue_rotation);
+}
+
+
+
+
+
+
+
+
+void start() {
+	uint base_number = NUMBER;
+	uint alt_seed = hash(base_number + uint(1) + RANDOM_SEED);
+	DisplayParameters params;
+	calculate_initial_display_params(params, alt_seed);
+	DynamicsParameters dynamic_params;
+	calculate_initial_dynamics_params(dynamic_params, alt_seed);
+	PhysicalParameters physics_params;
+	calculate_initial_physical_params(physics_params, alt_seed);
+	process_display_param(params, 0.0);
+	
+
+	if (RESTART_CUSTOM) {
+		CUSTOM = vec4(0.0);
+		CUSTOM.w = params.lifetime;
+		CUSTOM.x = dynamic_params.angle;
+	}
+	
+	
+	
+	VELOCITY = vec3(0.0);
+	
+	//TRANSFORM[3].xyz = vec3(-float(INDEX),0.0,0.0);
+	//TRANSFORM = EMISSION_TRANSFORM * TRANSFORM;
+	
+	TRANSFORM[3].xyz = vec3(0.0);
+	TRANSFORM = EMISSION_TRANSFORM * TRANSFORM;
+	
+}
+
+void process() {
+	//TRANSFORM[3].y = EMISSION_TRANSFORM[3].y - sin(TRANSFORM[3].x + TIME * 5.0);
+	TRANSFORM[3].x = TRANSFORM[3].x - DELTA * 5.0;
+	TRANSFORM[3].y = EMISSION_TRANSFORM[3].y - sin(TRANSFORM[3].x);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tt4dx"]
+shader = SubResource("Shader_je0pp")
+shader_parameter/direction = Vector3(1, 0, 0)
+shader_parameter/spread = 45.0
+shader_parameter/flatness = 0.0
+shader_parameter/inherit_emitter_velocity_ratio = 0.0
+shader_parameter/initial_linear_velocity_min = 0.0
+shader_parameter/initial_linear_velocity_max = 0.0
+shader_parameter/directional_velocity_min = 1.0
+shader_parameter/directional_velocity_max = 1.0
+shader_parameter/angular_velocity_min = 0.0
+shader_parameter/angular_velocity_max = 0.0
+shader_parameter/orbit_velocity_min = 9.49949e-08
+shader_parameter/orbit_velocity_max = 0.5000001
+shader_parameter/radial_velocity_min = -2.0000224
+shader_parameter/radial_velocity_max = -1.0000223
+shader_parameter/linear_accel_min = 0.0
+shader_parameter/linear_accel_max = 0.0
+shader_parameter/radial_accel_min = 0.0
+shader_parameter/radial_accel_max = 0.0
+shader_parameter/tangent_accel_min = 0.0
+shader_parameter/tangent_accel_max = 0.0
+shader_parameter/damping_min = 0.0
+shader_parameter/damping_max = 0.0
+shader_parameter/initial_angle_min = 0.0
+shader_parameter/initial_angle_max = 0.0
+shader_parameter/scale_min = 1.0
+shader_parameter/scale_max = 1.0
+shader_parameter/hue_variation_min = 0.0
+shader_parameter/hue_variation_max = 0.0
+shader_parameter/anim_speed_min = 0.0
+shader_parameter/anim_speed_max = 0.0
+shader_parameter/anim_offset_min = 0.0
+shader_parameter/anim_offset_max = 0.0
+shader_parameter/lifetime_randomness = 0.0
+shader_parameter/emission_shape_offset = Vector3(0, 0, 0)
+shader_parameter/emission_shape_scale = Vector3(1, 1, 1)
+shader_parameter/velocity_pivot = Vector3(0, 0, 0)
+shader_parameter/emission_sphere_radius = 1.0
+shader_parameter/color_value = Color(1, 1, 1, 1)
+shader_parameter/gravity = Vector3(0, -1e-06, 0)
+
+[node name="Reintegration" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 32
+lifetime = 2.0
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_rgvuo")
+draw_pass_1 = SubResource("BoxMesh_s3mo0")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 0)
+amount = 16
+lifetime = 2.0
+process_material = SubResource("ShaderMaterial_tt4dx")
+draw_pass_1 = SubResource("BoxMesh_s3mo0")

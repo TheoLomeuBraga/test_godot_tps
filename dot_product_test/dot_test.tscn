@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8cr7reakw5c7"]
+
+[ext_resource type="Script" uid="uid://bjeco70du4o7k" path="res://dot_product_test/dot_test.gd" id="1_jf56c"]
+
+[node name="DotTest" type="Node"]
+script = ExtResource("1_jf56c")
