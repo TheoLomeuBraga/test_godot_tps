@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://ppvpyunehquv"]
+
+[ext_resource type="Script" uid="uid://broq8f502at34" path="res://tween_test/tween_test.gd" id="1_fqio4"]
+[ext_resource type="Script" uid="uid://cn8yo2vj3i1ci" path="res://free_camera/free_camera.gd" id="2_bimc3"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ubw2s"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_woona"]
+sky_material = SubResource("ProceduralSkyMaterial_ubw2s")
+
+[sub_resource type="Environment" id="Environment_cjlfo"]
+background_mode = 2
+sky = SubResource("Sky_woona")
+tonemap_mode = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_si6ji"]
+
+[node name="TweenTest" type="Node3D"]
+script = ExtResource("1_fqio4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 1.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_cjlfo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_si6ji")
+
+[node name="stop_a" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, 0)
+
+[node name="stop_b" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+
+[node name="FreeCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+script = ExtResource("2_bimc3")
+metadata/_custom_type_script = "uid://cn8yo2vj3i1ci"

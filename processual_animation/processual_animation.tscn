@@ -1,0 +1,104 @@
+[gd_scene load_steps=13 format=3 uid="uid://b6g72nwt3o3af"]
+
+[ext_resource type="Texture2D" uid="uid://clwa3xop6ac5" path="res://icon.png" id="1_y02mr"]
+[ext_resource type="Script" uid="uid://hvjbybwo4q85" path="res://processual_animation/bug.gd" id="2_ab06d"]
+[ext_resource type="Script" uid="uid://cn8yo2vj3i1ci" path="res://free_camera/free_camera.gd" id="2_xhfwu"]
+[ext_resource type="Script" uid="uid://8evm2k6c7soe" path="res://processual_animation/leg.gd" id="4_ar337"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ab06d"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_xhfwu"]
+sky_material = SubResource("ProceduralSkyMaterial_ab06d")
+
+[sub_resource type="Environment" id="Environment_ar337"]
+background_mode = 2
+sky = SubResource("Sky_xhfwu")
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p2x76"]
+albedo_texture = ExtResource("1_y02mr")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ulepu"]
+albedo_color = Color(0.11372549, 1, 0.19607843, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ny7a0"]
+material = SubResource("StandardMaterial3D_ulepu")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p4ovu"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tuqtc"]
+material = SubResource("StandardMaterial3D_p4ovu")
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="ProcessualAnimation" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 1.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ar337")
+
+[node name="terrain" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="terrain"]
+transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, -0.46382022, 0)
+material = SubResource("StandardMaterial3D_p2x76")
+
+[node name="FreeCamera" type="Camera3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5, 2, 0)
+script = ExtResource("2_xhfwu")
+metadata/_custom_type_script = "uid://cn8yo2vj3i1ci"
+
+[node name="bug" type="MeshInstance3D" parent="." node_paths=PackedStringArray("legs", "rays")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("BoxMesh_ny7a0")
+script = ExtResource("2_ab06d")
+legs = [NodePath("leg1"), NodePath("leg2"), NodePath("leg3"), NodePath("leg4")]
+rays = [NodePath("RayCast3D1"), NodePath("RayCast3D2"), NodePath("RayCast3D3"), NodePath("RayCast3D4")]
+
+[node name="leg1" type="MeshInstance3D" parent="bug"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+top_level = true
+mesh = SubResource("BoxMesh_tuqtc")
+script = ExtResource("4_ar337")
+
+[node name="leg2" type="MeshInstance3D" parent="bug"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
+top_level = true
+mesh = SubResource("BoxMesh_tuqtc")
+script = ExtResource("4_ar337")
+
+[node name="leg3" type="MeshInstance3D" parent="bug"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
+top_level = true
+mesh = SubResource("BoxMesh_tuqtc")
+script = ExtResource("4_ar337")
+
+[node name="leg4" type="MeshInstance3D" parent="bug"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+top_level = true
+mesh = SubResource("BoxMesh_tuqtc")
+script = ExtResource("4_ar337")
+
+[node name="RayCast3D1" type="RayCast3D" parent="bug"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -2)
+target_position = Vector3(0, -3, 0)
+
+[node name="RayCast3D2" type="RayCast3D" parent="bug"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -2)
+target_position = Vector3(0, -3, 0)
+
+[node name="RayCast3D3" type="RayCast3D" parent="bug"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
+target_position = Vector3(0, -3, 0)
+
+[node name="RayCast3D4" type="RayCast3D" parent="bug"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+target_position = Vector3(0, -3, 0)
