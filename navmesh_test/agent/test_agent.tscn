@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://una6vmyxovl3"]
 
-[ext_resource type="Script" uid="uid://lkxuhch5rfe2" path="res://navmesh_test/agent/test_agent.gd" id="1_camsh"]
+[ext_resource type="Script" uid="uid://va4u1mdagi4y" path="res://navmesh_test/agent/test_agent.gd" id="1_camsh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tau7y"]
 shading_mode = 0
@@ -13,9 +13,9 @@ material = SubResource("StandardMaterial3D_tau7y")
 
 [node name="TestAgent" type="CharacterBody3D"]
 top_level = true
-collision_layer = 2
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_camsh")
-speed = 5.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_uuwun")
@@ -28,8 +28,4 @@ avoidance_enabled = true
 radius = 2.0
 debug_enabled = true
 
-[node name="RecalculatePathTimer" type="Timer" parent="."]
-autostart = true
-
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
-[connection signal="timeout" from="RecalculatePathTimer" to="." method="recalculate_path"]

@@ -5,16 +5,23 @@
 [ext_resource type="Script" uid="uid://cn8yo2vj3i1ci" path="res://free_camera/free_camera.gd" id="2_xhfwu"]
 [ext_resource type="Script" uid="uid://8evm2k6c7soe" path="res://processual_animation/leg.gd" id="4_ar337"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ab06d"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ar337"]
+sky_top_color = Color(0.12793106, 0.020926913, 0.49348027, 1)
+sky_horizon_color = Color(1, 0, 1, 1)
+sky_curve = 0.011541953
+sky_cover_modulate = Color(0.9412582, 0.7364463, 0.88336873, 1)
+ground_bottom_color = Color(0.2, 0, 0.13333334, 1)
+ground_horizon_color = Color(0.480909, 0.06323309, 0.38549775, 1)
+ground_curve = 0.036050018
+sun_angle_max = 16.81
+sun_curve = 237.26501
 
-[sub_resource type="Sky" id="Sky_xhfwu"]
-sky_material = SubResource("ProceduralSkyMaterial_ab06d")
+[sub_resource type="Sky" id="Sky_p2x76"]
+sky_material = SubResource("ProceduralSkyMaterial_ar337")
 
 [sub_resource type="Environment" id="Environment_ar337"]
 background_mode = 2
-sky = SubResource("Sky_xhfwu")
+sky = SubResource("Sky_p2x76")
 tonemap_mode = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p2x76"]
@@ -39,7 +46,7 @@ size = Vector3(0.5, 0.5, 0.5)
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
-directional_shadow_max_distance = 1.0
+directional_shadow_mode = 0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ar337")
