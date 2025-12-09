@@ -1,0 +1,116 @@
+[gd_scene load_steps=16 format=3 uid="uid://dinm0chv58oqb"]
+
+[ext_resource type="Script" uid="uid://b8ogmqv5nr351" path="res://bullet_storm/bullet_master.gd" id="1_e1htg"]
+[ext_resource type="Script" uid="uid://btmfw8a7v7unk" path="res://bullet_storm/free_camera_shoter.gd" id="1_wnrdh"]
+[ext_resource type="Script" uid="uid://dp5xyt7levy2c" path="res://bullet_storm/bullet_info.gd" id="2_puivo"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wnrdh"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_puivo"]
+sky_material = SubResource("ProceduralSkyMaterial_wnrdh")
+
+[sub_resource type="Environment" id="Environment_e1htg"]
+background_mode = 2
+sky = SubResource("Sky_puivo")
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e1htg"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 1, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_dk554"]
+material = SubResource("StandardMaterial3D_e1htg")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="Resource" id="Resource_mpjxs"]
+script = ExtResource("2_puivo")
+mesh = SubResource("SphereMesh_dk554")
+metadata/_custom_type_script = "uid://dp5xyt7levy2c"
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_e1htg"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_fuk8f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dk554"]
+resource_local_to_scene = true
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+
+[sub_resource type="Animation" id="Animation_puivo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:surface_material_override/0:emission")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wnrdh"]
+resource_name = "hit"
+length = 0.1
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:surface_material_override/0:emission")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e1htg"]
+_data = {
+&"RESET": SubResource("Animation_puivo"),
+&"hit": SubResource("Animation_wnrdh")
+}
+
+[node name="TestArea" type="Node3D"]
+
+[node name="light" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="light"]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 1.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="light"]
+environment = SubResource("Environment_e1htg")
+
+[node name="bullet_master" type="Node3D" parent="."]
+script = ExtResource("1_e1htg")
+
+[node name="FreeCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+fov = 90.0
+script = ExtResource("1_wnrdh")
+bullet_info = SubResource("Resource_mpjxs")
+metadata/_custom_type_script = "uid://cn8yo2vj3i1ci"
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("SphereShape3D_e1htg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+mesh = SubResource("SphereMesh_fuk8f")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_dk554")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody3D/MeshInstance3D"]
+libraries = {
+&"": SubResource("AnimationLibrary_e1htg")
+}
