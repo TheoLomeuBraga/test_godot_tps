@@ -46,13 +46,20 @@ func _ready() -> void:
 	main = self
 	space_state = main.get_world_3d().direct_space_state
 
+var global_delta : float = 0
+
+func _process_id(id: int) -> void:
+	pass
+
 func _process(delta: float) -> void:
-	var bullets_copy : Array[BulletUsageInfo] = bullets
 	for b : BulletUsageInfo in bullets:
 		
 		b.transform = b.transform.translated_local(Vector3(0.0,0.0,-b.speed * delta))
 		
 		RenderingServer.instance_set_transform(b.render,b.transform)
+
+func _physics_process_id(id: int) -> void:
+	pass
 
 func _physics_process(delta: float) -> void:
 	
@@ -60,7 +67,6 @@ func _physics_process(delta: float) -> void:
 	
 	
 	
-	var bullets_copy : Array[BulletUsageInfo] = bullets
 	for b : BulletUsageInfo in bullets:
 		
 		b.life_time -= delta
@@ -76,10 +82,11 @@ func _physics_process(delta: float) -> void:
 						break
 		
 		if result.size() > 0 or b.life_time < 0:
-			erase_bullet(b)
+			call_deferred("erase_bullet",b)
+			#erase_bullet(b)
 
 func _exit_tree() -> void:
 	main = null
-	var bullets_copy : Array[BulletUsageInfo] = bullets
 	for b : BulletUsageInfo in bullets:
-		erase_bullet(b)
+		call_deferred("erase_bullet",b)
+		#erase_bullet(b)
