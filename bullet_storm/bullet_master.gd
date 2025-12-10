@@ -24,18 +24,20 @@ static func shot(bi : BulletInfo,transform : Transform3D) -> void:
 		RenderingServer.instance_set_scenario(bui.render,main.get_world_3d().scenario)
 		RenderingServer.instance_set_base(bui.render,bi.mesh)
 		
-		bui.physics = PhysicsServer3D.sphere_shape_create()
-		var radius : float = 1.0
-		PhysicsServer3D.shape_set_data(bui.physics, radius)
+		
+		
 		
 		bui.params = PhysicsShapeQueryParameters3D.new()
-		bui.params.shape_rid = bui.physics
+		bui.params.shape_rid = PhysicsServer3D.sphere_shape_create()
+		
+		var radius : float = 1.0
+		PhysicsServer3D.shape_set_data(bui.params.shape_rid, radius)
 		
 		main.bullets.push_back(bui)
 
 func erase_bullet(bui : BulletUsageInfo) -> void:
 	RenderingServer.free_rid(bui.render)
-	PhysicsServer3D.free_rid(bui.physics)
+	PhysicsServer3D.free_rid(bui.params.shape_rid)
 	
 	bullets.erase(bui)
 	

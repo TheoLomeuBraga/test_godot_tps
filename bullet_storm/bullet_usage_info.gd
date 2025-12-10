@@ -6,5 +6,4 @@ var transform : Transform3D
 var speed : float
 var life_time : float
 var render : RID
-var physics : RID
 var params : PhysicsShapeQueryParameters3D
