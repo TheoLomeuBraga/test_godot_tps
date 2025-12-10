@@ -49,41 +49,40 @@ func _ready() -> void:
 var global_delta : float = 0
 
 func _process_id(id: int) -> void:
-	pass
+	bullets[id].transform = bullets[id].transform.translated_local(Vector3(0.0,0.0,-bullets[id].speed * global_delta))
+	RenderingServer.instance_set_transform(bullets[id].render,bullets[id].transform)
 
 func _process(delta: float) -> void:
-	for b : BulletUsageInfo in bullets:
-		
-		b.transform = b.transform.translated_local(Vector3(0.0,0.0,-b.speed * delta))
-		
-		RenderingServer.instance_set_transform(b.render,b.transform)
+	global_delta = delta
+	var task_id : int = WorkerThreadPool.add_group_task(_process_id, bullets.size())
+	WorkerThreadPool.wait_for_group_task_completion(task_id)
+
+
 
 func _physics_process_id(id: int) -> void:
-	pass
+	bullets[id].life_time -= global_delta
+	
+	bullets[id].params.transform = bullets[id].transform
+	var result : Array[Dictionary] = space_state.intersect_shape(bullets[id].params)
+	
+	if result.size() > 0:
+		for d : Dictionary in result:
+			if d.has("collider"):
+				if d["collider"] == $"../CharacterBody3D":
+					$"../CharacterBody3D/MeshInstance3D/AnimationPlayer".play("hit")
+					break
+	
+	if result.size() > 0 or bullets[id].life_time < 0:
+		call_deferred("erase_bullet",bullets[id])
 
 func _physics_process(delta: float) -> void:
 	
 	space_state = main.get_world_3d().direct_space_state
 	
+	var task_id : int = WorkerThreadPool.add_group_task(_physics_process_id, bullets.size())
+	WorkerThreadPool.wait_for_group_task_completion(task_id)
 	
 	
-	for b : BulletUsageInfo in bullets:
-		
-		b.life_time -= delta
-		
-		b.params.transform = b.transform
-		var result : Array[Dictionary] = space_state.intersect_shape(b.params)
-		
-		if result.size() > 0:
-			for d : Dictionary in result:
-				if d.has("collider"):
-					if d["collider"] == $"../CharacterBody3D":
-						$"../CharacterBody3D/MeshInstance3D/AnimationPlayer".play("hit")
-						break
-		
-		if result.size() > 0 or b.life_time < 0:
-			call_deferred("erase_bullet",b)
-			#erase_bullet(b)
 
 func _exit_tree() -> void:
 	main = null
