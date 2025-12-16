@@ -1,0 +1,66 @@
+[gd_scene load_steps=12 format=3 uid="uid://cfk4halwyvy68"]
+
+[ext_resource type="Script" uid="uid://dogqpoh8rtcbh" path="res://compositor_filter/new_script.gd" id="1_wt0t3"]
+[ext_resource type="Script" uid="uid://cn8yo2vj3i1ci" path="res://free_camera/free_camera.gd" id="2_14tim"]
+
+[sub_resource type="Environment" id="Environment_14tim"]
+
+[sub_resource type="CompositorEffect" id="CompositorEffect_14tim"]
+resource_local_to_scene = false
+resource_name = ""
+enabled = true
+effect_callback_type = 4
+needs_motion_vectors = false
+needs_normal_roughness = false
+script = ExtResource("1_wt0t3")
+shader_code = "float a = 0.0;"
+metadata/_custom_type_script = "uid://dogqpoh8rtcbh"
+
+[sub_resource type="Compositor" id="Compositor_23wul"]
+compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_14tim")])
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2a1ou"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_wt0t3"]
+material = SubResource("StandardMaterial3D_2a1ou")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wt0t3"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_14tim"]
+material = SubResource("StandardMaterial3D_wt0t3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_23wul"]
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xtvd1"]
+material = SubResource("StandardMaterial3D_23wul")
+
+[node name="CompositorFilter" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_14tim")
+compositor = SubResource("Compositor_23wul")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 1.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+mesh = SubResource("SphereMesh_wt0t3")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_14tim")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+mesh = SubResource("CylinderMesh_xtvd1")
+skeleton = NodePath("../MeshInstance3D2")
+
+[node name="FreeCamera" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, -6)
+script = ExtResource("2_14tim")
+metadata/_custom_type_script = "uid://cn8yo2vj3i1ci"

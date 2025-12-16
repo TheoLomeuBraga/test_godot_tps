@@ -137,6 +137,7 @@ locale/translations_pot_files=PackedStringArray("res://localization_test/localiz
 
 [rendering]
 
+renderer/rendering_method="mobile"
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality=0
 lights_and_shadows/positional_shadow/soft_shadow_filter_quality=0
 occlusion_culling/use_occlusion_culling=true

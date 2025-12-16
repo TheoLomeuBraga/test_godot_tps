@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://806vwwwtolm8"]
+
+[ext_resource type="Script" uid="uid://beo6ipeqbg2f4" path="res://predictable_rng/predictable_rng.gd" id="1_nu8nc"]
+
+[node name="PredictableRng" type="Node"]
+script = ExtResource("1_nu8nc")
