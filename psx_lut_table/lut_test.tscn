@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://ddfw073h2cuht"]
+
+[ext_resource type="CompressedTexture3D" uid="uid://c1tak57ghyvdp" path="res://psx_lut_table/lut_table.webp" id="1_x3j7k"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6pvdn"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_6wllk"]
+sky_material = SubResource("ProceduralSkyMaterial_6pvdn")
+
+[sub_resource type="Environment" id="Environment_b2han"]
+background_mode = 2
+sky = SubResource("Sky_6wllk")
+ambient_light_source = 2
+ambient_light_color = Color(0.30625927, 0.3062593, 0.3062593, 1)
+tonemap_mode = 2
+adjustment_enabled = true
+adjustment_color_correction = ExtResource("1_x3j7k")
+
+[sub_resource type="SphereMesh" id="SphereMesh_pmiff"]
+
+[node name="LutTest" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 1.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_b2han")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_pmiff")
