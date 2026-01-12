@@ -1,0 +1,62 @@
+[gd_scene load_steps=16 format=3 uid="uid://ckvmhm8wbvi3o"]
+
+[ext_resource type="Shader" uid="uid://24fhg70cludj" path="res://funy shader/funy_shader.gdshader" id="1_xk2e1"]
+[ext_resource type="Texture2D" uid="uid://clwa3xop6ac5" path="res://icon.png" id="2_axd2u"]
+[ext_resource type="Shader" uid="uid://joldwveyua5t" path="res://funy shader/funy_shader2.gdshader" id="3_54iuy"]
+[ext_resource type="Shader" uid="uid://wr6rx021xbsd" path="res://funy shader/funy_shader3.gdshader" id="4_pgx31"]
+[ext_resource type="Texture2D" uid="uid://bydreqn321l3t" path="res://funy shader/rust.png" id="5_mphml"]
+[ext_resource type="Texture2D" uid="uid://cmsgqgo42w6mo" path="res://funy shader/wood.png" id="6_swjqv"]
+[ext_resource type="Shader" uid="uid://crd5b2ymfdgso" path="res://funy shader/funy_shader4.gdshader" id="7_swjqv"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_axd2u"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_54iuy"]
+render_priority = 0
+shader = ExtResource("1_xk2e1")
+shader_parameter/tex = ExtResource("2_axd2u")
+shader_parameter/iResolution = Vector2(0.5, 0.5)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_54iuy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pgx31"]
+render_priority = 0
+shader = ExtResource("3_54iuy")
+shader_parameter/iResolution = Vector2(0.1, 1)
+shader_parameter/iMouse = Vector2(0, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pgx31"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4kfjv"]
+render_priority = 0
+shader = ExtResource("4_pgx31")
+shader_parameter/iResolution = Vector2(1, 1)
+shader_parameter/iChannel0 = ExtResource("5_mphml")
+shader_parameter/iChannel1 = ExtResource("6_swjqv")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pd0t1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gfnj8"]
+render_priority = 0
+shader = ExtResource("7_swjqv")
+shader_parameter/iResolution = Vector2(1, 1)
+
+[node name="FunyShader" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_axd2u")
+surface_material_override/0 = SubResource("ShaderMaterial_54iuy")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+mesh = SubResource("PlaneMesh_54iuy")
+surface_material_override/0 = SubResource("ShaderMaterial_pgx31")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+mesh = SubResource("PlaneMesh_pgx31")
+surface_material_override/0 = SubResource("ShaderMaterial_4kfjv")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
+mesh = SubResource("PlaneMesh_pd0t1")
+surface_material_override/0 = SubResource("ShaderMaterial_gfnj8")
