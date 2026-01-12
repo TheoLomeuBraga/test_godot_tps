@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://cefb3j3t13qie"]
+
+[ext_resource type="LightmapGIData" uid="uid://ish2nj3qmqa8" path="res://lightmap_compatibility/lightmap_compatibility.lmbake" id="1_tbcxk"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ny3dq"]
+
+[sub_resource type="Sky" id="Sky_tbcxk"]
+sky_material = SubResource("ProceduralSkyMaterial_ny3dq")
+
+[sub_resource type="Environment" id="Environment_83mgh"]
+background_mode = 2
+sky = SubResource("Sky_tbcxk")
+ambient_light_source = 2
+ambient_light_color = Color(0.47007585, 0.47007585, 0.47007585, 1)
+tonemap_mode = 2
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_83mgh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hoyln"]
+lightmap_size_hint = Vector2i(1004, 516)
+add_uv2 = true
+size = Vector3(100, 1, 100)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_hoyln"]
+lightmap_size_hint = Vector2i(630, 704)
+add_uv2 = true
+top_radius = 20.0
+bottom_radius = 20.0
+height = 100.0
+
+[node name="LightmapCompatibility" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_83mgh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+light_bake_mode = 1
+shadow_enabled = true
+directional_shadow_max_distance = 1.0
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+quality = 0
+camera_attributes = SubResource("CameraAttributesPractical_83mgh")
+light_data = ExtResource("1_tbcxk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_hoyln")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+mesh = SubResource("CylinderMesh_hoyln")
