@@ -1,22 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://dxgojsrssmhqe"]
+[gd_scene load_steps=8 format=3 uid="uid://dxgojsrssmhqe"]
 
 [ext_resource type="Script" uid="uid://cn8yo2vj3i1ci" path="res://free_camera/free_camera.gd" id="1_owb0u"]
 [ext_resource type="Script" uid="uid://dcwfnkbdido3c" path="res://groups_test/group_test.gd" id="1_pbd46"]
-[ext_resource type="Texture2D" uid="uid://bxrvfmf3o11i0" path="res://groups_test/360.jpg" id="2_s5nwf"]
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lcici"]
-panorama = ExtResource("2_s5nwf")
-filter = false
-
-[sub_resource type="Sky" id="Sky_s5nwf"]
-sky_material = SubResource("PanoramaSkyMaterial_lcici")
-
-[sub_resource type="Environment" id="Environment_lcici"]
-background_mode = 2
-sky = SubResource("Sky_s5nwf")
-ambient_light_source = 2
-ambient_light_color = Color(0.466181, 0.466181, 0.466181, 1)
-tonemap_mode = 2
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_uk3kq"]
 data = PackedVector3Array(50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0, -50, 50, 0, -50)
@@ -39,9 +24,6 @@ script = ExtResource("1_pbd46")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_lcici")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." groups=["cenary"]]
 
