@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://fmjh1cryttbw"]
+[gd_scene load_steps=2 format=3 uid="uid://fmjh1cryttbw"]
+
+[ext_resource type="Script" uid="uid://ck5yl3t21f42y" path="res://node__editor_test/graph_node_test.gd" id="1_uij48"]
 
 [node name="NodeEditorTest" type="Control"]
 texture_filter = 1
@@ -16,14 +18,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scroll_offset = Vector2(-40, -40)
 
 [node name="GraphNode" type="GraphNode" parent="GraphEdit"]
 layout_mode = 0
-offset_left = 33.0
-offset_top = 186.0
-offset_right = 173.0
-offset_bottom = 300.0
-mouse_filter = 1
-position_offset = Vector2(-7, 146)
+offset_left = 95.0
+offset_top = 128.0
+offset_right = 235.0
+offset_bottom = 242.0
+position_offset = Vector2(95, 128)
 title = "node"
+script = ExtResource("1_uij48")
