@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://c75ppr5i1sbvs"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rmxv2"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_bubka"]
+sky_material = SubResource("ProceduralSkyMaterial_rmxv2")
+
+[sub_resource type="Environment" id="Environment_mn07m"]
+background_mode = 2
+sky = SubResource("Sky_bubka")
+tonemap_mode = 2
+
+[sub_resource type="Curve3D" id="Curve3D_rmxv2"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 1, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 5),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="PrismMesh" id="PrismMesh_rmxv2"]
+
+[node name="CurveFolow" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 1.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mn07m")
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_rmxv2")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(0.19611363, 0, -0.9805689, 0, 0.999999, 0, 0.9805689, 0, 0.19611363, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Path3D/PathFollow3D"]
+mesh = SubResource("PrismMesh_rmxv2")
