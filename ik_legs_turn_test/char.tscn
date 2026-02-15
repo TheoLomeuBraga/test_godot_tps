@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://cpwrec4hsqtwm"]
+
+[ext_resource type="PackedScene" uid="uid://dtravg60psa7k" path="res://ik_legs_turn_test/char.glb" id="1_3qc1h"]
+[ext_resource type="Script" uid="uid://biyhvf5gt6u5" path="res://ik_legs_turn_test/char.gd" id="2_poly4"]
+[ext_resource type="Script" uid="uid://6ja8w83lwspe" path="res://trail_fx/animation_player_start_animation.gd" id="3_opfro"]
+
+[sub_resource type="Animation" id="Animation_jopjg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("target:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_qstgj"]
+resource_name = "aaa"
+length = 5.0
+loop_mode = 1
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("target:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 2), Vector3(5, 0, 2), Vector3(-3, 0, 2), Vector3(0, 0, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xc16s"]
+_data = {
+&"RESET": SubResource("Animation_jopjg"),
+&"aaa": SubResource("Animation_qstgj")
+}
+
+[node name="char" unique_id=1600720339 instance=ExtResource("1_3qc1h")]
+script = ExtResource("2_poly4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="0" unique_id=2039448776]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 1.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1" unique_id=758741412]
+
+[node name="Bone_002" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1667804246) index="0" unique_id=1323191903]
+transform = Transform3D(1, 0, 0, 0, 0.8944272, -0.4472136, 0, 0.4472136, 0.8944272, 0, 1, 0)
+
+[node name="LookAtModifier3DLegs" type="LookAtModifier3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1667804246) index="3" unique_id=591214951]
+target_node = NodePath("../../../target_legs")
+bone_name = "Bone"
+bone = 0
+use_secondary_rotation = false
+
+[node name="LookAtModifier3DTorso" type="LookAtModifier3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1667804246) index="4" unique_id=659606991]
+target_node = NodePath("../../../target")
+bone_name = "Bone.001"
+bone = 1
+use_secondary_rotation = false
+use_angle_limitation = true
+symmetry_limitation = true
+primary_limit_angle = 1.5707964
+primary_damp_threshold = 1.0
+
+[node name="LookAtModifier3DFace" type="LookAtModifier3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1667804246) index="5" unique_id=311967397]
+target_node = NodePath("../../../target")
+bone_name = "Bone.002"
+bone = 2
+use_angle_limitation = true
+symmetry_limitation = true
+primary_limit_angle = 1.5707964
+primary_damp_threshold = 1.0
+secondary_limit_angle = 6.2831855
+secondary_damp_threshold = 1.0
+
+[node name="target_legs" type="Node3D" parent="." index="3" unique_id=170297797]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="target" type="Node3D" parent="." index="4" unique_id=447969413]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="AnimationPlayerStartAnimation" type="AnimationPlayer" parent="." index="5" unique_id=378476409]
+libraries/ = SubResource("AnimationLibrary_xc16s")
+script = ExtResource("3_opfro")
+animation_name = "aaa"
+metadata/_custom_type_script = "uid://6ja8w83lwspe"
+
+[node name="Camera3D" type="Camera3D" parent="." index="6" unique_id=1107013827]
+transform = Transform3D(-0.8660254, 0, 0.50000006, 0, 1, 0, -0.50000006, 0, -0.8660254, 2, 1, -1)
