@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cma65fdujesmv"]
+
+[ext_resource type="Script" uid="uid://d2dqv00mciv18" path="res://my_ip/my_ip.gd" id="1_2n783"]
+
+[node name="MyIp" type="Node" unique_id=915204820]
+script = ExtResource("1_2n783")
