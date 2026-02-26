@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://dov1n51u6jvbq"]
+
+[ext_resource type="PackedScene" uid="uid://cpxt5hn2r21lj" path="res://blender_cube/blender_cube.glb" id="1_08sva"]
+[ext_resource type="Script" uid="uid://dogqpoh8rtcbh" path="res://compositor_filter/new_script.gd" id="2_ew6i7"]
+
+[sub_resource type="CompositorEffect" id="CompositorEffect_lk2wd"]
+resource_local_to_scene = false
+resource_name = ""
+enabled = true
+effect_callback_type = 4
+needs_motion_vectors = false
+needs_normal_roughness = false
+script = ExtResource("2_ew6i7")
+shader_code = "#version 450
+
+// Invocations in the (x, y, z) dimension
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 1) in;
+
+layout(rgba16f, set = 0, binding = 0) uniform image2D color_image;
+
+// Our push constant
+layout(push_constant, std430) uniform Params {
+	vec2 raster_size;
+	vec2 reserved;
+} params;
+
+// The code we want to execute in each invocation
+void main() {
+	ivec2 uv = ivec2(gl_GlobalInvocationID.xy);
+	ivec2 size = ivec2(params.raster_size);
+
+	if (uv.x >= size.x || uv.y >= size.y) {
+		return;
+	}
+
+	vec4 color = imageLoad(color_image, uv);
+
+	#COMPUTE_CODE
+
+	imageStore(color_image, uv, color);
+}"
+metadata/_custom_type_script = "uid://dogqpoh8rtcbh"
+
+[sub_resource type="Compositor" id="Compositor_ek2ku"]
+compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_lk2wd")])
+
+[node name="blender_cube" unique_id=296819687 instance=ExtResource("1_08sva")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="3" unique_id=583568000]
+compositor = SubResource("Compositor_ek2ku")
