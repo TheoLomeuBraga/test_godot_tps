@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://1vg8oxhl6bx0"]
+
+[ext_resource type="Script" uid="uid://b06bd7rlds6m8" path="res://benchmarc_cube_wave/not_optimized/un_optimized_cubes.gd" id="1_l4xa0"]
+[ext_resource type="Script" uid="uid://5vttvu6eie01" path="res://navmesh_test/free_camera_master.gd" id="2_5vwfc"]
+[ext_resource type="Script" uid="uid://ba4fgg85qwda4" path="res://benchmarc_cube_wave/fps_counter.gd" id="2_gmsqi"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gmsqi"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_aptvg"]
+sky_material = SubResource("ProceduralSkyMaterial_gmsqi")
+
+[sub_resource type="Environment" id="Environment_vbxrh"]
+background_mode = 2
+sky = SubResource("Sky_aptvg")
+ambient_light_source = 2
+ambient_light_color = Color(0.33660764, 0.3366076, 0.3366076, 1)
+tonemap_mode = 2
+
+[node name="UnOptimized" type="Node3D" unique_id=68293586]
+script = ExtResource("1_l4xa0")
+
+[node name="FPSCounter" type="Label" parent="." unique_id=1556864331]
+anchors_preset = -1
+anchor_right = 0.22200002
+anchor_bottom = 0.18300001
+offset_right = -0.08001709
+offset_bottom = -18.840004
+theme_override_font_sizes/font_size = 64
+text = "30"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_gmsqi")
+metadata/_custom_type_script = "uid://ba4fgg85qwda4"
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=367769059]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 1.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1428626635]
+environment = SubResource("Environment_vbxrh")
+
+[node name="FreeCameraMaster" type="Camera3D" parent="." unique_id=743761318]
+fov = 120.0
+script = ExtResource("2_5vwfc")
+metadata/_custom_type_script = "uid://5vttvu6eie01"
