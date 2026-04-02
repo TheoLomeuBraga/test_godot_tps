@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://dc4lf440c4kip"]
+
+[ext_resource type="Script" uid="uid://cyq4hs276hg81" path="res://grid_inventory/grid_inventory_item_frame.gd" id="1_5e4jb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pa20y"]
+bg_color = Color(2.1057204e-08, 0.11849626, 0.13367489, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[node name="GridInventoryItemFrame" type="Control" unique_id=805691216]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_5e4jb")
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=565735035]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pa20y")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=661914039]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="." unique_id=1912153735]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7620625
+anchor_top = 0.7851667
+anchor_right = 0.972
+anchor_bottom = 0.94600004
+offset_left = 0.27999878
+offset_top = 0.11999512
+offset_right = -0.08001709
+offset_bottom = -0.08001709
+text = "text"
+metadata/_edit_use_anchors_ = true

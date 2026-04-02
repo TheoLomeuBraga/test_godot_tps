@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://drqusgrlutwth"]
+
+[ext_resource type="Script" uid="uid://dtyai28dmv8oj" path="res://grid_inventory/grid_inventory.gd" id="1_nmklv"]
+[ext_resource type="PackedScene" uid="uid://dc4lf440c4kip" path="res://grid_inventory/grid_inventory_item_frame.tscn" id="1_nurry"]
+[ext_resource type="Script" uid="uid://bxgafq3m2s2mk" path="res://grid_inventory/item_icon_cursor.gd" id="3_nmklv"]
+[ext_resource type="Texture2D" uid="uid://4ck6n03kils" path="res://grid_inventory/Screenshot_2026-01-09_13-03-50.png" id="3_scjrs"]
+[ext_resource type="Texture2D" uid="uid://c568uykkrhnne" path="res://grid_inventory/Screenshot_2026-02-04_12-50-00.png" id="4_cke5f"]
+[ext_resource type="Texture2D" uid="uid://dev3pfqroro46" path="res://icon.svg" id="5_cke5f"]
+
+[node name="GridInventory" type="Control" unique_id=2078131304]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nmklv")
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=2060570448]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 4
+
+[node name="GridInventoryItemFrame" parent="GridContainer" unique_id=805691216 instance=ExtResource("1_nurry")]
+layout_mode = 2
+texture = ExtResource("3_scjrs")
+
+[node name="GridInventoryItemFrame2" parent="GridContainer" unique_id=1033245533 instance=ExtResource("1_nurry")]
+layout_mode = 2
+texture = ExtResource("4_cke5f")
+
+[node name="GridInventoryItemFrame3" parent="GridContainer" unique_id=907525838 instance=ExtResource("1_nurry")]
+layout_mode = 2
+
+[node name="GridInventoryItemFrame4" parent="GridContainer" unique_id=373552274 instance=ExtResource("1_nurry")]
+layout_mode = 2
+
+[node name="GridInventoryItemFrame5" parent="GridContainer" unique_id=1191387523 instance=ExtResource("1_nurry")]
+layout_mode = 2
+
+[node name="GridInventoryItemFrame6" parent="GridContainer" unique_id=1963135581 instance=ExtResource("1_nurry")]
+layout_mode = 2
+
+[node name="GridInventoryItemFrame7" parent="GridContainer" unique_id=360469731 instance=ExtResource("1_nurry")]
+layout_mode = 2
+
+[node name="GridInventoryItemFrame8" parent="GridContainer" unique_id=306894053 instance=ExtResource("1_nurry")]
+layout_mode = 2
+
+[node name="GridInventoryItemFrame9" parent="GridContainer" unique_id=33125624 instance=ExtResource("1_nurry")]
+layout_mode = 2
+
+[node name="GridInventoryItemFrame10" parent="GridContainer" unique_id=282369939 instance=ExtResource("1_nurry")]
+layout_mode = 2
+
+[node name="GridInventoryItemFrame11" parent="GridContainer" unique_id=739252876 instance=ExtResource("1_nurry")]
+layout_mode = 2
+
+[node name="GridInventoryItemFrame12" parent="GridContainer" unique_id=587831449 instance=ExtResource("1_nurry")]
+layout_mode = 2
+
+[node name="item_icon_cursor" type="TextureRect" parent="." unique_id=1533564021]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.45800003
+anchor_top = 0.135
+anchor_right = -0.23700002
+anchor_bottom = 0.40800002
+offset_left = 0.120025635
+offset_top = 0.19999695
+offset_right = -0.3199768
+offset_bottom = 0.1599884
+mouse_filter = 2
+texture = ExtResource("5_cke5f")
+expand_mode = 1
+script = ExtResource("3_nmklv")
+metadata/_edit_use_anchors_ = true

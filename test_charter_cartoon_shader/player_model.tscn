@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://daqx2v5cv4a8c"]
+
+[ext_resource type="PackedScene" uid="uid://wnrnerbnkln7" path="res://test_charter_cartoon_shader/player_model.glb" id="1_tmd2s"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nmb8e"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_rvmgp"]
+sky_material = SubResource("ProceduralSkyMaterial_nmb8e")
+
+[sub_resource type="Environment" id="Environment_ygnb6"]
+background_mode = 1
+sky = SubResource("Sky_rvmgp")
+ambient_light_source = 2
+ambient_light_color = Color(0.29219002, 0.29219005, 0.29219002, 1)
+tonemap_mode = 2
+
+[node name="player_model" unique_id=1986396744 instance=ExtResource("1_tmd2s")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="0" unique_id=1057447222]
+environment = SubResource("Environment_ygnb6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="1" unique_id=2094176009]
+transform = Transform3D(0.9659257, -0.22414383, 0.12940943, 4.470349e-08, 0.49999988, 0.86602545, -0.25881892, -0.8365164, 0.48296288, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 1.0

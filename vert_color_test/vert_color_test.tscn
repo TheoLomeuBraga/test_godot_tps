@@ -1,0 +1,51 @@
+[gd_scene format=4 uid="uid://bafho8h1vs1du"]
+
+[ext_resource type="PackedScene" uid="uid://6qjia1vkdfn1" path="res://vert_color_test/vert_color_test.glb" id="1_7s6bc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vt26p"]
+resource_name = "Material"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_5naom"]
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"format": 34896613377,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAQADAAIAAwABAAAABAAAAAIAAwAAAAQAAwAEAAIA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 5,
+"vertex_data": PackedByteArray("//8AAP//AAAAAAAA//8AAP9/////fwAAAAAAAAAAAAD//wAAAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_7s6bc"]
+resource_name = "vert_color_test_Cube"
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"attribute_data": PackedByteArray("AP8A//9f/z8AAAD//18AAP//////nwAAAAAA//9f//8AAP///1//v///////n/+/AAD///8f/38A/wD//1//P/8AAP//X/9/AAAA//8f/z//AAD//1//fwD/AP//X/8///////+f/z8AAP///1//v/8AAP//X/9///////+f/38="),
+"format": 34896613407,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAwAEAAUABgAHAAgABgAJAAcACgALAAwADQAOAA8A"),
+"material": SubResource("StandardMaterial3D_vt26p"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("//8AAP//ILIAAAAA//8gsv9/////fyCyAAAAAP//n8QAAAAAAACfxP9/////f5/EAAAAAAAA/7///wAA////v///AAAAAP+/AAAAAP///7///wAAAABZ1v//AAD//1nW/3////9/WdYAAAAAAADJ9f//AAAAAMn1/3////9/yfUd7SEdHe0hHR3tIR1rzTDLa80wy2vNMMsAAP9/AAD/fwAA/38AAP9/QDyJFUA8iRVAPIkVCKztwwis7cMIrO3D")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_5naom")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_givo6"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[node name="vert_color_test" unique_id=1782581785 instance=ExtResource("1_7s6bc")]
+
+[node name="Cube" parent="." index="0" unique_id=1114288228]
+mesh = SubResource("ArrayMesh_7s6bc")
+surface_material_override/0 = SubResource("StandardMaterial3D_givo6")

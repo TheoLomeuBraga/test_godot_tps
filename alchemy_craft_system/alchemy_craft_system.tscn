@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://dedcluaniid30"]
+
+[ext_resource type="Script" uid="uid://dfa0ii88ejqiy" path="res://alchemy_craft_system/alchemy_craft_system.gd" id="1_dnvh3"]
+[ext_resource type="Script" uid="uid://te1bhye6tem0" path="res://alchemy_craft_system/alchemy_item.gd" id="2_35tag"]
+
+[sub_resource type="Resource" id="Resource_rkl4m"]
+script = ExtResource("2_35tag")
+item_name = "pistol"
+metadata/_custom_type_script = "uid://te1bhye6tem0"
+
+[sub_resource type="Resource" id="Resource_35tag"]
+script = ExtResource("2_35tag")
+item_name = "ice pistol"
+cold_hot = -100.0
+metadata/_custom_type_script = "uid://te1bhye6tem0"
+
+[sub_resource type="Resource" id="Resource_3pjv6"]
+script = ExtResource("2_35tag")
+item_name = "fire pistol"
+cold_hot = 100.0
+metadata/_custom_type_script = "uid://te1bhye6tem0"
+
+[sub_resource type="Resource" id="Resource_tl1c8"]
+script = ExtResource("2_35tag")
+item_name = "shotgun"
+close_far = -100.0
+metadata/_custom_type_script = "uid://te1bhye6tem0"
+
+[sub_resource type="Resource" id="Resource_3y7qn"]
+script = ExtResource("2_35tag")
+item_name = "ice shotgun"
+cold_hot = -100.0
+close_far = -100.0
+metadata/_custom_type_script = "uid://te1bhye6tem0"
+
+[sub_resource type="Resource" id="Resource_numjo"]
+script = ExtResource("2_35tag")
+item_name = "fire shotgun"
+cold_hot = 100.0
+close_far = -100.0
+metadata/_custom_type_script = "uid://te1bhye6tem0"
+
+[sub_resource type="Resource" id="Resource_j03s8"]
+script = ExtResource("2_35tag")
+item_name = "sniper"
+close_far = 100.0
+metadata/_custom_type_script = "uid://te1bhye6tem0"
+
+[sub_resource type="Resource" id="Resource_14508"]
+script = ExtResource("2_35tag")
+item_name = "ice sniper"
+cold_hot = -100.0
+close_far = 100.0
+metadata/_custom_type_script = "uid://te1bhye6tem0"
+
+[sub_resource type="Resource" id="Resource_615q7"]
+script = ExtResource("2_35tag")
+item_name = "fire sniper"
+cold_hot = 100.0
+close_far = 100.0
+metadata/_custom_type_script = "uid://te1bhye6tem0"
+
+[node name="AlchemyCraftSystem" type="Control" unique_id=1264703904]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dnvh3")
+items = Array[ExtResource("2_35tag")]([SubResource("Resource_rkl4m"), SubResource("Resource_35tag"), SubResource("Resource_3pjv6"), SubResource("Resource_tl1c8"), SubResource("Resource_3y7qn"), SubResource("Resource_numjo"), SubResource("Resource_j03s8"), SubResource("Resource_14508"), SubResource("Resource_615q7")])
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1834797287]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=973525496]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="OptionButton1" type="OptionButton" parent="HBoxContainer/VBoxContainer" unique_id=705933838]
+layout_mode = 2
+
+[node name="OptionButton2" type="OptionButton" parent="HBoxContainer/VBoxContainer" unique_id=303143603]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=175149019]
+layout_mode = 2
+text = "alchemyize"
+
+[node name="Label" type="Label" parent="HBoxContainer" unique_id=97312354]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Button" to="." method="alchemize"]

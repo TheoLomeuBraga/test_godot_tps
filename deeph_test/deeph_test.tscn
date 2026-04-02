@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://tl1c3ry4stw0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3fy7o"]
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3fy7o"]
+material = SubResource("StandardMaterial3D_3fy7o")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4a54k"]
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_x1nvw"]
+material = SubResource("StandardMaterial3D_4a54k")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x1nvw"]
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_prdsc"]
+material = SubResource("StandardMaterial3D_x1nvw")
+
+[node name="DeephTest" type="Node3D" unique_id=1152788805]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=76760002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+mesh = SubResource("BoxMesh_3fy7o")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=247379934]
+mesh = SubResource("SphereMesh_x1nvw")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1323404706]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+mesh = SubResource("CapsuleMesh_prdsc")

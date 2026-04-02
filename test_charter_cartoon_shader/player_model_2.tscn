@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://bp4q4toyybh6l"]
+
+[ext_resource type="PackedScene" uid="uid://wnrnerbnkln7" path="res://test_charter_cartoon_shader/player_model.glb" id="1_b5koj"]
+[ext_resource type="Texture2D" uid="uid://dfy7kp3xux1v4" path="res://test_charter_cartoon_shader/player_model_sub_machinegun.png" id="2_2n3rp"]
+[ext_resource type="Texture2D" uid="uid://cbvy72a4i14sx" path="res://test_charter_cartoon_shader/player_model_player.png" id="2_bnxav"]
+[ext_resource type="Texture2D" uid="uid://dldcsmi0gryq3" path="res://panorama/panorama.png" id="3_2n3rp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p2wvb"]
+resource_name = "player"
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.096204825, 0.09620472, 0.096204735, 1)
+roughness = 0.0
+texture_filter = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_empgp"]
+resource_name = "sub_machinegun"
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+albedo_texture = ExtResource("2_2n3rp")
+roughness = 0.0
+texture_filter = 2
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8g6xk"]
+load_path = "res://.godot/imported/player_model_player.png-388011bbfdf8abdd53f9736ee058cb0a.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sq71l"]
+resource_name = "player"
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("CompressedTexture2D_8g6xk")
+roughness = 0.0
+texture_filter = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uf5eu"]
+resource_name = "player"
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_bnxav")
+roughness = 0.0
+texture_filter = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dxyc0"]
+resource_name = "player"
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("CompressedTexture2D_8g6xk")
+roughness = 0.0
+texture_filter = 2
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_p2wvb"]
+panorama = ExtResource("3_2n3rp")
+
+[sub_resource type="Sky" id="Sky_rvmgp"]
+sky_material = SubResource("PanoramaSkyMaterial_p2wvb")
+
+[sub_resource type="Environment" id="Environment_bnxav"]
+background_mode = 2
+sky = SubResource("Sky_rvmgp")
+ambient_light_source = 2
+ambient_light_color = Color(0.29219002, 0.29219005, 0.29219002, 1)
+tonemap_mode = 2
+
+[node name="player_model" unique_id=1986396744 instance=ExtResource("1_b5koj")]
+
+[node name="Cube_004" parent="metarig/Skeleton3D/spine_006" parent_id_path=PackedInt32Array(740059058) index="1" unique_id=955696138]
+surface_material_override/0 = SubResource("StandardMaterial3D_p2wvb")
+
+[node name="Cube" parent="metarig/Skeleton3D/hand_R" parent_id_path=PackedInt32Array(828472038) index="0" unique_id=839973109]
+surface_material_override/0 = SubResource("StandardMaterial3D_empgp")
+
+[node name="Cube_001" parent="metarig/Skeleton3D" parent_id_path=PackedInt32Array(306190901) index="2" unique_id=1272137201]
+surface_material_override/0 = SubResource("StandardMaterial3D_sq71l")
+
+[node name="Cube_007" parent="metarig/Skeleton3D" parent_id_path=PackedInt32Array(306190901) index="3" unique_id=703580352]
+surface_material_override/0 = SubResource("StandardMaterial3D_uf5eu")
+
+[node name="Cube_008" parent="metarig/Skeleton3D" parent_id_path=PackedInt32Array(306190901) index="4" unique_id=1301082314]
+surface_material_override/0 = SubResource("StandardMaterial3D_uf5eu")
+
+[node name="Cube_010" parent="metarig/Skeleton3D" parent_id_path=PackedInt32Array(306190901) index="5" unique_id=172378783]
+surface_material_override/0 = SubResource("StandardMaterial3D_uf5eu")
+
+[node name="Cube_013" parent="metarig/Skeleton3D" parent_id_path=PackedInt32Array(306190901) index="6" unique_id=90575064]
+surface_material_override/0 = SubResource("StandardMaterial3D_dxyc0")
+
+[node name="Cube_005" parent="." index="1" unique_id=1160678226]
+surface_material_override/0 = SubResource("StandardMaterial3D_uf5eu")
+
+[node name="Cube_006" parent="." index="2" unique_id=997145858]
+surface_material_override/0 = SubResource("StandardMaterial3D_uf5eu")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="3" unique_id=1822723642]
+environment = SubResource("Environment_bnxav")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="4" unique_id=1719479687]
+transform = Transform3D(0.9659257, -0.22414383, 0.12940943, 4.470349e-08, 0.49999988, 0.86602545, -0.25881892, -0.8365164, 0.48296288, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 1.0

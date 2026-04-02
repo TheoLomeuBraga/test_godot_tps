@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://wl23nhjclc1x"]
+
+[ext_resource type="Script" uid="uid://oaqhmo0gcuhb" path="res://custom_material_test/test_custom_material.gd" id="1_35g37"]
+[ext_resource type="Script" uid="uid://cftyej8fr2l8t" path="res://custom_material_test/custom_color_material.gd" id="1_hpgxv"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_0duw5"]
+
+[sub_resource type="Material" id="Material_hpgxv"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("1_hpgxv")
+color = Color(1, 1, 1, 1)
+
+[node name="CustomMaterialTest" type="Node3D" unique_id=1426660627]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1227105534]
+mesh = SubResource("SphereMesh_0duw5")
+surface_material_override/0 = SubResource("Material_hpgxv")
+script = ExtResource("1_35g37")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=696784037]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1)

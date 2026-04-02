@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://xcb0tkxxy83x"]
+
+[node name="Windows" type="Control" unique_id=1355079537]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Window" type="Window" parent="." unique_id=1532641548]
+oversampling_override = 1.0
+title = "A"
+position = Vector2i(51, 73)
+
+[node name="Label" type="Label" parent="Window" unique_id=625762556]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Window2" type="Window" parent="." unique_id=346168181]
+oversampling_override = 1.0
+title = "B"
+position = Vector2i(470, 131)
+
+[node name="Label" type="Label" parent="Window2" unique_id=1934281239]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "B"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Window3" type="Window" parent="." unique_id=1354652267]
+oversampling_override = 1.0
+title = "C"
+position = Vector2i(118, 315)
+size = Vector2i(403, 100)
+
+[node name="Label" type="Label" parent="Window3" unique_id=752620127]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "C"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="close_requested" from="Window" to="Window" method="queue_free"]
+[connection signal="close_requested" from="Window2" to="Window2" method="queue_free"]
+[connection signal="close_requested" from="Window3" to="Window3" method="queue_free"]
