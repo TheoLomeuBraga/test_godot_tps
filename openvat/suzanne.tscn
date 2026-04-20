@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://12gce5bewr2"]
+
+[ext_resource type="PackedScene" uid="uid://b6lud58ffqbmq" path="res://openvat/Suzanne_vat/Suzanne.glb" id="1_aiy0v"]
+[ext_resource type="Shader" uid="uid://b2u5jyo22woqq" path="res://openvat/openvat_test.gdshader" id="2_qesbw"]
+[ext_resource type="Texture2D" uid="uid://bxrmjrqlyd0pi" path="res://openvat/test_model_Screenshot_2026-02-10_19-30-23.png" id="3_lxsfj"]
+[ext_resource type="Texture2D" uid="uid://d1guq2nchip7g" path="res://openvat/Suzanne_vat/Suzanne_vat.exr" id="3_pcnvw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pcnvw"]
+render_priority = 0
+shader = ExtResource("2_qesbw")
+shader_parameter/vertex_animation_texture = ExtResource("3_pcnvw")
+shader_parameter/min_values = Vector3(-1.1, -1.1, -1)
+shader_parameter/max_values = Vector3(1.1, 1.1, 1)
+shader_parameter/progresion = 0.0
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("3_lxsfj")
+shader_parameter/metallic = 0.0
+shader_parameter/metallic_texture_channel = Color(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 1.0
+shader_parameter/roughness_texture_channel = Color(1, 0, 0, 0)
+shader_parameter/normal_scale = 1.0
+
+[node name="Suzanne" unique_id=1663902239 instance=ExtResource("1_aiy0v")]
+
+[node name="Suzanne_vat" parent="." index="0" unique_id=214466827]
+surface_material_override/0 = SubResource("ShaderMaterial_pcnvw")

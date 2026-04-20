@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://cnyxju27pjoo6"]
+
+[ext_resource type="Texture2D" uid="uid://b0xs2f6kvl72u" path="res://clip_mask/image.png" id="1_x750k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w4dxv"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xev3"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Bar" type="Control" unique_id=1900976540]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=323775010]
+clip_children = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_x750k")
+expand_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect" unique_id=1589734544]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.09427372, 0.09427368, 1)
+
+[node name="ProgressBar" type="ProgressBar" parent="TextureRect/ColorRect" unique_id=609149297]
+clip_children = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_w4dxv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0xev3")
+value = 50.0
+fill_mode = 3
+show_percentage = false
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect/ColorRect/ProgressBar" unique_id=870162024]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.7019608, 0.14901961, 1, 1)

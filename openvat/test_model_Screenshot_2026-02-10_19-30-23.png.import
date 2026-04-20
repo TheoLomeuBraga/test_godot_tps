@@ -1,0 +1,44 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://bxrmjrqlyd0pi"
+path.s3tc="res://.godot/imported/test_model_Screenshot_2026-02-10_19-30-23.png-a39adc9e2bf22b724761790a47ff4eef.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "eb65c9a9e10f02dd2a532821a9082e6c"
+}
+
+[deps]
+
+source_file="res://openvat/test_model_Screenshot_2026-02-10_19-30-23.png"
+dest_files=["res://.godot/imported/test_model_Screenshot_2026-02-10_19-30-23.png-a39adc9e2bf22b724761790a47ff4eef.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

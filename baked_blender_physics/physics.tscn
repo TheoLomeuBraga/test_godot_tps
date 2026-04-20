@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://lsu0ve7pyhf1"]
+
+[ext_resource type="PackedScene" uid="uid://donv3qqxd6dqk" path="res://baked_blender_physics/physics.glb" id="1_qscg2"]
+
+[node name="physics" unique_id=1599531102 instance=ExtResource("1_qscg2")]
+
+[node name="Suzanne" parent="." index="2" unique_id=1735442118]
+transform = Transform3D(0.8826569, 0.46309423, -0.080376826, -0.44776958, 0.88048023, 0.15574652, 0.1428955, -0.10148044, 0.9845215, 0.53437775, 3.5775416, 0)
+
+[node name="Cube_001" parent="." index="3" unique_id=1669707444]
+transform = Transform3D(0.9749668, -0.21055718, 0.07145269, 0.21441479, 0.9753898, -0.05139014, -0.05887367, 0.06542419, 0.99611926, 0, 6.305846, 0)

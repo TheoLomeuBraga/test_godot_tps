@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://djwfvt7ba8rcq"]
+
+[ext_resource type="Texture2D" uid="uid://dev3pfqroro46" path="res://icon.svg" id="1_nvuse"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nvuse"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_apn5e"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="ClipMaskBarTest" type="Control" unique_id=1044785635]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=637361640]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=412501654]
+clip_children = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_nvuse")
+theme_override_styles/fill = SubResource("StyleBoxFlat_apn5e")
+value = 51.34
+
+[node name="TextureRect" type="TextureRect" parent="ProgressBar" unique_id=1395230079]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_nvuse")
