@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://ddm0rhw3yki2v"]
+
+[ext_resource type="Script" uid="uid://biuj6ciephpn2" path="res://building_game_test/building.gd" id="1_xn7qf"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_mtpru"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_b3y2e"]
+
+[node name="Building" type="Node3D" unique_id=1515967567]
+script = ExtResource("1_xn7qf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1879084264]
+mesh = SubResource("BoxMesh_mtpru")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=2061650632]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=22527305]
+shape = SubResource("SphereShape3D_b3y2e")
+
+[node name="Label3D" type="Label3D" parent="Area3D" unique_id=730724051]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+pixel_size = 0.01
+billboard = 1
+texture_filter = 0
+text = "+"

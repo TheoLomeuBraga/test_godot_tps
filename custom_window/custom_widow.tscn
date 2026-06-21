@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://5yhcb5gfjxps"]
+
+[ext_resource type="Script" uid="uid://cssystdtjiu84" path="res://custom_window/custom_widow.gd" id="1_5ggej"]
+
+[node name="CustomWidow" type="Control" unique_id=827640945]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5ggej")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=2033139723]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1194431962]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=250384637]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=291777286]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1980863022]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+text = "X"

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dj3btisokin8a"]
+
+[ext_resource type="Shader" uid="uid://d1gi6eyo2ije0" path="res://light_shader_test/light_shader_test.gdshader" id="1_rkb73"]
+[ext_resource type="Texture2D" uid="uid://dev3pfqroro46" path="res://icon.svg" id="2_f5bwl"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vdrga"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f5bwl"]
+render_priority = 0
+shader = ExtResource("1_rkb73")
+shader_parameter/tex = ExtResource("2_f5bwl")
+
+[node name="LightShaderTest" type="Node3D" unique_id=1718524856]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=329459987]
+mesh = SubResource("PlaneMesh_vdrga")
+surface_material_override/0 = SubResource("ShaderMaterial_f5bwl")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=464882046]
+transform = Transform3D(1, 0, 0, 0, -2.9802319e-08, 1, 0, -1, -2.9802319e-08, 0, 1, -1)
+light_color = Color(1, 0, 0, 1)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=369079740]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)

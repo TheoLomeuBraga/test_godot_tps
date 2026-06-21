@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://bf7btlp67pejg"]
+
+[ext_resource type="PackedScene" uid="uid://ou3j4bqx3f2q" path="res://animation_transference/demo_model.glb" id="1_e1ew8"]
+[ext_resource type="Script" uid="uid://c7d7nsmswr1cb" path="res://animation_transference/eskeleton_exposer.gd" id="2_ussg3"]
+
+[node name="demo_model" unique_id=142838198 node_paths=PackedStringArray("skelenton") instance=ExtResource("1_e1ew8")]
+script = ExtResource("2_ussg3")
+skelenton = NodePath("metarig/GeneralSkeleton")
+
+[node name="spine_006" parent="metarig/GeneralSkeleton" parent_id_path=PackedInt32Array(677892088) index="0" unique_id=162918433]
+transform = Transform3D(1, -1.7763565e-14, 2.3841848e-07, 0, 0.99999964, 7.450581e-08, -2.3841854e-07, -7.4505806e-08, 0.99999976, 2.578575e-15, 2.1327393, 0.02469987)
+
+[node name="spine_004" parent="metarig/GeneralSkeleton" parent_id_path=PackedInt32Array(677892088) index="1" unique_id=16501658]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8100965e-15, 1.9850196, -0.011400079)
+
+[node name="hand_L" parent="metarig/GeneralSkeleton" parent_id_path=PackedInt32Array(677892088) index="2" unique_id=1604921303]
+transform = Transform3D(0, 1, 0, 0, 0, -1, -1, 0, 0, 0.73647225, 1.8857337, -0.049199913)
+
+[node name="forearm_L" parent="metarig/GeneralSkeleton" parent_id_path=PackedInt32Array(677892088) index="3" unique_id=782303365]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 0.47704473, 1.9041437, -0.088499986)
+
+[node name="upper_arm_L" parent="metarig/GeneralSkeleton" parent_id_path=PackedInt32Array(677892088) index="4" unique_id=952251203]
+transform = Transform3D(0, 1, 0, 0, 0, -1, -1, 0, 0, 0.19530001, 1.8966994, -0.026700057)
+
+[node name="hand_R" parent="metarig/GeneralSkeleton" parent_id_path=PackedInt32Array(677892088) index="5" unique_id=66233612]
+transform = Transform3D(0, -1, 0, 0, 0, -1, 1, 0, 0, -0.73647225, 1.8857337, -0.049199913)
+
+[node name="forearm_R" parent="metarig/GeneralSkeleton" parent_id_path=PackedInt32Array(677892088) index="6" unique_id=1211720192]
+transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, -0.47704473, 1.9041437, -0.088499986)
+
+[node name="upper_arm_R" parent="metarig/GeneralSkeleton" parent_id_path=PackedInt32Array(677892088) index="7" unique_id=1005675371]
+transform = Transform3D(0, -1, 0, 0, 0, -1, 1, 0, 0, -0.19530001, 1.8966994, -0.026700057)
+
+[node name="spine_002" parent="metarig/GeneralSkeleton" parent_id_path=PackedInt32Array(677892088) index="8" unique_id=1783460755]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9384704e-18, 1.5466595, -0.0004000459)
+
+[node name="spine_001" parent="metarig/GeneralSkeleton" parent_id_path=PackedInt32Array(677892088) index="9" unique_id=654512637]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3839395, -0.017200023)
+
+[node name="foot_L" parent="metarig/GeneralSkeleton" parent_id_path=PackedInt32Array(677892088) index="10" unique_id=1630270294]
+transform = Transform3D(-1, 0, 0, 0, 0, 1, 0, 1, 0, 0.09799998, 0.09741932, -0.016200215)
+
+[node name="shin_L" parent="metarig/GeneralSkeleton" parent_id_path=PackedInt32Array(677892088) index="11" unique_id=830357679]
+transform = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, 0.09799999, 0.6398194, 0.028599888)
+
+[node name="thigh_L" parent="metarig/GeneralSkeleton" parent_id_path=PackedInt32Array(677892088) index="12" unique_id=603459404]
+transform = Transform3D(-1, 0, 0, 0, -1, 0, 0, 0, 1, 0.098, 1.2815796, -0.01240002)
+
+[node name="foot_R" parent="metarig/GeneralSkeleton" parent_id_path=PackedInt32Array(677892088) index="13" unique_id=1527359638]
+transform = Transform3D(-1, 0, 0, 0, 0, 1, 0, 1, 0, -0.09799998, 0.09741932, -0.016200215)
+
+[node name="shin_R" parent="metarig/GeneralSkeleton" parent_id_path=PackedInt32Array(677892088) index="14" unique_id=1750116457]
+transform = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, -0.09799999, 0.6398194, 0.028599888)
+
+[node name="thigh_R" parent="metarig/GeneralSkeleton" parent_id_path=PackedInt32Array(677892088) index="15" unique_id=984507881]
+transform = Transform3D(-1, 0, 0, 0, -1, 0, 0, 0, 1, -0.098, 1.2815796, -0.01240002)
+
+[node name="spine" parent="metarig/GeneralSkeleton" parent_id_path=PackedInt32Array(677892088) index="16" unique_id=990011280]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2070596, -0.0552)

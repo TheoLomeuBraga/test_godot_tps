@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dav2kb31hgt60"]
+
+[ext_resource type="PackedScene" uid="uid://bf7btlp67pejg" path="res://animation_transference/demo_model.tscn" id="1_15qy2"]
+[ext_resource type="Script" uid="uid://dy1w7013vrgaa" path="res://animation_transference/animation_transference.gd" id="1_jmqvx"]
+[ext_resource type="PackedScene" uid="uid://w7ehv0ti4dgq" path="res://animation_transference/template_psx_charter.tscn" id="1_ry36g"]
+[ext_resource type="PackedScene" uid="uid://ey3rsedgjrgv" path="res://animation_transference/player_animations.tscn" id="4_lyb1f"]
+
+[node name="AnimationTransference" type="Node3D" unique_id=324419764]
+script = ExtResource("1_jmqvx")
+
+[node name="template_psx_charter" parent="." unique_id=1934874451 instance=ExtResource("1_ry36g")]
+
+[node name="player_animations" parent="template_psx_charter" unique_id=156177058 instance=ExtResource("4_lyb1f")]
+
+[node name="demo_model" parent="." unique_id=1543501243 instance=ExtResource("1_15qy2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
