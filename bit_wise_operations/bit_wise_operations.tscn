@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dgd6abtg7qg2n"]
+
+[ext_resource type="Script" uid="uid://bn44xode1aqwl" path="res://bit_wise_operations/bit_wise_operations.gd" id="1_ut115"]
+
+[node name="BitWiseOperations" type="Node" unique_id=783974269]
+script = ExtResource("1_ut115")
+flags = 256

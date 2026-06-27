@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cd17lu86i4m8j"]
+
+[ext_resource type="Texture2D" uid="uid://b1fjiasmi3uhy" path="res://wall_jump/textures/grass.png" id="1_b8icd"]
+[ext_resource type="Script" uid="uid://da2qufwb1wvhw" path="res://test_ui_transform/jelly_button.gd" id="1_pmc1q"]
+
+[node name="TestUiTransform" type="Control" unique_id=635035305]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="." unique_id=146880872]
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.109000005
+anchor_top = 0.29200003
+anchor_right = 0.89100003
+anchor_bottom = 0.708
+offset_left = 0.23999786
+offset_top = -0.16001892
+offset_right = -0.23999023
+offset_bottom = 0.16000366
+offset_transform_enabled = true
+script = ExtResource("1_pmc1q")
+
+[node name="TextureRect" type="TextureRect" parent="Button" unique_id=2094349732]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_b8icd")
+expand_mode = 1
